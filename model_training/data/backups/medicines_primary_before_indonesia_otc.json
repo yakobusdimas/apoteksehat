@@ -1,0 +1,2556 @@
+{
+  "total": 200,
+  "medicines": [
+    {
+      "id": 5971,
+      "name": "Montrelief-LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Signature Phytochemical Industries",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/nmvbhvmpnkvmxwhf7zao.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 11759,
+      "name": "Zincast Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Galaxy Biotech",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e4e99b0c0d8a475d870190746a56f684.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4609,
+      "name": "L Montus Kid Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Fourrts India Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/lkuwc81gsk7tuvqbfoaz.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 827,
+      "name": "Alday Duo 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "S H Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/0164736a96654b19be5e7ecd5ac718f0.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5009,
+      "name": "LCZ-Mont Suspension",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Rapross Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/d77b45b07c19419094a02f53ad860767.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 9160,
+      "name": "Solitair Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Blue Cross Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/try6fidnum2pwb6y8ruw.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4971,
+      "name": "Levotiz-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Foregen Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/xsuyghowh5w0gyqaqolb.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4320,
+      "name": "Levocet M Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Hetero Drugs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/a36b863a202245168e2080bc028d8f08.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5640,
+      "name": "Montas-L",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Intas Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e8cf842d6ed5461cac6c4e1525161004.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4927,
+      "name": "Levokon-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Eskon Pharma",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e84e831cea20463fa765c2c049af2bc1.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5644,
+      "name": "MTnL Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Centaur Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/xgfvyp5mnd2x7vmmct1y.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4897,
+      "name": "Levokast Oral Suspension",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "TTK Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/88a1f5d6f9ec465a8e67289bb439bed6.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4316,
+      "name": "Laveta M  Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Alembic Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/o9vwxvwxqcfdv0ft271a.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4880,
+      "name": "Lit M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Omenta Pharma Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/c301e42eed3f41f69353509a538017b0.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 6115,
+      "name": "Montark-L Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Optho Life Sciences Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/a7b42d23f34b4b08943401e810e68479.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 954,
+      "name": "Alnacet M 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Alna Biotech Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/d9b763a8fc304e30b199649abe2e4ee5.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4651,
+      "name": "Lekast Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Unimarck Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/gdgsfnyspvphruqwl8o3.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5752,
+      "name": "Monzap-LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Serum Institute Of India Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/375674ab540e48a5b4ef6c7de3594bb1.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 9959,
+      "name": "Telekast-L Kid Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/hj6utagndzmoikolrspf.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 6276,
+      "name": "Nukast 10 Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Zuventus Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/kleymf7mdd82dvntjnv7.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4290,
+      "name": "L Montus Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Fourrts India Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/ca79e6cca95a46089ea8aae2fdbfd64d.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4674,
+      "name": "L-Hist Mont Syrup",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Alkem Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/10d2303f63584e07929ad514d9d89e01.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4288,
+      "name": "Lecope-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Mankind Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3a7cd00eb5194849a3b9aa046ef22768.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 70,
+      "name": "Avil Injection",
+      "composition": "Pheniramine (22.75mg)",
+      "uses": "Treatment of Allergic conditionsTreatment of Respiratory disease with excessive mucusTreatment of Skin conditions with inflammation & itchingTreatment and prevention of Meniere's disease",
+      "side_effects": "Sedation",
+      "manufacturer": "Sanofi India Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e17dda31de1747358229a8ff89c60eb2.jpg",
+      "kategori_id": [
+        "Batuk & Flu",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4277,
+      "name": "Levosiz-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Systopic Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/5663cf6e866845d0b7184c3275523b25.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 1079,
+      "name": "Ancer LM Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Bio Vitamins",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/8fd45d9ed4c949949aab847bfb9e14ab.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8636,
+      "name": "Rem CC LM 5 mg/10 mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Karnataka Antibiotics & Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/54ca94e104af44328ecf0edb8f0bce16.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5542,
+      "name": "Monticope Suspension",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Mankind Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/jfhrkk6tccgmd6gtkkix.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 7177,
+      "name": "Oriel-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Intas Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/onenz7e5mmpz1w2zsyv3.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4585,
+      "name": "Lasma LC Kid Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Apex Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/aneybkxqvbsmwyg1nhpy.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 1321,
+      "name": "Breaze-L Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Albert David Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/aybxhdge7agqzyw4x3mi.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5272,
+      "name": "Montewok-LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Wockhardt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/fc0223835ac444dcac36b40f926ed06d.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 246,
+      "name": "Allercet-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Micro Labs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/eiz4irqdi1r6a85bqvv0.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4520,
+      "name": "Levocet M Kid Tablet MD",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Hetero Drugs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/c303cd26897243a481dbcd7faba10b91.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 7010,
+      "name": "Odimont-LC Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3ffc1d09855a4c66a07e97f34d58faea.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5347,
+      "name": "Montral Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Micro Labs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/mzmuzd87on1usrjq9kne.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5203,
+      "name": "Montecip LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/vftrlc0rdh1g116ycw4i.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 11387,
+      "name": "X-Mont LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Texas Pharmaceuticals",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/njgwgptoc6hxkunt8ylp.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 6803,
+      "name": "Odimont-LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/fv7xoqayi4zergt36adu.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8507,
+      "name": "Romilast L 5 Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (5mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "RPG Life Sciences Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/wpd48oxjztruxit41vls.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4523,
+      "name": "Levotac-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Seagull Pharmaceutical Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/ngvifqzzebwoda0p3gop.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 2393,
+      "name": "Emimont 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Dr Cure Pharmaceuticals India Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e5fc329092f34fad93e81258a3c1fad5.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4425,
+      "name": "Ldio 1 M 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Unison Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/b36b96ffb75f47f2b9253c9a6453763e.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5365,
+      "name": "Monticope -Kid Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Mankind Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/rgcjhk8mzibt2aeyctry.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 11792,
+      "name": "Zeemont 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Clementia Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e0254d52986742dc8d9774dd9b133acb.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5124,
+      "name": "Montas-L Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Intas Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/zkljusmevjth3wbnxvle.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5397,
+      "name": "Monlevo Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Franco-Indian Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/guszoanzfz6wsr4cyy2c.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5115,
+      "name": "Monticope Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Mankind Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cfdfbbe893174815946e897d2a35384a.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5113,
+      "name": "Montina-L Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Aristo Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/ohfqz2pmlomqs7d9vmi0.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5102,
+      "name": "Montair-LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/wbcmitb6ibmotmsy9st6.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5099,
+      "name": "Montek LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Sun Pharmaceutical Industries Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/hu9ossbgvej1rylj0xls.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8451,
+      "name": "Romilast L 10 Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "RPG Life Sciences Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/es0ocs2zswiyivbsjupw.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 662,
+      "name": "Allerkast LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/84d2db3058ca43bdb501aac4972df801.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4248,
+      "name": "Levocet M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Hetero Drugs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/gvzaa8w1kcdkwqoaxkfh.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8664,
+      "name": "Romilast L Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "RPG Life Sciences Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/40632e82276f454fb10c90a1c44d2dcc.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 6052,
+      "name": "Minolast Kid 2.5mg/4mg Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Leeford Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/35c78e6f6adc46adbcdf27568beb0ff0.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Avil Injection",
+      "composition": "Pheniramine (22.75mg)",
+      "uses": "Treatment of Allergic conditionsTreatment of Respiratory disease with excessive mucusTreatment of Skin conditions with inflammation & itchingTreatment and prevention of Meniere's disease",
+      "side_effects": "Sedation",
+      "manufacturer": "Sanofi India Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/n2al1qoxuxtzshwgwbt0.jpg",
+      "kategori_id": [
+        "Batuk & Flu",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 502,
+      "name": "Alerfix-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Eris Lifesciences Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/hudn6y7bgh41nuuyfwue.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5886,
+      "name": "Montina-L Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Aristo Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/fqaqu9r8fsgyomllwujk.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 3748,
+      "name": "Infinair 10/5mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Pfizer Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/iwzgrj7la0ympb3u9woq.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8813,
+      "name": "Recofast LM Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Shreya Life Sciences Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/ydtaltjx8b4lflpwx3ad.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5883,
+      "name": "Montegress LC 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "La Renon Healthcare Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/ddea4537412f4d53b2acd829ef4c9548.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 1032,
+      "name": "Admont-LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Adley Formulations",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/lsrdvwl3nyjuahbf0zer.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8766,
+      "name": "Respicure-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Corona Remedies Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/dmht2n9b10rjvewl5vap.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5950,
+      "name": "Makair Tablet",
+      "composition": "Levocetirizine (NA) + Montelukast (NA)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Makers Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/wbahpjof3cejkejpgqkl.png",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 1025,
+      "name": "Alz Plus  Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Athens Labs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/d4uzhpxrgl5fqxeteblk.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4461,
+      "name": "Lazine M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Hetero Drugs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/352f0428ae47442ab3eddf7f12750dd6.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 3449,
+      "name": "HHlevo-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Hegde and Hegde Pharmaceutical LLP",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/a52f0ea9469c48769bbf434de47ef556.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4799,
+      "name": "Lorfast MT Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Cadila Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/t3d56punmdk3okq3k7g2.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5187,
+      "name": "Montemac-L Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Macleods Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/h8tk7yseqdsrrzzhb5b7.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Avil 25 Tablet",
+      "composition": "Pheniramine (25mg)",
+      "uses": "Treatment of Allergic conditionsTreatment of Respiratory disease with excessive mucusTreatment of Skin conditions with inflammation & itchingTreatment and prevention of Meniere's disease",
+      "side_effects": "Sedation",
+      "manufacturer": "Sanofi India Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/mmsye6bf97tkcocat24j.jpg",
+      "kategori_id": [
+        "Batuk & Flu",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 9614,
+      "name": "Telekast-L Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/52802a2362764037a23a802c2d9b4afc.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5214,
+      "name": "Montek LC Kid Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Sun Pharmaceutical Industries Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3cadc287-1153-4cda-bba9-69473616fb42.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8542,
+      "name": "Rinosolvin 10/5 Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Ipca Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/kyj8ur8uyttspxoxz5ny.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5212,
+      "name": "Montair LC Kid Tablet DT",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/650df9bf88c043b4aea0d045dff4a4e7.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 11328,
+      "name": "Xyzal M Suspension",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Dr Reddy's Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/xdwsoqhk9kgxmgtrzdln.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5118,
+      "name": "Montair LC Kid Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/zhd8fv9gmxscys86uumw.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4684,
+      "name": "Lukotas LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Intas Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/smtb7o97k4hnalhv9usf.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 171,
+      "name": "Avil 50mg Tablet",
+      "composition": "Pheniramine (50mg)",
+      "uses": "Treatment of Allergic conditionsTreatment of Respiratory disease with excessive mucusTreatment of Skin conditions with inflammation & itchingTreatment and prevention of Meniere's disease",
+      "side_effects": "Sedation",
+      "manufacturer": "Sanofi India Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/hb3cqsruyt3hmr0qtdir.jpg",
+      "kategori_id": [
+        "Batuk & Flu",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4482,
+      "name": "Lasma LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Apex Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/ifs5qb7xybyfimcgtcxp.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 10972,
+      "name": "Vitaresp FX Suspension",
+      "composition": "Montelukast (4mg/5ml) + Fexofenadine (60mg/5ml)",
+      "uses": "Treatment of Hay feverTreatment of Allergic skin conditionsTreatment of Sneezing and runny nose due to allergies",
+      "side_effects": "Nausea Vomiting Diarrhea Dizziness Headache Body ache Skin rash",
+      "manufacturer": "Alembic Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/338d0aab-1ca6-40d1-acec-efff158dd738.jpeg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 9784,
+      "name": "Teczine M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Sun Pharmaceutical Industries Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/x1zngjoerimii9niwjmf.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 11291,
+      "name": "Wincit M 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Syswin Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/w60olxp7prvs39bsxtuf.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4287,
+      "name": "Laveta M  Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Alembic Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/w5suwdkghsehyav0yuss.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5932,
+      "name": "Montelo LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Mascot Health Series Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/c79e9f041062407495a4fef3438abc0c.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4483,
+      "name": "Lasma LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Apex Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/ifs5qb7xybyfimcgtcxp.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4268,
+      "name": "L-Hist Mont Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Alkem Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/1f7a53f5609946fdad7136ed8ca6b8c6.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8416,
+      "name": "Relikast LC 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Leeford Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e5831688877949c9b478d02c5a9586a7.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 9763,
+      "name": "Telekast-L Kid Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/ycljnp5inb6gfqv30mvz.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4649,
+      "name": "Lefive M Tablet",
+      "composition": "Levocetirizine (NA) + Montelukast (NA)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Eright Healthcare",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/b25743208cec4dafa946f2d57cf65f26.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4311,
+      "name": "Levozet M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Cadila Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/510e03489f724d6c967b567b7a03c7d2.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4908,
+      "name": "LCZ-Mont Kid Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Rapross Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/axkonwzolwa7y5enmzo9.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4567,
+      "name": "Lasma LC kid Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Apex Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/9bf6a567b1754dbc8cbd0a81e69b71b0.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5705,
+      "name": "Montemac-L Kid  Tablet DT",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Macleods Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/p1lcsdsdfovr70ldwskd.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5090,
+      "name": "Levrom-M Syrup",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Romas Remedies",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/q8laxygzlx9yizrscg62.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 3498,
+      "name": "HHlevo-M Kid Suspension",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Hegde and Hegde Pharmaceutical LLP",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/40bd06b2d69a479b92ad4745388c7334.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4941,
+      "name": "Levozen M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Zeno Healthcare",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/fgenbcm16vthf6cyzibd.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4437,
+      "name": "L Montus Oral Suspension",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Fourrts India Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/jotupmhslaeidw0kdwdi.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5189,
+      "name": "Montina-L Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Aristo Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/qxnje0gu9jptiirntfqg.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4698,
+      "name": "Levosiz-M Kid Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Systopic Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/q85qewx8hvflzjgjkk7w.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5163,
+      "name": "Monticope Suspension",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Mankind Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/dgacsjuotwuommbgkvoj.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 3590,
+      "name": "HHlevo-M Kid Tablet DT",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Hegde and Hegde Pharmaceutical LLP",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/zgkktwbznvdjq4krpoes.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5933,
+      "name": "Monzem LC Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Saffron Therapeutics Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/o49wkeurwoqazjr3m13x.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 6055,
+      "name": "Montgold Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Linux Laboratories",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/bd1490eea63045fd94c9c30af453ac65.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5953,
+      "name": "Minolast 10 Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Leeford Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/04ab5f95546545f0ab4db12dc2b48812.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4798,
+      "name": "Lezyncet-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Torrent Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/ynoqldmwur2d0iwbqkmo.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5376,
+      "name": "Montemac-L Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Macleods Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/0c47d0c5fb4844b29a4e9ed60d2a8d06.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4692,
+      "name": "Lukotrap Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Indchemie Health Specialities Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/pswuwnet8joagzqxxm2f.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5434,
+      "name": "Miontizee-L Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Zeelab Pharmacy Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/j7x7b7kv6qddshsbpnpq.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 10842,
+      "name": "Vitamin A Chewable Tablet",
+      "composition": "Vitamin A (50000IU)",
+      "uses": "Treatment of Vitamin A deficiency",
+      "side_effects": "No common side effects seen",
+      "manufacturer": "Abbott",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/r1fipcpbmubocmcnr1f4.jpg",
+      "kategori_id": [
+        "Vitamin & Suplemen"
+      ]
+    },
+    {
+      "id": 1552,
+      "name": "Dom-DT 5 Rapitab",
+      "composition": "Domperidone (5mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of IndigestionTreatment of NauseaTreatment of Vomiting",
+      "side_effects": "Dryness in mouth Headache Drowsiness Stomach cramp Diarrhea",
+      "manufacturer": "Morepen Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/vnj7zt6gerwy7ue8vip8.jpg",
+      "kategori_id": [
+        "Lainnya"
+      ]
+    },
+    {
+      "id": 5225,
+      "name": "Mecofol 10 Tablet For Vitamin B12 Deficiency",
+      "composition": "Methylcobalamin (500mcg)",
+      "uses": "Treatment of Pernicious Anemia Vitamin B12 deficiency",
+      "side_effects": "Vomiting Loss of appetite Headache",
+      "manufacturer": "Intas Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/mocdxefg6wmzqphv2nim.jpg",
+      "kategori_id": [
+        "Vitamin & Suplemen"
+      ]
+    },
+    {
+      "id": 6367,
+      "name": "Nukast 4 Syrup",
+      "composition": "Levocetirizine (2.5mg/5ml) + Montelukast (4mg/5ml)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Zuventus Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/jmfvffdaalixap0xzizw.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 4469,
+      "name": "Levokast Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "TTK Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/fe3f984cf4704185b2cdbd9f7f09e6f1.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 11312,
+      "name": "Xyzal M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Dr Reddy's Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3cb7466aa97148849b68c7314c641f41.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 11352,
+      "name": "XL Mont 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "DWD Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3a901673a8cf4ab1a8e4c4ffb82f6c05.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 3331,
+      "name": "Genericart Amlodipine+Lisinopril 5mg/5mg Tablet",
+      "composition": "Amlodipine (5mg) + Lisinopril (5mg)",
+      "uses": " Hypertension (high blood pressure)",
+      "side_effects": "Ankle swelling Headache Tiredness Palpitations Increased potassium level in blood Sleepiness Cough Taste change Flushing sense of warmth in the face ears neck and trunk Decreased blood pressure Upset stomach",
+      "manufacturer": "Swast Aushadhi Seva Generic Medicine Store",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/lsfhpzwaymjvisrciwrx.jpg",
+      "kategori_id": [
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 9581,
+      "name": "StayHappi Diclofenac+Paracetamol 50mg/325mg Tablet",
+      "composition": "Diclofenac (50mg) + Paracetamol (325mg)",
+      "uses": " Pain relief",
+      "side_effects": "Nausea Vomiting Stomach pain epigastric pain Heartburn Diarrhea Loss of appetite",
+      "manufacturer": "Sarvagunaushdhi Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/mew2rpmzmk49l84getwq.jpg",
+      "kategori_id": [
+        "Nyeri & Demam"
+      ]
+    },
+    {
+      "id": 3073,
+      "name": "Genericart Metformin Hydrochloride 1000mg Tablet SR",
+      "composition": "Metformin (1000mg)",
+      "uses": "Treatment of Type 2 diabetes mellitus",
+      "side_effects": "Diarrhea Nausea Vomiting Flatulence",
+      "manufacturer": "Swast Aushadhi Seva Generic Medicine Store",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/xnwisaure1lz31murgmd.jpg",
+      "kategori_id": [
+        "Diabetes"
+      ]
+    },
+    {
+      "id": 9517,
+      "name": "StayHappi Chlorzoxazone+Diclofenac+Paracetamol 500mg/50mg/325mg Tablet",
+      "composition": "Chlorzoxazone (500mg) + Diclofenac (50mg) + Paracetamol (325mg)",
+      "uses": "Treatment of Pain due to muscle spasm",
+      "side_effects": "Nausea Vomiting Heartburn Stomach pain Diarrhea Loss of appetite Dryness in mouth",
+      "manufacturer": "Sarvagunaushdhi Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/fq9luswdhkx1kxcpf860.jpg",
+      "kategori_id": [
+        "Nyeri & Demam"
+      ]
+    },
+    {
+      "id": 4006,
+      "name": "Jotair L Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Dr. Johns Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/xuhanrr3gnhgsoosdmch.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 8799,
+      "name": "Ronycold-M Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Ronyd Healthcare Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/af309e9748db4c99b6f73bbca31b22b8.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5727,
+      "name": "Monet LC 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Mapra Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/92e4dfd875ab449f827d2087cf6a2099.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5346,
+      "name": "Minolast LC 5mg/10mg Tablet",
+      "composition": "Levocetirizine (5mg) + Montelukast (10mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Leeford Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/543ff2b74bd440339733821f0aff8ae0.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5344,
+      "name": "Montina-L DT Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Aristo Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/wiogiivivi58eg8muwjs.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5252,
+      "name": "Montek LC Kid Tablet",
+      "composition": "Levocetirizine (2.5mg) + Montelukast (4mg)",
+      "uses": "Treatment of Sneezing and runny nose due to allergiesTreatment of Hay feverTreatment of Allergic skin conditions",
+      "side_effects": "Rash Nausea Diarrhea Dryness in mouth Fatigue Headache Skin rash Sleepiness Vomiting",
+      "manufacturer": "Sun Pharmaceutical Industries Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/1958605e370a44fb8e732f8a7a524b80.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Kulit"
+      ]
+    },
+    {
+      "id": 10893,
+      "name": "Vitamin C Injection",
+      "composition": "Vitamin C (150mg)",
+      "uses": " Vitamin C deficiency",
+      "side_effects": "Injection site reactions pain swelling redness",
+      "manufacturer": "Mankind Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/9a5f2c810e964b4491d7fd9d1dd004ed.jpg",
+      "kategori_id": [
+        "Vitamin & Suplemen"
+      ]
+    },
+    {
+      "id": 7882,
+      "name": "Pantodac-IT Capsule SR",
+      "composition": "Pantoprazole (40mg) + Itopride (150mg)",
+      "uses": " Gastroesophageal reflux disease (Acid reflux) Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Headache Flatulence Dizziness Increased saliva production",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/54dbfc710daa4be5ab909339694d3c89.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 9468,
+      "name": "Sustameto 50 Tablet ER",
+      "composition": "Metoprolol Succinate (47.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Fatigue Headache Slow heart rate Dizziness Nausea Breathlessness Rash Diarrhea Depression",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/pqllzml3e6ivzghaw0tt.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 1234,
+      "name": "Betaloc 50mg Tablet",
+      "composition": "Metoprolol Tartrate (50mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Orthostatic hypotension sudden lowering of blood pressure on standing Slow heart rate Headache Dizziness Tiredness Stomach pain Nausea Breathlessness",
+      "manufacturer": "AstraZeneca",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/5440da099f0b4c2dabd1d56d5d1fa3ba.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 7818,
+      "name": "Prelid 8mg Tablet",
+      "composition": "Methylprednisolone (8mg)",
+      "uses": "Treatment of Rheumatic disorderTreatment of Systemic lupus erythematosus (SLE)Treatment of Allergic conditionsTreatment of Eye disordersTreatment of Skin disorders",
+      "side_effects": "Thinning of skin Increased risk of infection Reduction in bone density Weight gain Mood changes Upset stomach Behavioral changes",
+      "manufacturer": "Glowderma Labs Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/667cbc6995b541769b054863154c4537.jpg",
+      "kategori_id": [
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5232,
+      "name": "Metolar XR 50 Capsule",
+      "composition": "Metoprolol Succinate (47.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Fatigue Headache Slow heart rate Dizziness Nausea Breathlessness Rash Diarrhea Depression",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/17a4925916dc4953b8b9e0d1f6042d32.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 7816,
+      "name": "P2I Tablet",
+      "composition": "Pantoprazole (40mg)",
+      "uses": "Treatment of HeartburnTreatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Flatulence Headache Nausea Stomach pain Vomiting Dizziness Upper respiratory tract infection",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/bnts4qigx1zba0j8zmsr.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3408,
+      "name": "Hisone 5 Tablet",
+      "composition": "Hydrocortisone (5mg)",
+      "uses": " Severe allergic reactionsTreatment of Allergic conditionsTreatment of CancerTreatment of Skin disordersTreatment of Eye disorders",
+      "side_effects": "Dizziness Headache Ankle swelling Weakness",
+      "manufacturer": "Samarth Life Sciences Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/c1297ec64d154d16a54de0086eb184e7.jpg",
+      "kategori_id": [
+        "Kulit"
+      ]
+    },
+    {
+      "id": 5125,
+      "name": "Met XL 25 Tablet",
+      "composition": "Metoprolol Succinate (23.75mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Fatigue Headache Slow heart rate Dizziness Nausea Breathlessness Rash Diarrhea Depression",
+      "manufacturer": "Ajanta Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/fzsldtube07xmins5vjm.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 8832,
+      "name": "Rabe-Max DSR Capsule",
+      "composition": "Domperidone (30mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Dryness in mouth Headache Dizziness Flatulence Weakness Flu like symptoms",
+      "manufacturer": "Tidal Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/d9umgkhp1a1ogg9q0zpc.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 7552,
+      "name": "Pan-IT Capsule SR",
+      "composition": "Pantoprazole (40mg) + Itopride (150mg)",
+      "uses": " Gastroesophageal reflux disease (Acid reflux) Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Headache Flatulence Dizziness Increased saliva production",
+      "manufacturer": "Alkem Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/vt3dbptbb8f11p8sosjm.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 9483,
+      "name": "S-Amcard 5 Tablet",
+      "composition": "S-Amlodipine (5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)Prevention of Heart attackPrevention of Stroke",
+      "side_effects": "Ankle swelling Dizziness Fatigue Flushing sense of warmth in the face ears neck and trunk Headache Palpitations Abdominal pain Muscle cramp Nausea Sleepiness Visual disturbance Dyspepsia Breathlessness Change in bowel habits",
+      "manufacturer": "Systopic Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/bomfn8i33vyi9ojqboxs.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 9489,
+      "name": "Sonirab-D Tablet",
+      "composition": "Domperidone (10mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Dryness in mouth Headache Dizziness Flatulence Weakness Flu like symptoms",
+      "manufacturer": "Ronyd Healthcare Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/bfou6t4f20yndcjvtdlx.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 8801,
+      "name": "Rabetero-L Capsule SR",
+      "composition": "Levosulpiride (75mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Intestinal ulcersTreatment of Irritable bowel syndrome",
+      "side_effects": "Nausea Stomach pain Diarrhea Flatulence Constipation Headache Dizziness Weakness Sleepiness Flu like symptoms",
+      "manufacturer": "Hetero Drugs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/nwswcd2kf2e827h6kdg1.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 1041,
+      "name": "Altapan-DSR Capsule",
+      "composition": "Domperidone (30mg) + Pantoprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Flatulence Dryness in mouth Dizziness Headache",
+      "manufacturer": "Altavista Life Sciences Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/7e823c9c6438489fbb07452a8ef3f9af.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 8551,
+      "name": "Rabeloc Plus Capsule SR",
+      "composition": "Levosulpiride (75mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Intestinal ulcersTreatment of Irritable bowel syndrome",
+      "side_effects": "Nausea Stomach pain Diarrhea Flatulence Constipation Headache Dizziness Weakness Sleepiness Flu like symptoms",
+      "manufacturer": "Cadila Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/jw87r9nnier8ta8hdewh.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 4740,
+      "name": "Lupisoz Tablet",
+      "composition": "Esomeprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Headache Dryness in mouth Nausea Abdominal pain Constipation Flatulence Diarrhea",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/b8194400272b458da0265f456519ccdd.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 7884,
+      "name": "Pantin 40mg Injection",
+      "composition": "Pantoprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Flatulence Headache Joint pain Nausea Stomach pain Vomiting Dizziness Thrombophlebitis",
+      "manufacturer": "Hetero Drugs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/c163907c7e534db2823d026e5f218678.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3518,
+      "name": "Hipress 50 Tablet",
+      "composition": "Atenolol (50mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attack",
+      "side_effects": "Fatigue Slow heart rate Cold extremities Gastrointestinal disturbance",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/c6ebe95013674c2fa3d9cda1e0ddb0cd.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 1010,
+      "name": "Angizem DP 90 Capsule MR",
+      "composition": "Diltiazem (90mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of Arrhythmia",
+      "side_effects": "Headache Dizziness Nausea Edema swelling",
+      "manufacturer": "Sun Pharmaceutical Industries Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/jumz2e83bq9ltgjsbqcv.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 7894,
+      "name": "Pansec 40mg Injection",
+      "composition": "Pantoprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Flatulence Headache Joint pain Nausea Stomach pain Vomiting Dizziness Thrombophlebitis",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/hxxfixkbsshy6bakeuig.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 9318,
+      "name": "Superia L Capsule SR",
+      "composition": "Levosulpiride (75mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Intestinal ulcersTreatment of Irritable bowel syndrome",
+      "side_effects": "Nausea Stomach pain Diarrhea Flatulence Constipation Headache Dizziness Weakness Sleepiness Flu like symptoms",
+      "manufacturer": "Sun Pharmaceutical Industries Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/bkkdupeibtdovfepa8k5.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 298,
+      "name": "Amlogard 5mg Tablet",
+      "composition": "Amlodipine (5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)",
+      "side_effects": "Headache Fatigue Nausea Abdominal pain Sleepiness",
+      "manufacturer": "Pfizer Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/y4tfhzdttoh6jdw3tvoe.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 10305,
+      "name": "Topinate Solution",
+      "composition": "Clobetasol (0.05% w/v)",
+      "uses": "Treatment of Allergic skin conditions",
+      "side_effects": "Skin atrophy Telangiectasia Skin irritation Dry skin",
+      "manufacturer": "Systopic Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/mjo5mla2e8logf345lul.jpg",
+      "kategori_id": [
+        "Kulit"
+      ]
+    },
+    {
+      "id": 7001,
+      "name": "Odepraz 40mg Tablet",
+      "composition": "Esomeprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Headache Dryness in mouth Nausea Abdominal pain Constipation Flatulence Diarrhea",
+      "manufacturer": "Indchemie Health Specialities Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e80d847a50ce41beb93a661d473e209d.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 7573,
+      "name": "Pantop IT Capsule SR",
+      "composition": "Pantoprazole (40mg) + Itopride (150mg)",
+      "uses": " Gastroesophageal reflux disease (Acid reflux) Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Headache Flatulence Dizziness Increased saliva production",
+      "manufacturer": "Aristo Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/vez218rqnptj1amzxuk5.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 4761,
+      "name": "Lafaxid-D  Tablet",
+      "composition": "Lafutidine (10mg) + Domperidone (30mg)",
+      "uses": " Gastroesophageal reflux disease (Acid reflux) Peptic ulcer disease",
+      "side_effects": "Nausea Diarrhea Dryness in mouth Fatigue Headache Muscle pain Drowsiness Dizziness Increased liver enzymes Protein in urine Increased uric acid level in blood",
+      "manufacturer": "Zuventus Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/gdtz4lebsnjz9kobj3id.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3524,
+      "name": "Hipres 25 Tablet",
+      "composition": "Atenolol (25mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attack",
+      "side_effects": "Fatigue Slow heart rate Cold extremities Gastrointestinal disturbance",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/swbzy1qjlwddcudisuom.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 9413,
+      "name": "S-Amlosafe 2.5 Tablet",
+      "composition": "S-Amlodipine (2.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)Prevention of Heart attackPrevention of Stroke",
+      "side_effects": "Ankle swelling Dizziness Fatigue Flushing sense of warmth in the face ears neck and trunk Headache Palpitations Abdominal pain Muscle cramp Nausea Sleepiness Visual disturbance Dyspepsia Breathlessness Change in bowel habits",
+      "manufacturer": "Aristo Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/lq6oduof3zwjjglpws9y.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 8574,
+      "name": "Rabidoc 20 Tablet",
+      "composition": "Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Dizziness Flatulence Headache Nausea Sore throat Stomach pain Vomiting",
+      "manufacturer": "Morepen Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e6be696e70ec4df3a96c8b4505b1242e.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 9408,
+      "name": "Starcad-Beta 50 Tablet ER",
+      "composition": "S-Metoprolol Succinate (47.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of StrokePrevention of Migraine",
+      "side_effects": "Fatigue Slow heart rate Constipation Diarrhea Dizziness Cold extremities",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/htlebvd5dcgbtbj4emcy.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 9398,
+      "name": "Seloken XL 100mg Tablet",
+      "composition": "Metoprolol Succinate (95mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Fatigue Headache Slow heart rate Dizziness Nausea Breathlessness Rash Diarrhea Depression",
+      "manufacturer": "AstraZeneca",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/c2811a181eb64946ae160be7bc919aec.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 1276,
+      "name": "Betagel",
+      "composition": "Betamethasone (0.05% w/w)",
+      "uses": "Treatment of Allergic skin conditionsTreatment of Allergic conditions",
+      "side_effects": "Reduction in bone density Upset stomach",
+      "manufacturer": "Micro Labs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/u36tz0vl15fo6wbljvld.jpg",
+      "kategori_id": [
+        "Kulit"
+      ]
+    },
+    {
+      "id": 7857,
+      "name": "Pancicare-D Capsule PR",
+      "composition": "Domperidone (30mg) + Pantoprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Flatulence Dryness in mouth Dizziness Headache",
+      "manufacturer": "Hegde and Hegde Pharmaceutical LLP",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/ztl6z4namhkryp2lb7zf.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 1275,
+      "name": "Bisotab 2.5 Tablet",
+      "composition": "Bisoprolol (2.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Nausea Headache Slow heart rate Fatigue Constipation Diarrhea Dizziness Cold extremities",
+      "manufacturer": "J B Chemicals and Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/d51f1a7968ff4a7c9cedd0b59178975d.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 7040,
+      "name": "Omecip Capsule",
+      "composition": "Omeprazole (20mg)",
+      "uses": "Treatment of HeartburnTreatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Flatulence Headache Nausea Vomiting Abdominal pain",
+      "manufacturer": "Cipla Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/nkabuqixgsbqc2cai7iu.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 7853,
+      "name": "Protera-I Capsule SR",
+      "composition": "Pantoprazole (40mg) + Itopride (150mg)",
+      "uses": " Gastroesophageal reflux disease (Acid reflux) Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Headache Flatulence Dizziness Increased saliva production",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/r2hps1rgqwgmjyhwtrwx.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 7874,
+      "name": "Protol  -XL 50 Tablet",
+      "composition": "Metoprolol Succinate (47.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Fatigue Headache Slow heart rate Dizziness Nausea Breathlessness Rash Diarrhea Depression",
+      "manufacturer": "Eris Lifesciences Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/fb5d33c2cec94182aaa43aff51f111ac.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 8596,
+      "name": "Rablet 10 Tablet",
+      "composition": "Rabeprazole (10mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Dizziness Flatulence Headache Nausea Sore throat Stomach pain Vomiting",
+      "manufacturer": "Lupin Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/beymnlnexliltphppb4h.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 7880,
+      "name": "Protol-XL 25 Tablet",
+      "composition": "Metoprolol Succinate (23.75mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Fatigue Headache Slow heart rate Dizziness Nausea Breathlessness Rash Diarrhea Depression",
+      "manufacturer": "Eris Lifesciences Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/elb6vve1bgp8rie2xkwq.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 2168,
+      "name": "Enliva 20mg/75mg Capsule SR",
+      "composition": "Levosulpiride (75mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Intestinal ulcersTreatment of Irritable bowel syndrome",
+      "side_effects": "Nausea Stomach pain Diarrhea Flatulence Constipation Headache Dizziness Weakness Sleepiness Flu like symptoms",
+      "manufacturer": "Abbott",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/n0gip7zcbrldwkecyqyd.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3811,
+      "name": "Inhipraz 40mg Tablet",
+      "composition": "Pantoprazole (40mg)",
+      "uses": "Treatment of HeartburnTreatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Flatulence Headache Nausea Stomach pain Vomiting Dizziness Upper respiratory tract infection",
+      "manufacturer": "La Renon Healthcare Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/02cbc09e1ab942d18e2e8be1f3cbb780.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 7845,
+      "name": "Primodil 5 Tablet",
+      "composition": "Amlodipine (5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)",
+      "side_effects": "Headache Fatigue Nausea Abdominal pain Sleepiness",
+      "manufacturer": "Medley Pharmaceuticals",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/sl3qoaeashyjmxbkzhcw.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 615,
+      "name": "Amlokind 10mg Tablet",
+      "composition": "Amlodipine (10mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)",
+      "side_effects": "Headache Fatigue Nausea Abdominal pain Sleepiness",
+      "manufacturer": "Mankind Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/mv2vlryi1925fy0hgxsf.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 5160,
+      "name": "Met XL 50 Tablet",
+      "composition": "Metoprolol Succinate (47.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attackPrevention of Migraine",
+      "side_effects": "Fatigue Headache Slow heart rate Dizziness Nausea Breathlessness Rash Diarrhea Depression",
+      "manufacturer": "Ajanta Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/f88468a30ffc41f594d885f0ec191c3c.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 6990,
+      "name": "Ocid L Capsule PR",
+      "composition": "Levosulpiride (75mg) + Esomeprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Nausea Vomiting Diarrhea Constipation Upset stomach Stomach pain Headache Flatulence Sleepiness",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/caa247ac56ab488f8c87f35808788756.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 10579,
+      "name": "Twincal 20 Tablet",
+      "composition": "Cilnidipine (20mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)Prevention of Heart attackPrevention of Stroke",
+      "side_effects": "Fatigue Sleepiness Flushing sense of warmth in the face ears neck and trunk Headache Nausea Dizziness Palpitations Edema swelling Abdominal pain Rash Muscle pain Eye pain Tremors Decreased blood pressure Itching",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/tuce6xyh5rtx06kirzed.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 2016,
+      "name": "Espin 2.5 Tablet",
+      "composition": "S-Amlodipine (2.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)Prevention of Heart attackPrevention of Stroke",
+      "side_effects": "Ankle swelling Dizziness Fatigue Flushing sense of warmth in the face ears neck and trunk Headache Palpitations Abdominal pain Muscle cramp Nausea Sleepiness Visual disturbance Dyspepsia Breathlessness Change in bowel habits",
+      "manufacturer": "Intas Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/cxmjgf9hn55hem7rn21b.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 910,
+      "name": "Amcard 2.5 Tablet",
+      "composition": "Amlodipine (2.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)",
+      "side_effects": "Headache Fatigue Nausea Abdominal pain Sleepiness",
+      "manufacturer": "Systopic Laboratories Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/f1drjj514l7qwag0xlej.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 1016,
+      "name": "Atpark 25 Tablet",
+      "composition": "Atenolol (25mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attack",
+      "side_effects": "Fatigue Slow heart rate Cold extremities Gastrointestinal disturbance",
+      "manufacturer": "Pfizer Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/wr1x10fx0hrzezypmpaq.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 2020,
+      "name": "Esomefol Tablet",
+      "composition": "Esomeprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Headache Dryness in mouth Nausea Abdominal pain Constipation Flatulence Diarrhea",
+      "manufacturer": "Leeford Healthcare Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/e862a90873b94db48c0b3c0237432f5f.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 1026,
+      "name": "Atenex 25mg Tablet",
+      "composition": "Atenolol (25mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attack",
+      "side_effects": "Fatigue Slow heart rate Cold extremities Gastrointestinal disturbance",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/f31qdw5daglkmhlo0vnf.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 11640,
+      "name": "Zipant-DSR Capsule",
+      "composition": "Domperidone (30mg) + Pantoprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Flatulence Dryness in mouth Dizziness Headache",
+      "manufacturer": "FDC Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/bgoadldd2uz8ubztitiv.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 10313,
+      "name": "Twincal 10 Tablet",
+      "composition": "Cilnidipine (10mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)Prevention of Heart attackPrevention of Stroke",
+      "side_effects": "Fatigue Sleepiness Flushing sense of warmth in the face ears neck and trunk Headache Nausea Dizziness Palpitations Edema swelling Abdominal pain Rash Muscle pain Eye pain Tremors Decreased blood pressure Itching",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/a4b8cswp1dilfdxqlotb.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 8674,
+      "name": "Rabalkem IT 20mg/150mg Capsule",
+      "composition": "Rabeprazole (20mg) + Itopride (150mg)",
+      "uses": " Gastroesophageal reflux disease (Acid reflux) Peptic ulcer disease",
+      "side_effects": "Stomach pain Diarrhea Constipation Headache Dizziness Flatulence Weakness Flu like symptoms Increased saliva production",
+      "manufacturer": "Alkem Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/giofa9rjr59oblx2pqws.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3655,
+      "name": "Ivepred 4 Tablet",
+      "composition": "Methylprednisolone (4mg)",
+      "uses": "Treatment of Rheumatic disorderTreatment of Systemic lupus erythematosus (SLE)Treatment of Allergic conditionsTreatment of Eye disordersTreatment of Skin disorders",
+      "side_effects": "Thinning of skin Increased risk of infection Reduction in bone density Weight gain Mood changes Upset stomach Behavioral changes",
+      "manufacturer": "Sun Pharmaceutical Industries Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/47b3e9d9ae2a4b88a191457dd37c9a97.jpg",
+      "kategori_id": [
+        "Kulit"
+      ]
+    },
+    {
+      "id": 9043,
+      "name": "Sompraz 20 Tablet",
+      "composition": "Esomeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Headache Dryness in mouth Nausea Abdominal pain Constipation Flatulence Diarrhea",
+      "manufacturer": "Sun Pharmaceutical Industries Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/rggeclrspw8inqrphrek.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 8692,
+      "name": "Rabonik 40 Tablet",
+      "composition": "Rabeprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Dizziness Flatulence Headache Nausea Sore throat Stomach pain Vomiting",
+      "manufacturer": "Eris Lifesciences Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/fagpcbkgekrtxd4e6x3s.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 8691,
+      "name": "Rabonik 40 Plus Capsule SR",
+      "composition": "Levosulpiride (75mg) + Rabeprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Intestinal ulcersTreatment of Irritable bowel syndrome",
+      "side_effects": "Nausea Stomach pain Diarrhea Flatulence Constipation Headache Dizziness Weakness Sleepiness Flu like symptoms",
+      "manufacturer": "Eris Lifesciences Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/jf7kldxa72fpkev94tij.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3649,
+      "name": "Inderal LA 40 Tablet SR",
+      "composition": "Propranolol (40mg)",
+      "uses": "Treatment of PheochromocytomaTreatment of Hypertension (high blood pressure) Prevention of migraineTreatment of AnxietyTreatment of ArrhythmiaPrevention of Heart attackPrevention of Angina (heart-related chest pain)Treatment of Tremors",
+      "side_effects": "Tiredness Weakness Raynaud s phenomenon Arrhythmia irregular heartbeats Nausea Vomiting Diarrhea",
+      "manufacturer": "Abbott",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/y1wqiapquiwn4zih26eg.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 991,
+      "name": "Atecard 50 Tablet",
+      "composition": "Atenolol (50mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attack",
+      "side_effects": "Fatigue Slow heart rate Cold extremities Gastrointestinal disturbance",
+      "manufacturer": "Alembic Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/po2tdwe25oqilkb6ytmk.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 7657,
+      "name": "Protochek DSR Capsule",
+      "composition": "Domperidone (30mg) + Pantoprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Flatulence Dryness in mouth Dizziness Headache",
+      "manufacturer": "Ipca Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/dd42742cd57748b2be222b48bcb88057.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 7653,
+      "name": "Pantin 40mg Tablet",
+      "composition": "Pantoprazole (40mg)",
+      "uses": "Treatment of HeartburnTreatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer diseaseTreatment of Zollinger-Ellison syndrome",
+      "side_effects": "Diarrhea Flatulence Headache Nausea Stomach pain Vomiting Dizziness Upper respiratory tract infection",
+      "manufacturer": "Hetero Drugs Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cfa27195daad43cbb01d3faae75ce374.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 11261,
+      "name": "Wokride-D Capsule SR",
+      "composition": "Domperidone (30mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Dryness in mouth Headache Dizziness Flatulence Weakness Flu like symptoms",
+      "manufacturer": "Dr Reddy's Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/t7wdlk2jacy5hnhlwqzr.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3643,
+      "name": "Inderal 20mg Tablet",
+      "composition": "Propranolol (20mg)",
+      "uses": "Treatment of PheochromocytomaTreatment of Hypertension (high blood pressure) Prevention of migraineTreatment of AnxietyTreatment of ArrhythmiaPrevention of Heart attackPrevention of Angina (heart-related chest pain)Treatment of Tremors",
+      "side_effects": "Tiredness Weakness Raynaud s phenomenon Arrhythmia irregular heartbeats Nausea Vomiting Diarrhea",
+      "manufacturer": "Abbott",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/2d44363c34d34e02a2e4101797f6952c.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 407,
+      "name": "Amlokind 2.5 Tablet",
+      "composition": "Amlodipine (2.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)",
+      "side_effects": "Headache Fatigue Nausea Abdominal pain Sleepiness",
+      "manufacturer": "Mankind Pharma Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/c1krcwuokin2t69daoaq.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 406,
+      "name": "Amlodac 2.5 Tablet",
+      "composition": "Amlodipine (2.5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)",
+      "side_effects": "Headache Fatigue Nausea Abdominal pain Sleepiness",
+      "manufacturer": "Zydus Cadila",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/lhrgzgz1utqoeewnfepq.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 8688,
+      "name": "Razo IV Injection",
+      "composition": "Rabeprazole (20mg)",
+      "uses": " Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Nausea Vomiting Headache Dizziness Flatulence Diarrhea Stomach pain Thrombophlebitis",
+      "manufacturer": "Dr Reddy's Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/97deb08a805249e092bd17cc4e27568b.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3924,
+      "name": "Instigo-D Tablet",
+      "composition": "Domperidone (30mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Dryness in mouth Headache Dizziness Flatulence Weakness Flu like symptoms",
+      "manufacturer": "Mebio Labs Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/lvlvqjarywtvke3m0he8.png",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 8678,
+      "name": "Raptac-DSR Capsule",
+      "composition": "Domperidone (30mg) + Rabeprazole (20mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Dryness in mouth Headache Dizziness Flatulence Weakness Flu like symptoms",
+      "manufacturer": "Rapross Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/hh5lcwsjkr15jmg9tmzr.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    },
+    {
+      "id": 3630,
+      "name": "Inderal LA 20 Tablet SR",
+      "composition": "Propranolol (20mg)",
+      "uses": "Treatment of PheochromocytomaTreatment of Hypertension (high blood pressure) Prevention of migraineTreatment of AnxietyTreatment of ArrhythmiaPrevention of Heart attackPrevention of Angina (heart-related chest pain)Treatment of Tremors",
+      "side_effects": "Tiredness Weakness Raynaud s phenomenon Arrhythmia irregular heartbeats Nausea Vomiting Diarrhea",
+      "manufacturer": "Abbott",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/cropped/j74vuzva9tccrjigthky.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 3626,
+      "name": "Hibesor 50mg Tablet",
+      "composition": "Atenolol (50mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Treatment of Angina (heart-related chest pain)Treatment of ArrhythmiaPrevention of Heart attack",
+      "side_effects": "Fatigue Slow heart rate Cold extremities Gastrointestinal disturbance",
+      "manufacturer": "Blue Cross Laboratories Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/vmdym0nwj4df7dgsw7jn.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 10663,
+      "name": "Twinblok  5mg Tablet",
+      "composition": "Cilnidipine (5mg)",
+      "uses": "Treatment of Hypertension (high blood pressure)Prevention of Angina (heart-related chest pain)Prevention of Heart attackPrevention of Stroke",
+      "side_effects": "Fatigue Sleepiness Flushing sense of warmth in the face ears neck and trunk Headache Nausea Dizziness Palpitations Edema swelling Abdominal pain Rash Muscle pain Eye pain Tremors Decreased blood pressure Itching",
+      "manufacturer": "Aprica Pharmaceuticals Pvt Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/33ca756bee3e467a830c6a2112448f4d.jpg",
+      "kategori_id": [
+        "Nyeri & Demam",
+        "Hipertensi"
+      ]
+    },
+    {
+      "id": 7490,
+      "name": "Pentaloc DSR 30mg/40mg Capsule",
+      "composition": "Domperidone (30mg) + Pantoprazole (40mg)",
+      "uses": "Treatment of Gastroesophageal reflux disease (Acid reflux)Treatment of Peptic ulcer disease",
+      "side_effects": "Diarrhea Stomach pain Flatulence Dryness in mouth Dizziness Headache",
+      "manufacturer": "Cadila Pharmaceuticals Ltd",
+      "image_url": "https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/9cfdbf233c814beab13f129f128f51f3.jpg",
+      "kategori_id": [
+        "Lambung & Pencernaan"
+      ]
+    }
+  ]
+}

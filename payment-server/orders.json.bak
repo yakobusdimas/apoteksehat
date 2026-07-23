@@ -1,0 +1,96 @@
+{
+  "APT1783160968299": {
+    "orderId": "APT1783160968299",
+    "paymentStatus": "pending",
+    "snapToken": "6c3f8f40-e0e6-40b2-a1e4-7056aa45fa25",
+    "total": 40000,
+    "customer": {
+      "name": "yakobus dimas",
+      "phone": "089523151573",
+      "address": "Tegalrejo",
+      "city": "Klaten",
+      "postalCode": "50275"
+    },
+    "courier": {
+      "id": "gojek-instant",
+      "name": "GoSend",
+      "service": "Instant",
+      "price": 15000,
+      "estimatedTime": "15-30 Menit",
+      "logo": "🛵"
+    },
+    "items": [
+      {
+        "id": 1,
+        "name": "Actifed Tablet 4s",
+        "category": "Flu & Pilek",
+        "price": 25000,
+        "stock": 100,
+        "image": "💊",
+        "photo": "https://placehold.co/400x300/e0f2fe/0369a1?text=Actifed%20Tablet%204s",
+        "description": "Meredakan hidung tersumbat, bersin-bersin, dan gejala flu.",
+        "indication": "Indikasi: Meredakan hidung tersumbat, bersin-bersin, dan gejala flu.",
+        "dosage": "Sesuai petunjuk pada kemasan atau anjuran dokter/apoteker.",
+        "ingredients": [
+          "Actifed",
+          "Bahan aktif terpilih",
+          "Eksipien q.s."
+        ],
+        "benefits": [
+          "Terbukti efektif secara klinis",
+          "Tersedia bebas di apotek Indonesia",
+          "Harga terjangkau 2026"
+        ],
+        "quantity": 1
+      }
+    ],
+    "createdAt": "2026-07-04T10:29:28.962Z"
+  },
+  "APT1783215684822": {
+    "orderId": "APT1783215684822",
+    "paymentStatus": "pending",
+    "snapToken": "4fbcfc9b-0536-4a74-a91c-1e1453b0094a",
+    "total": 21000,
+    "customer": {
+      "name": "Demo User",
+      "phone": "08111222333",
+      "address": "Demo Address",
+      "city": "Semarang",
+      "postalCode": "50275"
+    },
+    "courier": {
+      "id": "grab-sameday",
+      "name": "GrabExpress",
+      "service": "Same Day",
+      "price": 12000,
+      "estimatedTime": "3-6 Jam",
+      "logo": "🏍️"
+    },
+    "items": [
+      {
+        "id": 3,
+        "name": "Alkohol 70% 100ml",
+        "category": "P3K",
+        "price": 9000,
+        "stock": 100,
+        "image": "💊",
+        "photo": "https://placehold.co/400x300/e0f2fe/0369a1?text=Alkohol%2070%25%20100ml",
+        "description": "Antiseptik untuk membersihkan luka dan sterilisasi alat.",
+        "indication": "Indikasi: Antiseptik untuk membersihkan luka dan sterilisasi alat.",
+        "dosage": "Sesuai petunjuk pada kemasan atau anjuran dokter/apoteker.",
+        "ingredients": [
+          "Alkohol",
+          "Bahan aktif terpilih",
+          "Eksipien q.s."
+        ],
+        "benefits": [
+          "Terbukti efektif secara klinis",
+          "Tersedia bebas di apotek Indonesia",
+          "Harga terjangkau 2026"
+        ],
+        "quantity": 1
+      }
+    ],
+    "createdAt": "2026-07-05T01:41:28.690Z"
+  }
+}

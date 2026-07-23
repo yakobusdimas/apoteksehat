@@ -1,0 +1,124 @@
+{
+  "test_cases": [
+    {
+      "id": 1,
+      "query": "halo",
+      "expected_intent": "salam",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 2,
+      "query": "terima kasih",
+      "expected_intent": "perpisahan",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 3,
+      "query": "obat untuk sakit kepala",
+      "expected_intent": "tanya_obat",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 4,
+      "query": "saya demam",
+      "expected_intent": "tanya_obat",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 5,
+      "query": "efek samping paracetamol",
+      "expected_intent": "efek_samping",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 6,
+      "query": "ada ibuprofen",
+      "expected_intent": "ketersediaan",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 7,
+      "query": "berapa dosis amoxicillin",
+      "expected_intent": "dosis",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 8,
+      "query": "komposisi augmentin",
+      "expected_intent": "komposisi",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 9,
+      "query": "kegunaan vitamin c",
+      "expected_intent": "kegunaan",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 10,
+      "query": "jam buka apotek",
+      "expected_intent": "jam_operasional",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 11,
+      "query": "lokasi apotek",
+      "expected_intent": "lokasi",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 12,
+      "query": "obat batuk",
+      "expected_intent": "tanya_obat",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 13,
+      "query": "obat maag",
+      "expected_intent": "tanya_obat",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 14,
+      "query": "obat alergi",
+      "expected_intent": "tanya_obat",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 15,
+      "query": "harga paracetamol",
+      "expected_intent": "harga",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 16,
+      "query": "darurat sesak napas",
+      "expected_intent": "darurat",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 17,
+      "query": "cara minum ibuprofen",
+      "expected_intent": "dosis",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 18,
+      "query": "ada obat diabetes",
+      "expected_intent": "tanya_obat",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 19,
+      "query": "obat darah tinggi",
+      "expected_intent": "tanya_obat",
+      "min_confidence": 0.9
+    },
+    {
+      "id": 20,
+      "query": "pusing kepala mau obat apa",
+      "expected_intent": "tanya_obat",
+      "min_confidence": 0.9
+    }
+  ]
+}

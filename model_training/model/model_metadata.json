@@ -1,0 +1,20 @@
+{
+  "intents": [
+    "salam",
+    "perpisahan",
+    "tanya_obat",
+    "efek_samping",
+    "dosis",
+    "ketersediaan",
+    "komposisi",
+    "kegunaan",
+    "harga",
+    "tidak_tahu",
+    "darurat",
+    "jam_operasional",
+    "lokasi"
+  ],
+  "min_confidence": 0.9,
+  "model_type": "TF-IDF + SVM",
+  "features": "unigram + bigram"
+}

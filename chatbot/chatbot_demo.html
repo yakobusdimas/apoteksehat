@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apotek - Chatbot Demo</title>
+  
+  <!-- Chatbot Widget CSS -->
+  <link rel="stylesheet" href="chatbot-nlp/frontend/chatbot_widget.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 60px 40px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    
+    h1 {
+      color: #667eea;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    
+    .subtitle {
+      color: #666;
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .feature {
+      padding: 20px;
+      background: #f7f8fc;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    
+    .feature-title {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    
+    .feature-desc {
+      color: #666;
+      font-size: 0.9em;
+    }
+    
+    .cta {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 30px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    
+    .chat-hint {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: white;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: bounce 2s infinite;
+      max-width: 250px;
+    }
+    
+    .chat-hint::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 20px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid white;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+    
+    .status {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #4ade80;
+      color: white;
+      border-radius: 20px;
+      font-size: 0.9em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>💊 Apotek</h1>
+    <p class="subtitle">Sistem Chatbot NLP dengan Akurasi 95%</p>
+    
+    <div class="status">🟢 Server Running | Model Loaded</div>
+    
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">AI Chatbot</div>
+        <div class="feature-desc">Powered by NLP & Machine Learning</div>
+      </div>
+      
+      <div class="feature">
+        <div class="feature-icon">💊</div>
+        <div class="feature-title">200+ Obat</div>
+        <div class="feature-desc">Database obat lengkap</div>
+      </div>
+      
+      <div class="feature">
+        <div class="feature-icon">🇮🇩</div>
+        <div class="feature-title">Bahasa Indonesia</div>
+        <div class="feature-desc">Natural language processing</div>
+      </div>
+      
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Cepat & Akurat</div>
+        <div class="feature-desc">Response time < 1 detik</div>
+      </div>
+    </div>
+    
+    <button class="cta" onclick="testChat()">🚀 Test Chatbot Sekarang</button>
+    
+    <p style="margin-top: 30px; color: #999; font-size: 0.9em;">
+      Klik tombol chat di kanan bawah untuk mulai bertanya →
+    </p>
+  </div>
+  
+  <div class="chat-hint">
+    <strong>💬 Coba tanya:</strong><br>
+    "obat untuk sakit kepala"<br>
+    "efek samping paracetamol"<br>
+    "jam buka apotek"
+  </div>
+  
+  <!-- Chatbot Widget JS -->
+  <script src="chatbot-nlp/frontend/chatbot_widget.js"></script>
+  
+  <script>
+    function testChat() {
+      // Auto-open chatbot
+      if (window.apotekChatbot) {
+        window.apotekChatbot.toggleChat();
+      }
+    }
+  </script>
+  
+</body>
+</html>

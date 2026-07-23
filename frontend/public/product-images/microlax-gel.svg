@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ccfbf1"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0f172a" flood-opacity="0.18"/></filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <circle cx="72" cy="498" r="150" fill="#14b8a6" opacity="0.10"/>
+  <circle cx="532" cy="78" r="110" fill="#a855f7" opacity="0.11"/>
+  <g filter="url(#shadow)">
+        <ellipse cx="300" cy="477" rx="142" ry="18" fill="#0f172a" opacity="0.13"/>
+        <path d="M143 162 Q143 132 173 132 H421 Q457 132 457 168 V439 Q457 470 426 470 H174 Q143 470 143 439 Z" fill="#ffffff" stroke="#14b8a6" stroke-width="7"/>
+        <path d="M146 164 Q146 135 175 135 H423 Q454 135 454 166 V229 H146 Z" fill="#14b8a6"/>
+        <path d="M146 325 C210 283 281 379 356 321 C398 288 432 293 454 303 V442 Q454 467 426 467 H174 Q146 467 146 439 Z" fill="#ccfbf1"/>
+        <rect x="191" y="292" width="218" height="66" rx="18" fill="#fff" opacity="0.94"/>
+        <g transform="translate(247 376)">
+          <rect x="0" y="0" width="44" height="84" rx="22" fill="#ef4444" transform="rotate(45 22 42)"/>
+          <path d="M22 0 a22 22 0 0 1 22 22 v20 h-44 v-20 a22 22 0 0 1 22-22" fill="#ffffff" opacity="0.82" transform="rotate(45 22 42)"/>
+          <circle cx="92" cy="38" r="28" fill="#a855f7" opacity="0.9"/>
+        </g>
+        </g>
+  <text x="300" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="800" fill="#ffffff">APOTEK SEHAT</text>
+  <text x="300" y="221" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#ffffff" opacity="0.92">PENCERNAAN</text>
+  <text x="300" y="276" text-anchor="middle" font-family="Arial, sans-serif" font-size="37" font-weight="900" fill="#134e4a">Microlax Gel</text>
+  <text x="300" y="314" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="900" fill="#134e4a"></text>
+  <text x="300" y="334" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#14b8a6">Sorbitol; Sodium Citrate; Sodium Laury</text>
+  <text x="300" y="527" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#475569">Pharos</text>
+</svg>

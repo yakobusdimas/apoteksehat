@@ -1,0 +1,438 @@
+tag,pattern
+salam,hai
+salam,halo
+salam,hi
+salam,hello
+salam,hy
+salam,hay
+salam,selamat pagi
+salam,pagi
+salam,pagi dok
+salam,selamat siang
+salam,siang
+salam,selamat sore
+salam,sore
+salam,selamat malam
+salam,malam
+salam,halo apotek
+salam,hai apotek
+salam,halo apotik
+salam,permisi
+salam,permisi dok
+salam,assalamualaikum
+salam,assalamu alaikum
+salam,salam
+salam,hallo
+salam,helo
+salam,helo apotek
+salam,mau tanya
+salam,mau tanya dong
+salam,boleh tanya
+salam,ada yang bisa bantu
+salam,bisa bantu
+salam,butuh bantuan
+salam,saya mau konsultasi
+salam,konsultasi dong
+salam,apa kabar
+salam,gimana kabarnya
+salam,salam kenal
+salam,kenalan dulu
+salam,test
+salam,testing
+salam,tes
+salam,coba
+salam,selamat pagi apotek
+salam,halo selamat pagi
+salam,permisi mau tanya
+salam,permisi boleh tanya
+salam,maaf ganggu
+salam,maaf mengganggu
+perpisahan,terima kasih
+perpisahan,terimakasih
+perpisahan,makasih
+perpisahan,thanks
+perpisahan,thank you
+perpisahan,thx
+perpisahan,tq
+perpisahan,sampai jumpa
+perpisahan,jumpa lagi
+perpisahan,sampai ketemu
+perpisahan,ketemu lagi
+perpisahan,bye
+perpisahan,dadah
+perpisahan,dah
+perpisahan,byebye
+perpisahan,good bye
+perpisahan,selesai
+perpisahan,cukup
+perpisahan,sudah cukup
+perpisahan,sudah selesai
+perpisahan,oke terima kasih
+perpisahan,ok makasih
+perpisahan,oke thanks
+perpisahan,sudah jelas
+perpisahan,sudah paham
+perpisahan,sudah mengerti
+perpisahan,sip
+perpisahan,sip makasih
+perpisahan,oke sip
+perpisahan,baik terima kasih
+perpisahan,baik makasih
+perpisahan,ok noted
+perpisahan,makasih ya
+perpisahan,makasih banyak
+perpisahan,terima kasih banyak
+perpisahan,thanks ya
+perpisahan,thank you so much
+perpisahan,oke deh
+perpisahan,udah ya
+perpisahan,udah dulu
+perpisahan,segitu aja
+perpisahan,cukup segitu
+perpisahan,itu aja dulu
+perpisahan,terima kasih infonya
+perpisahan,makasih infonya
+perpisahan,thanks infonya
+perpisahan,ok sudah
+perpisahan,ok done
+perpisahan,selesai sudah
+tanya_obat,obat apa untuk demam
+tanya_obat,obat demam
+tanya_obat,saya demam
+tanya_obat,anak demam
+tanya_obat,panas badan
+tanya_obat,saya sakit demam
+tanya_obat,ada obat untuk demam
+tanya_obat,rekomendasi obat demam
+tanya_obat,obat penurun panas
+tanya_obat,badan panas
+tanya_obat,obat apa untuk batuk
+tanya_obat,obat batuk
+tanya_obat,saya batuk
+tanya_obat,anak batuk
+tanya_obat,ada obat batuk
+tanya_obat,rekomendasi obat batuk
+tanya_obat,batuk berdahak
+tanya_obat,batuk kering
+tanya_obat,batuk pilek
+tanya_obat,obat apa untuk pilek
+tanya_obat,obat pilek
+tanya_obat,saya pilek
+tanya_obat,anak pilek
+tanya_obat,hidung tersumbat
+tanya_obat,hidung meler
+tanya_obat,flu
+tanya_obat,obat flu
+tanya_obat,saya flu
+tanya_obat,obat apa untuk sakit kepala
+tanya_obat,obat sakit kepala
+tanya_obat,kepala sakit
+tanya_obat,kepala pusing
+tanya_obat,pusing
+tanya_obat,migrain
+tanya_obat,obat migrain
+tanya_obat,obat apa untuk mual
+tanya_obat,obat mual
+tanya_obat,saya mual
+tanya_obat,mual muntah
+tanya_obat,obat apa untuk diare
+tanya_obat,obat diare
+tanya_obat,saya diare
+tanya_obat,mencret
+tanya_obat,obat mencret
+tanya_obat,sakit perut
+tanya_obat,obat sakit perut
+tanya_obat,perut mulas
+tanya_obat,obat apa untuk alergi
+tanya_obat,obat alergi
+tanya_obat,saya alergi
+tanya_obat,gatal gatal
+tanya_obat,obat gatal
+tanya_obat,obat apa untuk maag
+tanya_obat,obat maag
+tanya_obat,sakit lambung
+tanya_obat,asam lambung
+tanya_obat,heartburn
+tanya_obat,obat apa untuk hipertensi
+tanya_obat,obat darah tinggi
+tanya_obat,tekanan darah tinggi
+tanya_obat,obat apa untuk diabetes
+tanya_obat,obat diabetes
+tanya_obat,gula darah tinggi
+tanya_obat,obat kolesterol
+tanya_obat,kolesterol tinggi
+tanya_obat,obat apa untuk infeksi
+tanya_obat,obat infeksi
+tanya_obat,antibiotik
+tanya_obat,butuh antibiotik
+tanya_obat,obat apa untuk nyeri
+tanya_obat,obat nyeri
+tanya_obat,nyeri sendi
+tanya_obat,nyeri otot
+tanya_obat,obat pereda nyeri
+tanya_obat,obat apa untuk luka
+tanya_obat,obat luka
+tanya_obat,obat salep luka
+tanya_obat,cari obat
+tanya_obat,mau beli obat
+tanya_obat,butuh obat
+tanya_obat,obat apa yang bagus
+tanya_obat,obat yang direkomendasikan
+tanya_obat,apa obatnya
+tanya_obat,obat untuk anak
+tanya_obat,obat anak demam
+tanya_obat,obat anak batuk
+efek_samping,efek samping paracetamol
+efek_samping,efek samping amoxicillin
+efek_samping,efek samping ibuprofen
+efek_samping,efek samping aspirin
+efek_samping,efek samping antibiotik
+efek_samping,bahaya paracetamol
+efek_samping,apa efek samping paracetamol
+efek_samping,apakah paracetamol aman
+efek_samping,efek paracetamol
+efek_samping,side effect paracetamol
+efek_samping,risiko amoxicillin
+efek_samping,efek sampingnya apa
+efek_samping,kalo minum paracetamol ada efek samping ga
+efek_samping,aman ga paracetamol
+efek_samping,aman gak obat ini
+efek_samping,berbahaya ga obat ini
+efek_samping,ada efek buruk ga
+efek_samping,dampak negatif obat
+efek_samping,paracetamol aman untuk anak
+efek_samping,paracetamol aman untuk ibu hamil
+efek_samping,kontraindikasi paracetamol
+efek_samping,pantangan minum paracetamol
+efek_samping,efek negatif obat ini
+efek_samping,bahaya minum obat ini
+efek_samping,obat ini berbahaya
+efek_samping,apakah aman diminum
+efek_samping,efek samping obat batuk
+efek_samping,efek samping vitamin c
+efek_samping,apakah amoxicillin aman
+dosis,dosis paracetamol
+dosis,berapa dosis paracetamol
+dosis,cara minum paracetamol
+dosis,cara pakai amoxicillin
+dosis,pemakaian obat ini
+dosis,aturan pakai paracetamol
+dosis,berapa kali minum paracetamol
+dosis,takaran paracetamol
+dosis,dosisnya berapa
+dosis,paracetamol diminum berapa kali
+dosis,paracetamol sehari berapa kali
+dosis,berapa dosis anak
+dosis,cara konsumsi obat ini
+dosis,cara menggunakan obat
+dosis,cara mengonsumsi paracetamol
+dosis,gimana cara minum obat ini
+dosis,paracetamol diminum sebelum atau sesudah makan
+dosis,aturan minum obat
+dosis,petunjuk penggunaan obat
+dosis,berapa banyak minum obat ini
+dosis,dosis amoxicillin untuk dewasa
+dosis,dosis ibuprofen berapa
+dosis,cara pemakaian antibiotik
+dosis,obat diminum sebelum makan
+dosis,obat sesudah makan
+dosis,berapa tablet sehari
+ketersediaan,ada paracetamol
+ketersediaan,apakah ada amoxicillin
+ketersediaan,stok paracetamol
+ketersediaan,tersedia obat batuk
+ketersediaan,jual vitamin c
+ketersediaan,apakah jual obat ini
+ketersediaan,ada stok obat demam
+ketersediaan,paracetamol ready
+ketersediaan,cari vitamin c
+ketersediaan,ada ga obat ini
+ketersediaan,ada gak obat ini
+ketersediaan,ada tidak obat ini
+ketersediaan,stock obat ini
+ketersediaan,masih ada paracetamol
+ketersediaan,masih tersedia obat ini
+ketersediaan,punya amoxicillin
+ketersediaan,jualan vitamin c
+ketersediaan,menjual obat batuk
+ketersediaan,bisa beli obat ini
+ketersediaan,ready stok
+ketersediaan,ready stock
+ketersediaan,mau cari obat
+ketersediaan,ada obat ini
+komposisi,komposisi {obat}
+komposisi,kandungan {obat}
+komposisi,isi {obat}
+komposisi,bahan {obat}
+komposisi,terbuat dari apa {obat}
+komposisi,ingredients {obat}
+komposisi,komponen {obat}
+komposisi,{obat} terbuat dari
+komposisi,{obat} kandungannya apa
+komposisi,apa kandungan {obat}
+komposisi,apa isi {obat}
+komposisi,bahan aktif {obat}
+komposisi,zat aktif {obat}
+komposisi,formula {obat}
+komposisi,{obat} mengandung apa
+komposisi,komposisinya {obat}
+komposisi,apa saja kandungan {obat}
+komposisi,{obat} ada kandungan apa
+kegunaan,kegunaan {obat}
+kegunaan,fungsi {obat}
+kegunaan,untuk apa {obat}
+kegunaan,manfaat {obat}
+kegunaan,{obat} untuk apa
+kegunaan,{obat} digunakan untuk
+kegunaan,apa fungsi {obat}
+kegunaan,apa kegunaan {obat}
+kegunaan,apa manfaat {obat}
+kegunaan,{obat} fungsinya apa
+kegunaan,{obat} buat apa
+kegunaan,{obat} gunanya
+kegunaan,guna {obat}
+kegunaan,indikasi {obat}
+kegunaan,{obat} dipakai untuk
+kegunaan,kapan pakai {obat}
+kegunaan,{obat} kegunaannya
+kegunaan,{obat} manfaatnya
+kegunaan,buat apa sih {obat}
+harga,harga {obat}
+harga,berapa harga {obat}
+harga,berapa {obat}
+harga,biaya {obat}
+harga,{obat} berapa
+harga,price {obat}
+harga,harganya {obat}
+harga,{obat} harganya
+harga,{obat} harga berapa
+harga,berapa duit {obat}
+harga,berapa rupiah {obat}
+harga,{obat} dijual berapa
+harga,harga {obat} berapa ya
+harga,berapa ya harga {obat}
+harga,kisaran harga {obat}
+harga,{obat} mahal ga
+harga,{obat} mahal gak
+harga,brp harga {obat}
+harga,hrg {obat}
+tidak_tahu,apa itu
+tidak_tahu,hah
+tidak_tahu,maksudnya
+tidak_tahu,kok gitu
+tidak_tahu,kenapa
+tidak_tahu,gak ngerti
+tidak_tahu,ga paham
+tidak_tahu,kurang jelas
+tidak_tahu,bingung
+tidak_tahu,maksudnya gimana
+tidak_tahu,maksudnya apa
+tidak_tahu,apa maksudnya
+darurat,darurat
+darurat,emergency
+darurat,gawat
+darurat,tolong
+darurat,help
+darurat,sesak napas
+darurat,sesak nafas
+darurat,susah napas
+darurat,napas sesak
+darurat,pingsan
+darurat,kehilangan kesadaran
+darurat,tidak sadar
+darurat,keracunan
+darurat,keracunan makanan
+darurat,keracunan obat
+darurat,gawat darurat
+darurat,kondisi darurat
+darurat,butuh bantuan cepat
+darurat,serangan jantung
+darurat,nyeri dada hebat
+darurat,stroke
+darurat,lumpuh mendadak
+darurat,demam tinggi sekali
+darurat,panas tinggi banget
+darurat,kejang
+darurat,kejang-kejang
+darurat,pendarahan hebat
+darurat,darah banyak keluar
+darurat,alergi parah
+darurat,alergi berat
+darurat,bengkak wajah
+darurat,kecelakaan
+darurat,celaka
+darurat,overdosis
+darurat,kelebihan dosis
+darurat,help me
+darurat,tolong saya
+darurat,please help
+darurat,urgent
+darurat,mendesak
+darurat,cepat
+jam_operasional,jam buka
+jam_operasional,jam buka apotek
+jam_operasional,buka jam berapa
+jam_operasional,buka kapan
+jam_operasional,tutup jam berapa
+jam_operasional,tutup kapan
+jam_operasional,jam operasional
+jam_operasional,jam operasional apotek
+jam_operasional,apotek buka
+jam_operasional,apotek tutup
+jam_operasional,jadwal buka
+jam_operasional,jadwal operasional
+jam_operasional,buka setiap hari
+jam_operasional,buka hari apa
+jam_operasional,apotek buka jam berapa
+jam_operasional,buka 24 jam
+jam_operasional,buka setiap saat
+jam_operasional,jam kerja
+jam_operasional,jam kerja apotek
+jam_operasional,jam buka tutup
+jam_operasional,buka tutupnya jam berapa
+jam_operasional,apotek tutup jam berapa
+jam_operasional,hari minggu buka
+jam_operasional,minggu buka ga
+jam_operasional,libur buka ga
+jam_operasional,hari libur buka
+jam_operasional,senin sampai jumat jam berapa
+jam_operasional,weekend buka ga
+jam_operasional,sabtu minggu buka
+jam_operasional,24 jam kah
+jam_operasional,non stop
+lokasi,lokasi
+lokasi,lokasi apotek
+lokasi,alamat
+lokasi,alamat apotek
+lokasi,dimana
+lokasi,di mana
+lokasi,dmn
+lokasi,di mana apotek
+lokasi,dimana apotek
+lokasi,cabang
+lokasi,cabang apotek
+lokasi,ada cabang dimana
+lokasi,ada di mana
+lokasi,ada dimana
+lokasi,tempatnya
+lokasi,tempatnya dimana
+lokasi,posisi apotek
+lokasi,posisi apotek dimana
+lokasi,berada dimana
+lokasi,berada di mana
+lokasi,lokasinya
+lokasi,lokasinya dimana
+lokasi,alamatnya
+lokasi,alamatnya apa
+lokasi,petunjuk arah
+lokasi,arah ke apotek
+lokasi,maps
+lokasi,google maps
+lokasi,gmaps
+lokasi,bisa lihat di maps
+lokasi,ada di maps
+lokasi,jalan apa
+lokasi,jalan berapa
+lokasi,dekat mana
+lokasi,sekitar mana
+lokasi,cari apotek dimana

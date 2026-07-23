@@ -1,0 +1,66 @@
+{
+  "penyakit_synonyms": {
+    "demam": ["fever", "panas", "suhu tinggi", "meriang"],
+    "sakit_kepala": ["headache", "pusing", "migrain", "migraine", "pening"],
+    "batuk": ["cough", "batuk-batuk"],
+    "flu": ["influenza", "pilek", "common cold", "selesma"],
+    "diare": ["diarrhea", "mencret", "mules"],
+    "mual": ["nausea", "mau muntah", "eneg"],
+    "muntah": ["vomiting", "muntah-muntah"],
+    "nyeri": ["pain", "sakit", "perih"],
+    "alergi": ["allergy", "allergic", "gatal-gatal"],
+    "gatal": ["itching", "itchy", "gatel"],
+    "lambung": ["stomach", "gastric", "maag", "perut"],
+    "asam_lambung": ["acidity", "acid reflux", "gerd"],
+    "diabetes": ["kencing manis", "diabetes mellitus", "diabetic"],
+    "darah_tinggi": ["hypertension", "hipertensi", "tekanan darah tinggi"],
+    "infeksi": ["infection", "bacterial infection"],
+    "luka": ["wound", "injury", "terluka"],
+    "kulit": ["skin", "dermatitis"],
+    "sesak": ["asthma", "sesak napas", "napas pendek"],
+    "mata": ["eye", "eyes", "ocular"],
+    "telinga": ["ear", "ears"],
+    "hidung": ["nose", "nasal"],
+    "tenggorokan": ["throat", "pharynx"]
+  },
+  "obat_synonyms": {
+    "paracetamol": ["paracetamol", "acetaminophen", "parasetamol", "pcm"],
+    "ibuprofen": ["ibuprofen", "brufen"],
+    "amoxicillin": ["amoxicillin", "amoxicilin", "amoksisilin", "amoxicilina"],
+    "cetirizine": ["cetirizine", "cetrizin", "setirizin"],
+    "omeprazole": ["omeprazole", "omeprazol"],
+    "vitamin_c": ["vitamin c", "vit c", "vit. c", "asam askorbat", "ascorbic acid"],
+    "vitamin_b": ["vitamin b", "vit b", "vit. b", "b complex", "vitamin b kompleks"],
+    "antasida": ["antacid", "antasid", "maag"]
+  },
+  "kategori_mapping": {
+    "Nyeri & Demam": ["sakit kepala", "demam", "pusing", "nyeri", "panas"],
+    "Batuk & Flu": ["batuk", "flu", "pilek", "sesak", "tenggorokan"],
+    "Antibiotik": ["infeksi", "bakteri", "luka infeksi"],
+    "Lambung & Pencernaan": ["lambung", "maag", "asam lambung", "mual", "muntah", "diare"],
+    "Alergi": ["alergi", "gatal", "bentol", "bersin"],
+    "Vitamin & Suplemen": ["vitamin", "suplemen", "multivitamin"],
+    "Kulit": ["kulit", "gatal", "ruam", "jerawat"],
+    "Diabetes": ["diabetes", "kencing manis", "gula darah"],
+    "Hipertensi": ["darah tinggi", "hipertensi", "tekanan darah"]
+  },
+  "stopwords_custom": [
+    "saya", "apa", "ada", "untuk", "obat", "mau", "cari", "butuh", 
+    "beli", "yang", "di", "ke", "dari", "dengan", "ini", "itu",
+    "apakah", "berapa", "gimana", "bagaimana", "dong", "ya", "yah"
+  ],
+  "response_templates": {
+    "medicine_not_found": [
+      "Maaf, obat yang Anda cari tidak tersedia di database kami. Silakan konsultasi dengan apoteker.",
+      "Saat ini obat tersebut tidak ada dalam daftar kami. Bisa hubungi apoteker untuk info lebih lanjut."
+    ],
+    "low_confidence": [
+      "Maaf, saya kurang yakin dengan jawaban saya. Sebaiknya Anda konsultasi langsung dengan apoteker kami.",
+      "Pertanyaan Anda memerlukan penjelasan lebih detail. Silakan hubungi apoteker kami."
+    ],
+    "need_prescription": [
+      "⚠️ Obat ini memerlukan resep dokter. Silakan konsultasi dengan dokter terlebih dahulu.",
+      "⚠️ Ini adalah obat resep. Anda perlu resep dari dokter untuk membelinya."
+    ]
+  }
+}

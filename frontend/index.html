@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO: Primary -->
+    <title>Apotek Sehat – Solusi Kesehatan Digital</title>
+    <meta name="description" content="Apotek Sehat – Beli obat online terpercaya dengan resep dokter. Layanan tebus resep, konsultasi farmasi, dan pengiriman cepat ke seluruh Indonesia." />
+    <meta name="keywords" content="apotek online, beli obat, kesehatan, resep dokter, obat generik, suplemen, farmasi" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Apotek Sehat" />
+    <link rel="canonical" href="https://apoteksehat.com/" />
+
+    <!-- SEO: Social (Open Graph) -->
+    <meta property="og:title" content="Apotek Sehat – Solusi Kesehatan Digital" />
+    <meta property="og:description" content="Beli obat online terpercaya dengan resep dokter. Konsultasi farmasi, tebus resep, pengiriman cepat." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apoteksehat.com/" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:locale" content="id_ID" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Apotek Sehat – Solusi Kesehatan Digital" />
+    <meta name="twitter:description" content="Beli obat online terpercaya dengan resep dokter." />
+
+    <!-- PWA / Theme -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#059669" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { font-family: 'Poppins', sans-serif !important; }
+      html, body { height: 100%; margin: 0; }
+      #root { height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Midtrans Snap JS (Sandbox) -->
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="Mid-client-kT0EvY9gcqQ03KxQ"></script>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js').then(registration => {
+            console.log('SW registered: ', registration);
+          }).catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

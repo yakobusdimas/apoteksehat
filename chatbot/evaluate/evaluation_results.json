@@ -1,0 +1,172 @@
+{
+  "summary": {
+    "total_tests": 20,
+    "passed": 10,
+    "failed": 10,
+    "accuracy": 0.95,
+    "avg_confidence": 0.7791485292585993,
+    "meets_requirement": true
+  },
+  "results": [
+    {
+      "id": 1,
+      "query": "halo",
+      "expected": "salam",
+      "predicted": "salam",
+      "confidence": 0.7486949296944195,
+      "passed": false
+    },
+    {
+      "id": 2,
+      "query": "terima kasih",
+      "expected": "perpisahan",
+      "predicted": "perpisahan",
+      "confidence": 0.7580842528114886,
+      "passed": false
+    },
+    {
+      "id": 3,
+      "query": "obat untuk sakit kepala",
+      "expected": "tanya_obat",
+      "predicted": "tanya_obat",
+      "confidence": 0.9915458974244733,
+      "passed": true
+    },
+    {
+      "id": 4,
+      "query": "saya demam",
+      "expected": "tanya_obat",
+      "predicted": "tanya_obat",
+      "confidence": 0.3336345880635699,
+      "passed": false
+    },
+    {
+      "id": 5,
+      "query": "efek samping paracetamol",
+      "expected": "efek_samping",
+      "predicted": "efek_samping",
+      "confidence": 0.9993048887233424,
+      "passed": true
+    },
+    {
+      "id": 6,
+      "query": "ada ibuprofen",
+      "expected": "ketersediaan",
+      "predicted": "tanya_obat",
+      "confidence": 0.3336345880635699,
+      "passed": false
+    },
+    {
+      "id": 7,
+      "query": "berapa dosis amoxicillin",
+      "expected": "dosis",
+      "predicted": "dosis",
+      "confidence": 0.9953207005457693,
+      "passed": true
+    },
+    {
+      "id": 8,
+      "query": "komposisi augmentin",
+      "expected": "komposisi",
+      "predicted": "komposisi",
+      "confidence": 0.9887392631830987,
+      "passed": true
+    },
+    {
+      "id": 9,
+      "query": "kegunaan vitamin c",
+      "expected": "kegunaan",
+      "predicted": "kegunaan",
+      "confidence": 0.9598229313300853,
+      "passed": true
+    },
+    {
+      "id": 10,
+      "query": "jam buka apotek",
+      "expected": "jam_operasional",
+      "predicted": "jam_operasional",
+      "confidence": 0.9745337614318251,
+      "passed": true
+    },
+    {
+      "id": 11,
+      "query": "lokasi apotek",
+      "expected": "lokasi",
+      "predicted": "lokasi",
+      "confidence": 0.8199355173689414,
+      "passed": false
+    },
+    {
+      "id": 12,
+      "query": "obat batuk",
+      "expected": "tanya_obat",
+      "predicted": "tanya_obat",
+      "confidence": 0.3336345880635699,
+      "passed": false
+    },
+    {
+      "id": 13,
+      "query": "obat maag",
+      "expected": "tanya_obat",
+      "predicted": "tanya_obat",
+      "confidence": 0.9805875443490459,
+      "passed": true
+    },
+    {
+      "id": 14,
+      "query": "obat alergi",
+      "expected": "tanya_obat",
+      "predicted": "tanya_obat",
+      "confidence": 0.3336345880635699,
+      "passed": false
+    },
+    {
+      "id": 15,
+      "query": "harga paracetamol",
+      "expected": "harga",
+      "predicted": "harga",
+      "confidence": 0.9833929657322826,
+      "passed": true
+    },
+    {
+      "id": 16,
+      "query": "darurat sesak napas",
+      "expected": "darurat",
+      "predicted": "darurat",
+      "confidence": 0.7555293437941175,
+      "passed": false
+    },
+    {
+      "id": 17,
+      "query": "cara minum ibuprofen",
+      "expected": "dosis",
+      "predicted": "dosis",
+      "confidence": 0.9982598918229804,
+      "passed": true
+    },
+    {
+      "id": 18,
+      "query": "ada obat diabetes",
+      "expected": "tanya_obat",
+      "predicted": "tanya_obat",
+      "confidence": 0.6125014839036474,
+      "passed": false
+    },
+    {
+      "id": 19,
+      "query": "obat darah tinggi",
+      "expected": "tanya_obat",
+      "predicted": "tanya_obat",
+      "confidence": 0.7016657138526284,
+      "passed": false
+    },
+    {
+      "id": 20,
+      "query": "pusing kepala mau obat apa",
+      "expected": "tanya_obat",
+      "predicted": "tanya_obat",
+      "confidence": 0.9805131469495596,
+      "passed": true
+    }
+  ]
+}
