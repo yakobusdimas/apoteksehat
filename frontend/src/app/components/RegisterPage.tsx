@@ -4,7 +4,6 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Lock, Mail, User, Phone, Eye, EyeOff, ArrowLeft, Sparkles, MapPin } from 'lucide-react';
 import { toast } from 'sonner';
-import { GoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../context/AuthContext';
 import { ApotekLogo } from './ApotekLogo';
 
@@ -16,7 +15,7 @@ const benefits = [
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const { register, loginWithGoogle, user: authUser } = useAuth();
+  const { register } = useAuth();
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', address: '',
     password: '', confirmPassword: ''
@@ -128,40 +127,6 @@ export default function RegisterPage() {
               <div className="mb-8 space-y-2 text-center lg:text-left">
                 <h2 className="text-3xl font-bold tracking-tight text-[color:var(--foreground)]">Buat Akun Anda</h2>
                 <p className="text-sm text-[color:var(--muted-foreground)]">Lengkapi data diri agar checkout dan tracking berjalan lancar.</p>
-              </div>
-
-              <div className="mb-6 flex justify-center">
-                <GoogleLogin
-                  onSuccess={async (credentialResponse) => {
-                    if (credentialResponse.credential) {
-                      setIsLoading(true);
-                      const result = await loginWithGoogle(credentialResponse.credential);
-                      if (result.success) {
-                        toast.success('Daftar/Login dengan Google berhasil!');
-                        if (authUser?.role === 'admin') {
-                          navigate('/admin/dashboard');
-                        } else {
-                          navigate('/user/dashboard');
-                        }
-                      } else {
-                        toast.error(result.message || 'Gagal login dengan Google');
-                      }
-                      setIsLoading(false);
-                    }
-                  }}
-                  onError={() => {
-                    toast.error('Pendaftaran Google dibatalkan atau gagal');
-                  }}
-                  text="signup_with"
-                  shape="pill"
-                  size="large"
-                />
-              </div>
-
-              <div className="my-6 flex items-center gap-4">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Atau Daftar Manual</span>
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">

@@ -4,20 +4,20 @@
  */
 
 import { Button } from './button';
-import { Bot, Package, Heart, Settings } from 'lucide-react';
+import { Bot, Package, Heart, Settings, ShoppingCart } from 'lucide-react';
 import { useNavigate } from 'react-router';
 
 interface WelcomeBannerProps {
   userName: string;
+  onNavigateTab?: (tab: string) => void;
 }
 
-export default function WelcomeBanner({ userName }: WelcomeBannerProps) {
+export default function WelcomeBanner({ userName, onNavigateTab }: WelcomeBannerProps) {
   const navigate = useNavigate();
   const quickActions = [
     { icon: Bot,      label: 'Tanya AI',     color: 'emerald', onClick: () => document.querySelector<HTMLButtonElement>('[aria-label="Buka Asisten Apotek"]')?.click() },
-    { icon: Package,  label: 'Pesanan',      color: 'blue',    onClick: () => navigate('/user/orders') },
-    { icon: Heart,    label: 'Favorit',      color: 'red',     onClick: () => navigate('/user/wishlist') },
-    { icon: Settings, label: 'Pengaturan',   color: 'gray',    onClick: () => navigate('/settings') },
+    { icon: ShoppingCart, label: 'Keranjang', color: 'emerald', onClick: () => onNavigateTab ? onNavigateTab('cart') : null },
+    { icon: Package,  label: 'Pesanan',      color: 'blue',    onClick: () => onNavigateTab ? onNavigateTab('orders') : navigate('/user/orders') },
   ];
 
   return (

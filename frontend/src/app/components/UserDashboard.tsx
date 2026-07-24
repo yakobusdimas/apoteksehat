@@ -24,6 +24,7 @@ import DashboardStats from './ui/DashboardStats';
 import EmptyState from './ui/EmptyState';
 import { GridSkeleton } from './ui/LoadingState';
 import ProfileCompletionModal from './ProfileCompletionModal';
+import ThemeToggle from './ThemeToggle';
 
 const DEFAULT_CAT_META = { emoji: '💊', bg: 'bg-emerald-50', text: 'text-emerald-700', glow: 'rgba(16,185,129,0.12)' };
 const categoryMeta: Record<string, { emoji: string; bg: string; text: string; glow: string }> = {
@@ -265,6 +266,8 @@ export default function UserDashboard() {
                 </div>
               </div>
 
+              <ThemeToggle />
+
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 px-2 sm:px-3 py-2 rounded-xl text-sm font-medium transition-all border border-transparent hover:border-red-100"
@@ -277,7 +280,7 @@ export default function UserDashboard() {
           </div>
           
           {/* Mobile Search */}
-          <div className="mt-3 md:hidden">
+          <div className="mt-3 md:hidden flex items-center gap-3">
             <div className="relative w-full">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[color:var(--muted-foreground)]" />
               <Input
@@ -287,6 +290,7 @@ export default function UserDashboard() {
                 className="pl-10 h-10 bg-[color:var(--secondary)]/60 border-[color:var(--border)] rounded-xl text-sm focus:bg-white"
               />
             </div>
+            <ThemeToggle />
           </div>
         </div>
       </header>
@@ -294,7 +298,7 @@ export default function UserDashboard() {
       {/* ── MAIN ────────────────────────────────────────────────────── */}
       <main id="main-content" className="max-w-7xl mx-auto px-5 py-6 space-y-5 flex-1">
 
-        <WelcomeBanner userName={user?.name || 'User'} />
+        <WelcomeBanner userName={user?.name || 'User'} onNavigateTab={setActiveTab} />
 
         {/* Delivery Address Banner */}
         <div className="bg-[#f2fae8] rounded-2xl border border-emerald-500 shadow-sm p-4 flex items-center justify-between gap-4">
@@ -695,7 +699,6 @@ export default function UserDashboard() {
                         </div>
                         <div className="flex items-center gap-2 flex-wrap justify-end">
                           <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${st.className}`}>{st.label}</span>
-                          <span className={`text-[11px] font-medium px-2.5 py-1 rounded-full ${pt.className}`}>{pt.label}</span>
                           <Button size="sm" variant="outline" className="h-7 text-xs rounded-lg" onClick={() => navigate(`/tracking/${order.orderId}`)}>
                             Lacak
                           </Button>
@@ -714,13 +717,29 @@ export default function UserDashboard() {
                         </div>
                       </div>
                       <div className="px-5 py-3">
-                        <div className="text-xs text-[color:var(--muted-foreground)] mb-2">
+                        <div className="text-xs text-[color:var(--muted-foreground)] mb-3">
                           {order.items?.map((item: any) => `${item.name} ×${item.quantity}`).join(', ')}
                         </div>
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between mb-3">
                           <p className="text-xs text-[color:var(--muted-foreground)]">{order.courier?.name} · {order.courier?.service}</p>
                           <p className="font-bold text-primary text-sm">Rp {(order.total || 0).toLocaleString('id-ID')}</p>
                         </div>
+                        
+                        {/* Mini Timeline */}
+                        {order.status !== 'cancelled' && (
+                          <div className="pt-3 border-t border-[color:var(--border)]">
+                            <div className="flex items-center gap-1.5">
+                              <div className={`flex-1 h-1.5 rounded-full ${['processing', 'flagged', 'shipped', 'delivered', 'completed'].includes(order.status) ? 'bg-emerald-500' : 'bg-gray-200'}`} />
+                              <div className={`flex-1 h-1.5 rounded-full ${['shipped', 'delivered', 'completed'].includes(order.status) ? 'bg-emerald-500' : 'bg-gray-200'}`} />
+                              <div className={`flex-1 h-1.5 rounded-full ${['delivered', 'completed'].includes(order.status) ? 'bg-emerald-500' : 'bg-gray-200'}`} />
+                            </div>
+                            <div className="flex justify-between mt-1.5 text-[10px] font-semibold text-[color:var(--muted-foreground)] px-0.5">
+                              <span className={['processing', 'flagged', 'shipped', 'delivered', 'completed'].includes(order.status) ? 'text-emerald-600' : ''}>Diproses</span>
+                              <span className={['shipped', 'delivered', 'completed'].includes(order.status) ? 'text-emerald-600 text-center' : 'text-center'}>Dikirim</span>
+                              <span className={['delivered', 'completed'].includes(order.status) ? 'text-emerald-600 text-right' : 'text-right'}>Selesai</span>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   );

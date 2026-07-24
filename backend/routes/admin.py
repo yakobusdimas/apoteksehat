@@ -212,7 +212,7 @@ def add_medicine():
         side_effects=sanitize_string(data.get('side_effects', ''), 500),
         expiry=sanitize_string(data.get('expiry', ''), 20),
         type=sanitize_string(data.get('type', 'Tablet'), 20),
-        photo=sanitize_string(data.get('photo', ''), 500),
+        photo=str(data.get('photo', '')) if data.get('photo') else '',
         is_active=data.get('is_active', True),
         tags=data.get('tags', '[]'),
     )
@@ -272,7 +272,7 @@ def update_medicine(medicine_id):
     if 'type' in data:
         med.type = sanitize_string(data['type'], 20)
     if 'photo' in data:
-        med.photo = sanitize_string(data['photo'], 500)
+        med.photo = str(data['photo']) if data['photo'] else ''
     if 'is_active' in data:
         med.is_active = bool(data['is_active'])
     if 'tags' in data:

@@ -295,28 +295,36 @@ function DaftarObatPage() {
 
   const openEdit = (item: MedItem) => {
     setEditItem(item);
+    const photoVal = item.photo || item.customPhoto || '';
     setForm({
       name: item.name, category: item.category, type: item.type,
       price: String(item.price), stock: String(item.stock), expiry: item.expiry,
       description: item.description, indication: item.indication, dosage: item.dosage,
-      ingredients: item.ingredients.join(', '), benefits: item.benefits.join(', '),
-      customPhoto: item.customPhoto || '',
+      ingredients: Array.isArray(item.ingredients) ? item.ingredients.join(', ') : String(item.ingredients || ''),
+      benefits: Array.isArray(item.benefits) ? item.benefits.join(', ') : String(item.benefits || ''),
+      customPhoto: photoVal,
     });
-    setPreviewUrl(item.customPhoto || item.photo);
+    setPreviewUrl(photoVal);  // empty stays empty; user can upload or paste new
     setShowForm(true);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const url = URL.createObjectURL(file);
-    setPreviewUrl(url);
-    setForm(f => ({ ...f, customPhoto: url }));
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const base64Url = event.target?.result as string;
+      setPreviewUrl(base64Url);
+      setForm(f => ({ ...f, customPhoto: base64Url }));
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSave = async () => {
     if (!form.name || !form.price || !form.stock) { toast.error('Isi field wajib: Nama, Harga, Stok'); return; }
-    const photoToUse = form.customPhoto || editItem?.photo || '/medicines/paracetamol.png';
+    // previewUrl is the authoritative photo source — always reflects what user sees/chose
+    // form.customPhoto keeps the URL field in sync with previewUrl
+    const photoToUse = previewUrl || '';
     const payload = {
       name: form.name,
       category: form.category,
@@ -391,7 +399,14 @@ function DaftarObatPage() {
                   {/* Preview */}
                   <div className="w-28 h-28 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 flex items-center justify-center overflow-hidden shrink-0">
                     {previewUrl ? (
-                      <img src={previewUrl} alt="Pratinjau gambar obat" className="w-full h-full object-cover rounded-xl" />
+                      <img
+                        src={previewUrl}
+                        alt="Pratinjau gambar obat"
+                        className="w-full h-full object-cover rounded-xl"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = '/medicines/paracetamol.png';
+                        }}
+                      />
                     ) : (
                       <div className="text-center text-gray-400">
                         <ImagePlus className="h-8 w-8 mx-auto mb-1" />
@@ -401,11 +416,39 @@ function DaftarObatPage() {
                   </div>
                   {/* Buttons */}
                   <div className="flex-1 space-y-2">
-                    <p className="text-xs text-gray-500">Upload foto obat dari komputer, atau pilih default.</p>
-                    <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-                    <Button type="button" variant="outline" size="sm" onClick={() => fileRef.current?.click()} className="gap-1.5 text-xs w-full">
-                      <Camera className="h-3.5 w-3.5" />Upload Gambar
-                    </Button>
+                    <p className="text-xs text-gray-500">Upload foto obat dari komputer, tempel URL, atau pilih foto preset.</p>
+                    <div className="flex flex-wrap gap-2">
+                      <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
+                      <Button type="button" variant="outline" size="sm" onClick={() => fileRef.current?.click()} className="gap-1.5 text-xs flex-shrink-0">
+                        <Camera className="h-3.5 w-3.5" />Upload File
+                      </Button>
+                      {previewUrl || form.customPhoto ? (
+                        <Button
+                          type="button"
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => {
+                            setPreviewUrl('');
+                            setForm(f => ({ ...f, customPhoto: '' }));
+                            if (fileRef.current) fileRef.current.value = '';
+                            toast.info('Gambar direset. Silakan isi URL baru atau upload foto.');
+                          }}
+                          className="gap-1 text-xs flex-shrink-0 bg-red-50 text-red-600 hover:bg-red-100 border border-red-200"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />Hapus Gambar
+                        </Button>
+                      ) : null}
+                    </div>
+                    <Input
+                      placeholder="Atau tempel URL gambar (https://...)"
+                      value={form.customPhoto}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setForm(f => ({ ...f, customPhoto: val }));
+                        setPreviewUrl(val);
+                      }}
+                      className="h-8 text-xs w-full mt-1"
+                    />
                     {/* Default photo grid */}
                     <div className="grid grid-cols-5 gap-1.5 mt-1">
                       {[
@@ -552,15 +595,21 @@ function DaftarObatPage() {
                 const code = `MED${String(med.id).padStart(3,'0')}`;
                 const isExpired = new Date(med.expiry) < new Date();
                 const catColor = categoryColors[med.category] || 'bg-gray-100 text-gray-600';
-                const photo = med.customPhoto || med.photo;
+                const photo = med.photo || '';
                 return (
                   <tr key={med.id} className="hover:bg-emerald-50/30 transition-colors">
                     <td className="px-4 py-3 font-mono text-xs font-semibold text-emerald-700">{code}</td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2.5">
                         <div className="w-9 h-9 rounded-lg overflow-hidden border border-gray-100 bg-gray-50 shrink-0 flex items-center justify-center">
-                          <img src={photo} alt={med.name} className="w-full h-full object-cover"
-                            onError={e => { (e.target as HTMLImageElement).style.display='none'; }} />
+                          {photo ? (
+                            <img src={photo} alt={med.name} className="w-full h-full object-cover"
+                              onError={e => {
+                                (e.target as HTMLImageElement).src = '/medicines/paracetamol.png';
+                              }} />
+                          ) : (
+                            <span className="text-base">💊</span>
+                          )}
                         </div>
                         <span className="font-medium text-gray-800">{med.name}</span>
                       </div>
@@ -766,7 +815,7 @@ function CustomerPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-100">
-                {['ID Customer','Nama','Email','Telepon','Pesanan','Total Belanja','Status','Aksi'].map(h => (
+                {['ID Customer','Nama','Email','Telepon','Pesanan','Status','Aksi'].map(h => (
                   <th key={h} className={`px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide ${h==='Aksi'?'text-center':'text-left'}`}>{h}</th>
                 ))}
               </tr>
@@ -786,7 +835,6 @@ function CustomerPage() {
                   <td className="px-4 py-3 text-emerald-600">{c.email}</td>
                   <td className="px-4 py-3 text-gray-600">{c.phone}</td>
                   <td className="px-4 py-3 text-center"><span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md text-xs font-medium">{c.totalOrders}x</span></td>
-                  <td className="px-4 py-3 font-semibold text-gray-800">Rp {c.totalSpend.toLocaleString('id-ID')}</td>
                   <td className="px-4 py-3"><span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700">{c.status}</span></td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-center gap-2">

@@ -13,7 +13,7 @@ const API_TIMEOUT = 10000; // 10 seconds
 /**
  * Send message to chatbot and get AI response
  */
-export async function sendChatMessage(message: string, contextMedicines?: Medicine[]): Promise<{
+export async function sendChatMessage(message: string, contextMedicines?: Medicine[], allergies?: string[], history?: { role: string, content: string }[]): Promise<{
   response: string;
   intent: string;
   confidence: number;
@@ -36,7 +36,7 @@ export async function sendChatMessage(message: string, contextMedicines?: Medici
     const response = await fetch(`${API_BASE_URL}/api/chat`, {
       method: 'POST',
       headers,
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, allergies: allergies || [], history: history || [] }),
       signal: controller.signal,
     });
 

@@ -31,7 +31,7 @@ const steps = ['Alamat', 'Pengiriman', 'Pembayaran', 'Konfirmasi'];
 export default function CheckoutPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useAuth();
+  const { user, updateProfile } = useAuth();
   const { cart: globalCart, getTotalPrice, clearCart } = useCart();
   
   // Bug #12: Beli Sekarang bypasses cart
@@ -102,6 +102,22 @@ export default function CheckoutPage() {
       if (created.error || !created.order) {
         throw new Error(created.error || 'Gagal membuat pesanan');
       }
+
+      // Autofill future checkout: save the city/postal code to profile if different
+      if (
+        shippingAddress.city !== user?.city ||
+        shippingAddress.postalCode !== user?.postalCode ||
+        shippingAddress.address !== user?.address ||
+        shippingAddress.phone !== user?.phone
+      ) {
+        updateProfile({
+          phone: shippingAddress.phone,
+          address: shippingAddress.address,
+          city: shippingAddress.city,
+          postalCode: shippingAddress.postalCode,
+        }).catch(err => console.error("Failed to update profile", err));
+      }
+
 
       const orderId = created.order.orderId;
       const localOrder = {

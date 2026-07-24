@@ -2,13 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Stethoscope, Send, X, Lock, AlertCircle, HeadphonesIcon, Minus, Maximize2, Minimize2, AlertTriangle } from 'lucide-react';
+import { Stethoscope, Send, X, Lock, AlertCircle, HeadphonesIcon, Minus, Maximize2, Minimize2, AlertTriangle, ShoppingCart } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { sendChatMessage, checkAPIHealth, getAllMedicinesFromAPI } from '../services/chatbotAPI';
 import type { ChatMessage, AllergyWarning } from '../types/chatbot';
 import { useAuth } from '../context/AuthContext';
 import { useMedicines } from '../context/MedicinesContext';
+import { useCart } from '../context/CartContext';
 import { io, Socket } from 'socket.io-client';
+import { toast } from 'sonner';
 
 const socket_url = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
@@ -38,16 +40,23 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
   const navigate = useNavigate();
   const { user } = useAuth();
   const { medicines: contextMedicines } = useMedicines();
+  const { addToCart } = useCart();
   const socketRef = useRef<Socket | null>(null);
 
   // Store quick suggestions from backend
   const [quickSuggestions, setQuickSuggestions] = useState<string[]>(QUICK_REPLIES);
 
+  // Allergy screening flow states
+  const [allergiesConfirmed, setAllergiesConfirmed] = useState(false);
+  const [userAllergies, setUserAllergies] = useState<string[]>([]);
+  const [showAllergyPrompt, setShowAllergyPrompt] = useState(false);
+  const [pendingQuery, setPendingQuery] = useState<string | null>(null);
+
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       id: 1,
       sender: 'bot',
-      message: 'Halo! Selamat datang di Apotek Sehat Delanggu 👋\n\nSaya siap membantu Anda menemukan obat yang sesuai berdasarkan gejala. Ceritakan keluhan Anda, dan saya akan memberikan rekomendasi awal.\n\n⚠️ Catatan: Rekomendasi ini bukan pengganti konsultasi dokter atau apoteker.',
+      message: 'Halo! Selamat datang di Apotek Sehat Delanggu 👋\n\nSaya siap membantu Anda menemukan obat yang sesuai secara aman. Ceritakan keluhan Anda, dan saya akan memberikan rekomendasi terbaik.\n\n⚠️ Catatan: Rekomendasi ini bukan pengganti konsultasi dokter atau apoteker.',
       timestamp: new Date()
     }
   ]);
@@ -110,6 +119,81 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
     };
   }, [chatMode, isAuthenticated, user]);
 
+  const handleAllergyChoice = async (choice: 'no' | 'yes', customAllergen?: string) => {
+    if (isLoading) return;
+    setIsLoading(true);
+    setShowAllergyPrompt(false);
+    setAllergiesConfirmed(true);
+
+    let activeAllergies = userAllergies;
+
+    if (choice === 'no') {
+      const confirmMsg: ChatMessage = {
+        id: Date.now(),
+        sender: 'user',
+        message: '❌ Tidak ada riwayat alergi obat',
+        timestamp: new Date()
+      };
+      const botAck: ChatMessage = {
+        id: Date.now() + 1,
+        sender: 'bot',
+        message: 'Baik Kak, terima kasih konfirmasinya. Memproses rekomendasi obat yang aman untuk Anda...',
+        timestamp: new Date()
+      };
+      setChatMessages(prev => [...prev, confirmMsg, botAck]);
+    } else {
+      const allergenText = customAllergen || 'Alergi Obat';
+      activeAllergies = Array.from(new Set([...userAllergies, allergenText.toLowerCase().replace(/^(saya|ada|alergi)\s+/, '').trim()]));
+      setUserAllergies(activeAllergies);
+
+      const confirmMsg: ChatMessage = {
+        id: Date.now(),
+        sender: 'user',
+        message: `⚠️ Ada alergi: ${allergenText}`,
+        timestamp: new Date()
+      };
+      const botAck: ChatMessage = {
+        id: Date.now() + 1,
+        sender: 'bot',
+        message: `Baik Kak, catatan alergi **"${allergenText}"** telah disimpan. Saya akan memilihkan rekomendasi obat yang aman dan bebas dari bahan tersebut.`,
+        timestamp: new Date()
+      };
+      setChatMessages(prev => [...prev, confirmMsg, botAck]);
+    }
+
+    // Now execute the pending query if exists
+    const queryToExecute = pendingQuery || 'Rekomendasi obat yang aman';
+    try {
+      // Build history (last 4 messages)
+      const recentHistory = chatMessages.slice(-4).map(m => ({
+        role: m.sender === 'bot' ? 'assistant' : 'user',
+        content: m.message
+      }));
+      
+      const result = await sendChatMessage(queryToExecute, contextMedicines, activeAllergies, recentHistory);
+      const botMessage: ChatMessage = {
+        id: Date.now() + 2,
+        sender: 'bot',
+        message: result.response,
+        timestamp: new Date(),
+        recommendations: result.medicines || [],
+        allergyWarnings: result.allergyWarnings,
+      };
+      setChatMessages(prev => [...prev, botMessage]);
+    } catch (err) {
+      const errorMessage: ChatMessage = {
+        id: Date.now() + 2,
+        sender: 'bot',
+        message: '⚠️ Maaf, terjadi kesalahan saat memproses rekomendasi. Silakan coba lagi.',
+        timestamp: new Date()
+      };
+      setChatMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setPendingQuery(null);
+      setTimeout(() => setIsLoading(false), 500);
+    }
+  };
+
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
@@ -131,7 +215,6 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
 
     try {
       if (chatMode === 'admin') {
-        // Send via WebSocket
         if (socketRef.current?.connected) {
           socketRef.current.emit('user_message', {
             room: String(user?.id),
@@ -145,19 +228,45 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
             timestamp: new Date()
           };
           setChatMessages(prev => [...prev, botReply]);
-        } else {
-          const botReply: ChatMessage = {
-            id: Date.now() + 1,
-            sender: 'bot',
-            message: 'Koneksi Live Chat terputus. Silakan coba lagi nanti atau gunakan AI Chatbot.',
-            timestamp: new Date()
-          };
-          setChatMessages(prev => [...prev, botReply]);
         }
       } else {
-        // AI Chat
-        const result = await sendChatMessage(userMsg, contextMedicines);
-        
+        // Check if currently waiting for allergy response
+        if (showAllergyPrompt) {
+          const lower = userMsg.toLowerCase();
+          if (lower.includes('tidak') || lower.includes('nggak') || lower.includes('gak') || lower.includes('bebas')) {
+            await handleAllergyChoice('no');
+            return;
+          } else {
+            await handleAllergyChoice('yes', userMsg);
+            return;
+          }
+        }
+
+        // Trigger allergy prompt on first consultation query
+        const isGreetingOnly = ['halo', 'hai', 'pagi', 'siang', 'sore', 'malam', 'tes', 'test', 'permisi'].includes(userMsg.toLowerCase());
+        if (!allergiesConfirmed && !isGreetingOnly && userAllergies.length === 0) {
+          setPendingQuery(userMsg);
+          setShowAllergyPrompt(true);
+          const allergyPromptMsg: ChatMessage = {
+            id: Date.now() + 1,
+            sender: 'bot',
+            message: 'Sebelum saya memberikan rekomendasi obat yang aman dan tepat, **apakah Kakak/Bapak/Ibu memiliki riwayat alergi obat tertentu?**',
+            timestamp: new Date()
+          };
+          setChatMessages(prev => [...prev, allergyPromptMsg]);
+          setIsLoading(false);
+          return;
+        }
+
+        // Build history (last 4 messages)
+        const recentHistory = chatMessages.slice(-4).map(m => ({
+          role: m.sender === 'bot' ? 'assistant' : 'user',
+          content: m.message
+        }));
+
+        // Direct AI Chat Call
+        const result = await sendChatMessage(userMsg, contextMedicines, userAllergies, recentHistory);
+
         const botMessage: ChatMessage = {
           id: Date.now() + 1,
           sender: 'bot',
@@ -167,16 +276,8 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
           allergyWarnings: result.allergyWarnings,
         };
         setChatMessages(prev => [...prev, botMessage]);
-        
+
         if (result.apiError) {
-          setApiConnected(false);
-          const errorMessage: ChatMessage = {
-            id: Date.now() + 2,
-            sender: 'bot',
-            message: '⚠️ Maaf, server AI sedang sibuk. Silakan coba lagi atau hubungi apoteker kami.',
-            timestamp: new Date(),
-          };
-          setChatMessages(prev => [...prev, errorMessage]);
           setApiConnected(false);
         }
       }
@@ -190,7 +291,7 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
       setChatMessages(prev => [...prev, errorMessage]);
       setApiConnected(false);
     } finally {
-      setTimeout(() => setIsLoading(false), 800);
+      setTimeout(() => setIsLoading(false), 500);
     }
   };
 
@@ -373,7 +474,20 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
                                     {warning ? '⚠️ Alergi!' : `Stok: ${medicine.stock}`}
                                   </span>
                                 </div>
-                                <p className="text-[10px] text-emerald-600 font-semibold mt-1 group-hover:underline">Lihat Detail →</p>
+                                <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-100">
+                                  <p className="text-[10px] text-emerald-600 font-semibold group-hover:underline">Lihat Detail →</p>
+                                  <Button 
+                                    size="sm" 
+                                    className="h-6 px-2 text-[10px] bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      addToCart({ ...medicine, quantity: 1 });
+                                      toast.success(`${medicine.name} ditambahkan ke keranjang`);
+                                    }}
+                                  >
+                                    <ShoppingCart className="h-3 w-3 mr-1" /> + Keranjang
+                                  </Button>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -384,15 +498,13 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
                 </div>
               ))}
 
-              {/* Typing indicator */}
+              {/* Typing indicator / Skeleton loader */}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-3">
-                    <div className="flex space-x-2">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                    </div>
+                  <div className="bg-white border border-gray-200 shadow-sm rounded-xl p-3 w-3/4 max-w-[250px] animate-pulse space-y-2">
+                    <div className="h-3 bg-gray-200 rounded w-full"></div>
+                    <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                    <div className="h-3 bg-gray-200 rounded w-4/6"></div>
                   </div>
                 </div>
               )}
@@ -404,8 +516,34 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
             {/* Input Area */}
             <div className="p-3 border-t bg-white rounded-b-lg shrink-0">
               <>
+                {/* Allergy screening quick choices */}
+                {showAllergyPrompt && !isLoading && (
+                  <div className="flex flex-col gap-2 p-2.5 bg-amber-50 border border-amber-200 rounded-xl mb-2 animate-fade-down">
+                    <p className="text-xs text-amber-900 font-semibold">Silakan pilih status alergi obat Anda:</p>
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        onClick={() => handleAllergyChoice('no')}
+                        className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-lg font-medium shadow-sm transition-all flex items-center gap-1"
+                      >
+                        ❌ Tidak Ada Alergi
+                      </button>
+                      <button
+                        onClick={() => {
+                          const userAllergen = prompt('Sebutkan nama obat atau bahan alergi Anda (contoh: Paracetamol, Amoxicillin):');
+                          if (userAllergen && userAllergen.trim()) {
+                            handleAllergyChoice('yes', userAllergen.trim());
+                          }
+                        }}
+                        className="text-xs bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 rounded-lg font-medium shadow-sm transition-all flex items-center gap-1"
+                      >
+                        ⚠️ Ada Alergi
+                      </button>
+                    </div>
+                  </div>
+                )}
+
                 {/* Quick replies when idle */}
-                {!isLoading && chatMessages.length <= 2 && (
+                {!showAllergyPrompt && !isLoading && chatMessages.length <= 2 && (
                   <div className="flex flex-wrap gap-1.5 mb-2">
                     {quickSuggestions.map((suggestion, idx) => (
                       <button

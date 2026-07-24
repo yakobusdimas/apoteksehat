@@ -37,16 +37,10 @@ export default function DashboardStats({
       label: 'Favorit',
       color: 'red',
     },
-    {
-      icon: <Award className="h-5 w-5" />,
-      value: rewardPoints,
-      label: 'Poin Reward',
-      color: 'yellow',
-    },
   ];
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
       {stats.map((stat, index) => (
         <div
           key={index}

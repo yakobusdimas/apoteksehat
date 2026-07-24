@@ -50,6 +50,9 @@ def create_app(config=None):
     migrate.init_app(app, db)
     socketio.init_app(app)
 
+    # Allow up to 20 MB request body (supports Base64-encoded images ~15 MB raw)
+    app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024  # 20 MB
+
     # CORS with configurable origins
     origins = [o.strip() for o in config.CORS_ORIGINS.split(',') if o.strip()]
     CORS(app, resources={

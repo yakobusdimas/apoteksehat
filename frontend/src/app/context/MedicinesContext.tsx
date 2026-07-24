@@ -76,7 +76,12 @@ function readCache(): CacheEntry | null {
 
 function writeCache(medicines: Medicine[], categories: string[]) {
   try {
-    const entry: CacheEntry = { medicines, categories, fetchedAt: Date.now() };
+    // Strip Base64 photos before caching to prevent sessionStorage overflow (>5MB limit)
+    const stripped = medicines.map(m => ({
+      ...m,
+      photo: m.photo && m.photo.startsWith('data:') ? '' : m.photo,
+    }));
+    const entry: CacheEntry = { medicines: stripped, categories, fetchedAt: Date.now() };
     sessionStorage.setItem(CACHE_KEY, JSON.stringify(entry));
   } catch {
     // sessionStorage penuh atau tidak tersedia — fail silently
@@ -105,7 +110,7 @@ function normalizeMedicine(apiMed: APIMedicine): Medicine {
     price: apiMed.price,
     stock: apiMed.stock,
     image: '💊',
-    photo: apiMed.photo || `https://placehold.co/400x300/e0f2fe/0369a1?text=${encodeURIComponent(apiMed.name)}`,
+    photo: apiMed.photo || '',  // keep empty if no photo; UI will fallback per-component
     description: apiMed.description || '',
     indication: apiMed.indication || '',
     dosage: apiMed.dosage || '',

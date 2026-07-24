@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useAuth } from '../context/AuthContext';
-import { GoogleLogin } from '@react-oauth/google';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Lock, Mail, Eye, EyeOff, Shield, Truck, Heart, Star, Sparkles } from 'lucide-react';
@@ -10,7 +9,7 @@ import { ApotekLogo } from './ApotekLogo';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { login, loginWithGoogle } = useAuth();
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPw, setShowPw] = useState(false);
@@ -175,42 +174,14 @@ export default function LoginPage() {
                 </Button>
               </form>
 
-              <div className="my-8 flex items-center gap-4">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Atau Masuk Dengan</span>
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+              <div className="mt-8 pt-6 border-t border-gray-100 text-center">
+                <p className="text-sm font-medium text-[color:var(--muted-foreground)]">
+                  Belum punya akun?{' '}
+                  <Link to="/register" className="font-bold text-primary hover:text-emerald-700 transition-colors">
+                    Daftar gratis
+                  </Link>
+                </p>
               </div>
-
-              <div className="mb-6 flex justify-center">
-                <GoogleLogin
-                  onSuccess={async (credentialResponse) => {
-                    if (credentialResponse.credential) {
-                      setIsLoading(true);
-                      const result = await loginWithGoogle(credentialResponse.credential);
-                      if (result.success) {
-                        toast.success('Login dengan Google berhasil!');
-                        navigate(result.user?.role === 'admin' ? '/admin/dashboard' : '/user/dashboard', { replace: true });
-                      } else {
-                        toast.error(result.message || 'Gagal login dengan Google');
-                      }
-                      setIsLoading(false);
-                    }
-                  }}
-                  onError={() => {
-                    toast.error('Login Google dibatalkan atau gagal');
-                  }}
-                  text="signin_with"
-                  shape="pill"
-                  size="large"
-                />
-              </div>
-
-              <p className="text-center text-sm font-medium text-[color:var(--muted-foreground)]">
-                Belum punya akun?{' '}
-                <Link to="/register" className="font-bold text-primary hover:text-emerald-700 transition-colors">
-                  Daftar gratis
-                </Link>
-              </p>
             </main>
 
             <div className="text-center">

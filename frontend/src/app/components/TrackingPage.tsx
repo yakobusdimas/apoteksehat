@@ -6,6 +6,7 @@ import { Badge } from './ui/badge';
 import { Pill, ArrowLeft, Package, Truck, CheckCircle2, Clock, MapPin, Receipt, ShieldCheck, Loader2 } from 'lucide-react';
 import ordersAPI from '../services/ordersAPI';
 import paymentAPI from '../services/paymentAPI';
+import { toast } from 'sonner';
 
 interface TrackingStatus {
   status: string;
@@ -24,6 +25,7 @@ interface Order {
   payment: string;
   address: any;
   status: string;
+  shippingCost?: number;
   paymentStatus?: string;
   paymentType?: string;
   paidAt?: string;
@@ -117,6 +119,47 @@ export default function TrackingPage() {
 
     loadOrder();
   }, [orderId]);
+
+  const handlePayNow = async () => {
+    if (!order) return;
+    toast.loading('Menyiapkan pembayaran...', { id: 'payment-loading' });
+    try {
+      const data = await paymentAPI.create({
+        orderId: order.orderId,
+        items: order.items,
+        total: order.total,
+        customer: order.address,
+        courier: order.courier,
+      });
+      toast.dismiss('payment-loading');
+
+      if (!data.success || !data.snapToken) {
+        throw new Error(data.message || 'Gagal mendapatkan token pembayaran');
+      }
+
+      (window as any).snap.pay(data.snapToken, {
+        onSuccess: function () {
+          toast.success('Pembayaran berhasil!');
+          const cached = JSON.parse(localStorage.getItem(`order_${order.orderId}`) || '{}');
+          cached.paymentStatus = 'paid';
+          localStorage.setItem(`order_${order.orderId}`, JSON.stringify(cached));
+          window.location.reload();
+        },
+        onPending: function () {
+          toast.info('Menunggu pembayaran Anda diselesaikan');
+        },
+        onError: function () {
+          toast.error('Pembayaran gagal atau dibatalkan');
+        },
+        onClose: function () {
+          toast.info('Anda menutup pop-up pembayaran');
+        }
+      });
+    } catch (err: any) {
+      toast.dismiss('payment-loading');
+      toast.error(err.message || 'Gagal memproses pembayaran');
+    }
+  };
 
   if (isLoading) {
     return (
@@ -293,11 +336,11 @@ export default function TrackingPage() {
                 <div className="space-y-2.5 pt-3 border-t border-[color:var(--border)]">
                   <div className="flex justify-between text-sm">
                     <span className="text-[color:var(--muted-foreground)]">Subtotal</span>
-                    <span className="font-medium">Rp {(order.total - (order.courier?.price || 0)).toLocaleString('id-ID')}</span>
+                    <span className="font-medium">Rp {(order.total - (order.shippingCost || 0)).toLocaleString('id-ID')}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-[color:var(--muted-foreground)]">Ongkir</span>
-                    <span className="font-medium">Rp {(order.courier?.price || 0).toLocaleString('id-ID')}</span>
+                    <span className="font-medium">Rp {(order.shippingCost || 0).toLocaleString('id-ID')}</span>
                   </div>
                   <div className="flex justify-between text-base font-bold text-primary pt-2 border-t border-[color:var(--border)]">
                     <span>Total Bayar</span>
@@ -309,11 +352,16 @@ export default function TrackingPage() {
                   <ShieldCheck className="h-5 w-5 text-blue-600 shrink-0" />
                   <div>
                     <p className="text-[10px] text-blue-800 font-bold uppercase tracking-widest">Metode Bayar</p>
-                    <p className="text-sm text-blue-900 font-bold capitalize">{order.payment}</p>
+                    <p className="text-sm text-blue-900 font-bold capitalize">{order.paymentType ? order.paymentType.replace(/_/g, ' ') : order.payment}</p>
                   </div>
                 </div>
 
-                <Button variant="outline" className="w-full mt-4" onClick={() => navigate('/user/dashboard')}>
+                {order.paymentStatus === 'pending' && (
+                  <Button className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white" onClick={handlePayNow}>
+                    Lakukan Pembayaran
+                  </Button>
+                )}
+                <Button variant="outline" className={`w-full ${order.paymentStatus === 'pending' ? 'mt-2' : 'mt-4'}`} onClick={() => navigate('/user/dashboard')}>
                   Kembali ke Dashboard
                 </Button>
               </div>

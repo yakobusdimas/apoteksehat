@@ -75,7 +75,7 @@ class Medicine(db.Model):
     side_effects = db.Column(db.Text, default='')
     expiry = db.Column(db.String(20), default='')
     type = db.Column(db.String(20), default='Tablet', index=True)
-    photo = db.Column(db.String(500), default='')
+    photo = db.Column(db.Text, default='')
     # Soft-delete: False = aktif, True = diarsipkan (tidak tampil di toko)
     is_active = db.Column(db.Boolean, default=True, nullable=False, index=True)
     # Tags: JSON array string, contoh '["promo","bestseller"]'
