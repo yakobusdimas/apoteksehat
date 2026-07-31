@@ -138,9 +138,13 @@ def main():
         image_url  = raw_image  # kept blank intentionally — Admin will fill later
         side_fx     = row.get('side_effects', '').strip()
 
-        price  = float(row.get('price', random.randint(low, high)))
-        stock  = int(row.get('stock', random.randint(40, 300)))
-        expiry = random.choice(expiries)
+        # Harga & stok deterministic berdasarkan hash nama obat
+        # Sehingga selalu SAMA di semua environment (localhost, VPS, Docker)
+        name_hash = int(abs(hash(name)) % 10000)
+        rng = random.Random(name_hash)  # seeded RNG — selalu konsisten
+        price  = float(row.get('price', rng.randint(low, high) // 1000 * 1000))
+        stock  = int(row.get('stock', rng.randint(40, 300)))
+        expiry = expiries[name_hash % len(expiries)]
         m_type = infer_type(name)
 
         indication = f"{uses}; Gejala: {keywords}" if keywords else uses

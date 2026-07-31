@@ -122,15 +122,18 @@ def seed_otc_catalog():
             medicine = Medicine()
             medicine.name = name
             medicine.category = category
-            medicine.price = float(row.get('price', random.randint(low, high)))
-            medicine.stock = int(row.get('stock', random.randint(40, 250)))
+            # Harga & stok deterministic — selalu sama di semua environment
+            name_hash = int(abs(hash(name)) % 10000)
+            rng = random.Random(name_hash)
+            medicine.price = float(row.get('price', rng.randint(low, high) // 1000 * 1000))
+            medicine.stock = int(row.get('stock', rng.randint(40, 250)))
             medicine.description = row.get("composition", "").strip()
             medicine.indication = f"{uses}; Gejala terkait: {keywords}" if keywords else uses
             medicine.dosage = f"Sesuai aturan pakai pada kemasan. {note}".strip()
             medicine.ingredients = row.get("composition", "").strip()
             medicine.benefits = f"{uses}; {keywords}; {note}".strip("; ")
             medicine.side_effects = row.get("side_effects", "").strip()
-            medicine.expiry = random.choice(expiries)
+            medicine.expiry = expiries[name_hash % len(expiries)]
             medicine.type = infer_type(name)
             medicine.photo = image_url
             medicine.is_active = True
