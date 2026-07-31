@@ -568,8 +568,22 @@ export default function UserDashboard() {
                 <div className="space-y-3">
                   {cart.map(item => (
                     <div key={item.id} className="flex items-center gap-4 bg-white rounded-2xl border border-[color:var(--border)] p-4 shadow-sm">
-                      <div className="h-16 w-16 rounded-xl bg-emerald-50 flex items-center justify-center text-3xl shrink-0">
-                        {item.image}
+                      <div className="h-16 w-16 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0 overflow-hidden">
+                        {item.photo ? (
+                          <img
+                            src={item.photo}
+                            alt={item.name}
+                            className="h-16 w-16 object-cover rounded-xl"
+                            onError={e => {
+                              const img = e.currentTarget;
+                              img.style.display = 'none';
+                              const parent = img.parentElement!;
+                              parent.innerHTML = `<span class="text-3xl">${item.image}</span>`;
+                            }}
+                          />
+                        ) : (
+                          <span className="text-3xl">{item.image}</span>
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-sm text-[color:var(--foreground)] truncate">{item.name}</p>

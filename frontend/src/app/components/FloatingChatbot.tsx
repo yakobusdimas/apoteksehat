@@ -336,15 +336,15 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
                 <CardTitle className="text-base">{chatMode === 'ai' ? 'Asisten Apotek Sehat' : 'Live Chat Apoteker'}</CardTitle>
                 <CardDescription className={`${chatMode === 'ai' ? 'text-emerald-50' : 'text-blue-50'} text-xs flex items-center gap-1`}>
                   {isAuthenticated ? (
-                    apiConnected === false ? (
-                      <><AlertCircle className="h-3 w-3" /> Sedang Offline</>
-                    ) : isLoading ? (
-                      <><span className="w-1.5 h-1.5 rounded-full bg-yellow-200 inline-block animate-pulse" />Sedang menyiapkan.....</>
-                    ) : (
-                      <><span className="w-1.5 h-1.5 rounded-full bg-emerald-200 inline-block animate-pulse" />Siap membantu Anda</>
-                    )
+                    <>
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-200 inline-block" />
+                      Siap membantu Anda
+                    </>
                   ) : (
-                    <><Lock className="h-3 w-3" /> Perlu Login untuk riwayat chat</>
+                    <>
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-200 inline-block" />
+                      Siap membantu Anda
+                    </>
                   )}
                 </CardDescription>
               </div>

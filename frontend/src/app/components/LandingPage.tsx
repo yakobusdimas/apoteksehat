@@ -196,13 +196,14 @@ export default function LandingPage() {
                       src="/apotek_exterior.jpg"
                       alt="Apotek Sehat Delanggu — Toko Kami"
                       loading="lazy"
+                      width={600}
+                      height={224}
                       className="h-56 w-full rounded-[1rem] object-cover"
                       onError={e => {
-                        const img = e.target as HTMLImageElement;
+                        const img = e.currentTarget;
                         img.onerror = null;
-                        (img as HTMLImageElement).style.display = 'none';
-                        const parent = (img as HTMLImageElement).parentElement!;
-                        parent.innerHTML = '<div class="flex h-56 flex-col items-center justify-center gap-2 text-center p-4 bg-emerald-50"><span class="text-5xl text-emerald-300">🏪</span></div>';
+                        img.src = '/apotek_logo.png';
+                        img.className = 'h-56 w-full rounded-[1rem] object-contain p-6 bg-emerald-50';
                       }}
                     />
                     {/* Badge lokasi */}
