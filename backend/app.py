@@ -8,9 +8,8 @@ Run: python app.py
 import os
 from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from config import get_config
+from extensions import limiter
 
 # Import extensions
 from flask_mail import Mail
@@ -63,21 +62,16 @@ def create_app(config=None):
         }
     })
 
-    # Rate limiting
-    limiter = Limiter(
-        app=app,
-        key_func=get_remote_address,
-        default_limits=[config.RATE_LIMIT_DEFAULT],
-        storage_uri='memory://',  # In-memory for demo; use Redis for production
-    )
+    # Rate limiting — default limit dari config; limit login/register
+    # diterapkan per-endpoint di routes/auth.py via @limiter.limit(...)
+    app.config.setdefault('RATELIMIT_DEFAULT', config.RATE_LIMIT_DEFAULT)
+    limiter.init_app(app)
 
     # ── Initialize Middleware ────────────────────────────────────────
     init_request_id(app)
     init_security_headers(app)
 
-    # Register rate limits
-    limiter.limit(config.RATE_LIMIT_LOGIN)(auth_bp)
-    limiter.limit(config.RATE_LIMIT_REGISTER)(auth_bp)
+    # Chat blueprint punya limit seragam untuk semua endpoint-nya
     limiter.limit(config.RATE_LIMIT_CHAT)(chat_bp)
 
     # ── Register Blueprints ────────────────────────────────────────

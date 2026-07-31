@@ -92,7 +92,8 @@ class TestLogin:
             'email': 'unknown@example.com',
             'password': 'password123',
         })
-        assert response.status_code == 404
+        # Pesan generik 401 (anti user-enumeration), bukan 404
+        assert response.status_code == 401
 
     def test_login_empty_fields(self, client):
         response = client.post('/api/auth/login', json={

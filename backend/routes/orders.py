@@ -197,7 +197,7 @@ def create_order():
         send_order_confirmation(
             to_email=user.email,
             order_id=order.order_id,
-            total=total,
+            total=order.total,
             items=items_for_email,
         )
     except Exception as e:
@@ -265,16 +265,8 @@ def cancel_order(order_id):
 
     order.status = 'cancelled'
 
-    # Restore stock with row-level locking
-    try:
-        for item in order.items.all():
-            if item.medicine_id:
-                med = Medicine.query.with_for_update().filter(Medicine.id == item.medicine_id).first()
-                if med:
-                    med.stock += item.quantity
-    except Exception as e:
-        from flask import current_app
-        current_app.logger.error(f"Stock restore error for order {order.order_id}: {e}")
+    # Restore stock secara idempotent (set flag stock_restored agar tidak double-restore)
+    restore_order_stock(order)
 
     # Audit log
     log = AuditLog(
@@ -319,7 +311,8 @@ def update_payment_status(order_code):
         current_app.logger.error("PAYMENT_WEBHOOK_SECRET is not set — rejecting all webhooks")
         return jsonify({'status': 'error', 'message': 'Server misconfigured: webhook secret not set.'}), 500
     if secret != expected:
-        current_app.logger.warning(f"Webhook secret mismatch: got '{secret}', expected '{expected}'")
+        # Jangan tulis nilai secret ke log — cukup catat kejadiannya
+        current_app.logger.warning("Webhook secret mismatch — request ditolak")
         return jsonify({'status': 'error', 'message': 'Unauthorized.'}), 403
 
     data = request.get_json(silent=True)

@@ -481,7 +481,7 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
                                     className="h-6 px-2 text-[10px] bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
                                     onClick={(e) => {
                                       e.stopPropagation();
-                                      addToCart({ ...medicine, quantity: 1 });
+                                      addToCart(medicine);
                                       toast.success(`${medicine.name} ditambahkan ke keranjang`);
                                     }}
                                   >

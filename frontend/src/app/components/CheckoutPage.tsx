@@ -143,6 +143,11 @@ export default function CheckoutPage() {
         throw new Error(data.message || 'Gagal mendapatkan token pembayaran');
       }
 
+      // Guard: script Midtrans Snap bisa gagal dimuat (adblocker / koneksi lambat)
+      if (!(window as any).snap || typeof (window as any).snap.pay !== 'function') {
+        throw new Error('Layanan pembayaran belum siap. Muat ulang halaman lalu coba lagi.');
+      }
+
       (window as any).snap.pay(data.snapToken, {
         onSuccess: function (result: any) {
           const order = JSON.parse(localStorage.getItem(`order_${orderId}`) || '{}');
@@ -176,13 +181,13 @@ export default function CheckoutPage() {
   };
 
 
-  const inputBase = "h-11 rounded-xl border-[color:var(--border)] bg-white text-sm focus:ring-2 focus:ring-primary/20";
+  const inputBase = "h-11 rounded-xl border-[color:var(--border)] bg-input text-sm focus:ring-2 focus:ring-primary/20";
 
   return (
     <div className="min-h-screen bg-[color:var(--background)]">
 
       {/* ── HEADER ─────────────────────────────────────────────────── */}
-      <header className="bg-white/85 backdrop-blur-xl border-b border-[color:var(--border)] sticky top-0 z-40">
+      <header className="bg-background/80 backdrop-blur-xl border-b border-[color:var(--border)] sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-3">
           <Button variant="outline" size="icon" onClick={() => navigate('/user/dashboard')} className="rounded-xl h-9 w-9" aria-label="Kembali ke dashboard">
             <ArrowLeft className="h-4 w-4" />
@@ -202,12 +207,12 @@ export default function CheckoutPage() {
                 <div className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold transition-all ${
                   i < currentStep ? 'bg-primary text-white' :
                   i === currentStep ? 'bg-primary/10 text-primary border-2 border-primary' :
-                  'bg-gray-100 text-gray-400'
+                  'bg-[color:var(--muted)] text-[color:var(--muted-foreground)]'
                 }`}>
                   {i < currentStep ? <Check className="h-3 w-3" /> : i + 1}
                 </div>
-                <span className={`text-xs font-medium ${i <= currentStep ? 'text-primary' : 'text-gray-400'}`}>{step}</span>
-                {i < steps.length - 1 && <div className={`h-px w-8 ${i < currentStep ? 'bg-primary' : 'bg-gray-200'}`} />}
+                <span className={`text-xs font-medium ${i <= currentStep ? 'text-primary' : 'text-[color:var(--muted-foreground)]'}`}>{step}</span>
+                {i < steps.length - 1 && <div className={`h-px w-8 ${i < currentStep ? 'bg-primary' : 'bg-[color:var(--border)]'}`} />}
               </div>
             ))}
           </div>
@@ -221,19 +226,19 @@ export default function CheckoutPage() {
           <div className="space-y-5">
 
             {/* Titik Jemput Otomatis (Apotek) */}
-            <div className="bg-emerald-50 rounded-2xl border border-emerald-100 shadow-sm overflow-hidden">
+            <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-2xl border border-emerald-100 dark:border-emerald-900 shadow-sm overflow-hidden">
               <div className="flex items-center gap-3 border-b border-emerald-100/50 px-5 py-3">
                 <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500 text-white">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
-                  <h2 className="font-bold text-emerald-900 text-sm">Titik Jemput (Otomatis)</h2>
+                  <h2 className="font-bold text-emerald-900 dark:text-emerald-100 text-sm">Titik Jemput (Otomatis)</h2>
                 </div>
               </div>
               <div className="px-5 py-4 flex gap-4">
                 <div className="flex-1">
-                  <p className="font-bold text-emerald-900">Apotek Sehat Delanggu (Pusat)</p>
-                  <p className="text-sm text-emerald-700/80 mt-1">
+                  <p className="font-bold text-emerald-900 dark:text-emerald-100">Apotek Sehat Delanggu (Pusat)</p>
+                  <p className="text-sm text-emerald-700/80 dark:text-emerald-300/80 mt-1">
                     Jl. Raya Delanggu Utara No. 182, Gatak, Kec. Delanggu, Kab. Klaten, Jawa Tengah 57471
                   </p>
                   <a href="https://maps.app.goo.gl/3Xz8mB4F8z" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 mt-2 hover:underline">
@@ -244,7 +249,7 @@ export default function CheckoutPage() {
             </div>
 
             {/* Shipping address */}
-            <div className="bg-white rounded-2xl border border-[color:var(--border)] shadow-sm overflow-hidden">
+            <div className="bg-[color:var(--card)] rounded-2xl border border-[color:var(--border)] shadow-sm overflow-hidden">
               <div className="flex items-center gap-3 border-b border-[color:var(--border)] px-5 py-4">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-primary">
                   <MapPin className="h-5 w-5" />
@@ -288,7 +293,7 @@ export default function CheckoutPage() {
             </div>
 
             {/* Courier */}
-            <div className="bg-white rounded-2xl border border-[color:var(--border)] shadow-sm overflow-hidden">
+            <div className="bg-[color:var(--card)] rounded-2xl border border-[color:var(--border)] shadow-sm overflow-hidden">
               <div className="flex items-center gap-3 border-b border-[color:var(--border)] px-5 py-4">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-primary">
                   <Truck className="h-5 w-5" />
@@ -337,7 +342,7 @@ export default function CheckoutPage() {
             </div>
 
             {/* Payment */}
-            <div className="bg-white rounded-2xl border border-[color:var(--border)] shadow-sm overflow-hidden">
+            <div className="bg-[color:var(--card)] rounded-2xl border border-[color:var(--border)] shadow-sm overflow-hidden">
               <div className="flex items-center gap-3 border-b border-[color:var(--border)] px-5 py-4">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-primary">
                   <CreditCard className="h-5 w-5" />
@@ -382,7 +387,7 @@ export default function CheckoutPage() {
 
           {/* ── Order Summary ─────────────────────────────────────────── */}
           <div>
-            <div className="bg-white rounded-2xl border border-[color:var(--border)] shadow-sm sticky top-20 overflow-hidden">
+            <div className="bg-[color:var(--card)] rounded-2xl border border-[color:var(--border)] shadow-sm sticky top-20 overflow-hidden">
               <div className="border-b border-[color:var(--border)] px-5 py-4">
                 <h2 className="font-bold text-[color:var(--foreground)]">Ringkasan Pesanan</h2>
               </div>
@@ -392,7 +397,7 @@ export default function CheckoutPage() {
                 <div className="space-y-3 max-h-56 overflow-y-auto pr-1">
                   {cart.map(item => (
                     <div key={item.id} className="flex items-center gap-3 pb-3 border-b border-[color:var(--border)] last:border-0 last:pb-0">
-                      <div className="text-2xl h-10 w-10 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">{item.image}</div>
+                      <div className="text-2xl h-10 w-10 bg-emerald-50 dark:bg-emerald-950/40 rounded-xl flex items-center justify-center shrink-0">{item.image}</div>
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-sm text-[color:var(--foreground)] truncate">{item.name}</p>
                         <p className="text-xs text-[color:var(--muted-foreground)]">{item.quantity} × Rp {item.price.toLocaleString('id-ID')}</p>

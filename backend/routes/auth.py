@@ -13,11 +13,13 @@ from utils.validators import (
 )
 from utils.email import send_welcome_email
 from config import get_config
+from extensions import limiter
 import os
 
 auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/api/auth/google', methods=['POST'])
+@limiter.limit(lambda: get_config().RATE_LIMIT_LOGIN)
 def google_auth():
     """Verify Google token and login/register user."""
     data = request.get_json(silent=True)
@@ -99,6 +101,7 @@ def google_auth():
         return jsonify({'status': 'error', 'message': 'Gagal memproses login Google.'}), 500
 
 @auth_bp.route('/api/auth/register', methods=['POST'])
+@limiter.limit(lambda: get_config().RATE_LIMIT_REGISTER)
 def register():
     """Register a new user."""
     data = request.get_json(silent=True)
@@ -176,6 +179,7 @@ def register():
 
 
 @auth_bp.route('/api/auth/login', methods=['POST'])
+@limiter.limit(lambda: get_config().RATE_LIMIT_LOGIN)
 def login():
     """Login user and return JWT token."""
     data = request.get_json(silent=True)
@@ -188,13 +192,11 @@ def login():
     if not email or not password:
         return jsonify({'status': 'error', 'message': 'Email dan password wajib diisi.'}), 400
 
-    # Find user
+    # Find user — pesan generik agar tidak membocorkan email mana yang terdaftar
+    # (mencegah user enumeration)
     user = User.query.filter_by(email=email).first()
-    if not user:
-        return jsonify({'status': 'error', 'message': 'Email tidak terdaftar.'}), 404
-
-    if not user.check_password(password):
-        return jsonify({'status': 'error', 'message': 'Password salah.'}), 401
+    if not user or not user.check_password(password):
+        return jsonify({'status': 'error', 'message': 'Email atau password salah.'}), 401
 
     # Audit log
     log = AuditLog(
@@ -277,6 +279,7 @@ def update_auth_profile():
 
 
 @auth_bp.route('/api/auth/forgot-password', methods=['POST'])
+@limiter.limit(lambda: get_config().RATE_LIMIT_LOGIN)
 def forgot_password():
     """Generate password reset token. In dev mode, returns token directly."""
     data = request.get_json(silent=True)
@@ -289,8 +292,14 @@ def forgot_password():
         return jsonify({'status': 'error', 'message': 'Email wajib diisi.'}), 400
     
     user = User.query.filter_by(email=email).first()
+    # Selalu balas sukses agar tidak membocorkan email mana yang terdaftar
+    # (mencegah user enumeration)
+    generic_response = {
+        'status': 'success',
+        'message': 'Jika email terdaftar, link reset telah dikirim.',
+    }
     if not user:
-        return jsonify({'status': 'error', 'message': 'Email tidak terdaftar.'}), 404
+        return jsonify(generic_response), 200
     
     # Generate secure token
     import secrets
@@ -307,18 +316,15 @@ def forgot_password():
     
     # In production: send email with reset link
     # For dev mode: return token in response
-    if os.getenv('FLASK_DEBUG', 'false').lower() in ('true', '1', 'yes'):
+    if get_config().FLASK_DEBUG:
         return jsonify({
             'status': 'success',
             'message': 'Token reset berhasil dibuat (dev mode).',
-            'reset_token': token_str,  # ⚠️ Remove this line in production
+            'reset_token': token_str,  # ⚠️ Only exposed in dev mode
             'expires_in_hours': 24,
         }), 200
     
-    return jsonify({
-        'status': 'success',
-        'message': 'Link reset telah dikirim ke email Anda.',
-    }), 200
+    return jsonify(generic_response), 200
 
 
 @auth_bp.route('/api/auth/reset-password', methods=['POST'])
