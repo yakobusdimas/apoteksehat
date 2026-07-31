@@ -96,9 +96,13 @@ def seed_otc_catalog():
         raise FileNotFoundError(CSV_PATH)
 
     backup_existing()
-    db.session.query(Medicine).delete()
 
-    count = 0
+    # UPSERT: update yang ada, insert yang baru
+    # TIDAK DELETE agar FK constraint order_items tidak dilanggar
+    existing = {m.name: m for m in db.session.query(Medicine).all()}
+
+    count_updated  = 0
+    count_inserted = 0
     expiries = ["2026-12-31", "2027-06-30", "2028-03-15", "2028-12-31"]
 
     with open(CSV_PATH, "r", encoding="utf-8", newline="") as f:
@@ -108,41 +112,57 @@ def seed_otc_catalog():
             if not name:
                 continue
 
-            category = row.get("category", "Lainnya").strip() or "Lainnya"
+            category  = row.get("category", "Lainnya").strip() or "Lainnya"
             low, high = PRICE_RANGES.get(category, PRICE_RANGES["Lainnya"])
-            uses = row.get("uses", "").strip()
-            keywords = row.get("symptom_keywords", "").strip()
-            note = row.get("recommendation_note", "").strip()
-            manufacturer = row.get("manufacturer", "").strip()
-            # Bug #A fix: kolom image_url mungkin sudah dihapus dari CSV oleh user.
-            # Cek dulu apakah kolom tersedia, kalau tidak — langsung pakai placeholder warna.
+            uses      = row.get("uses", "").strip()
+            keywords  = row.get("symptom_keywords", "").strip()
+            note      = row.get("recommendation_note", "").strip()
             raw_image = row.get("image_url", "").strip() if "image_url" in row else ""
             image_url = raw_image if raw_image else build_placeholder(name, category)
 
-            medicine = Medicine()
-            medicine.name = name
-            medicine.category = category
-            # Harga & stok deterministic — selalu sama di semua environment
+            # Harga & stok DETERMINISTIC — selalu sama di semua environment
             name_hash = int(abs(hash(name)) % 10000)
-            rng = random.Random(name_hash)
-            medicine.price = float(row.get('price', rng.randint(low, high) // 1000 * 1000))
-            medicine.stock = int(row.get('stock', rng.randint(40, 250)))
-            medicine.description = row.get("composition", "").strip()
-            medicine.indication = f"{uses}; Gejala terkait: {keywords}" if keywords else uses
-            medicine.dosage = f"Sesuai aturan pakai pada kemasan. {note}".strip()
-            medicine.ingredients = row.get("composition", "").strip()
-            medicine.benefits = f"{uses}; {keywords}; {note}".strip("; ")
-            medicine.side_effects = row.get("side_effects", "").strip()
-            medicine.expiry = expiries[name_hash % len(expiries)]
-            medicine.type = infer_type(name)
-            medicine.photo = image_url
-            medicine.is_active = True
-            medicine.tags = '["otc","indonesia","chatbot-ready"]'
-            db.session.add(medicine)
-            count += 1
+            rng       = random.Random(name_hash)
+            price     = float(row.get('price', rng.randint(low, high) // 1000 * 1000))
+            stock     = int(row.get('stock', rng.randint(40, 250)))
+            expiry    = expiries[name_hash % len(expiries)]
+
+            if name in existing:
+                # UPDATE — jaga FK order_items
+                med          = existing[name]
+                med.price    = price
+                med.stock    = stock
+                med.category = category
+                med.expiry   = expiry
+                # Update foto hanya jika belum ada foto asli
+                if not med.photo or med.photo.startswith('https://placehold'):
+                    med.photo = image_url
+                med.is_active = True
+                count_updated += 1
+            else:
+                # INSERT obat baru
+                med              = Medicine()
+                med.name         = name
+                med.category     = category
+                med.price        = price
+                med.stock        = stock
+                med.description  = row.get("composition", "").strip()
+                med.indication   = f"{uses}; Gejala terkait: {keywords}" if keywords else uses
+                med.dosage       = f"Sesuai aturan pakai pada kemasan. {note}".strip()
+                med.ingredients  = row.get("composition", "").strip()
+                med.benefits     = f"{uses}; {keywords}; {note}".strip("; ")
+                med.side_effects = row.get("side_effects", "").strip()
+                med.expiry       = expiry
+                med.type         = infer_type(name)
+                med.photo        = image_url
+                med.is_active    = True
+                med.tags         = '["otc","indonesia","chatbot-ready"]'
+                db.session.add(med)
+                count_inserted += 1
 
     db.session.commit()
-    print(f"[OK] Seeded {count} Indonesia OTC medicines to active web catalog.")
+    print(f"[OK] Updated {count_updated} + Inserted {count_inserted} medicines.")
+    print(f"[OK] Total: {count_updated + count_inserted} obat di database.")
 
 
 def main():
