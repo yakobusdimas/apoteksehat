@@ -88,28 +88,18 @@ export default function RegisterPage() {
             <div className="absolute top-0 right-0 h-[500px] w-[500px] rounded-full bg-emerald-400/20 blur-[100px] -translate-y-1/2 translate-x-1/3" />
           </div>
 
-          <div className="space-y-8 relative z-10 animate-fade-down">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center">
-                <ApotekLogo size="md" variant="icon" onDark />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold tracking-tight text-white">Apotek Sehat</h1>
-                <p className="text-[11px] font-semibold tracking-widest uppercase text-emerald-200/80">Registrasi Akun</p>
-              </div>
-            </div>
+          <div className="space-y-8 relative z-10">
+            <ApotekLogo variant="signboard" />
 
-            <div className="max-w-lg space-y-5 pt-8">
+            <div className="max-w-lg space-y-5 pt-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-100 backdrop-blur-sm">
                 <Sparkles className="h-3.5 w-3.5" /> Langkah Mudah
               </div>
               <h2 className="text-[2.5rem] font-bold leading-[1.05] text-white">
                 Satu akun untuk <span className="text-emerald-300">semua kebutuhan</span> apotek Anda.
               </h2>
-
             </div>
           </div>
-
 
         </aside>
 

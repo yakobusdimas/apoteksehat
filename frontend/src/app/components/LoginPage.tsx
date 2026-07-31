@@ -66,11 +66,11 @@ export default function LoginPage() {
           </div>
 
 
-          <div className="relative z-10 flex items-center gap-3 animate-fade-down">
-            <ApotekLogo size="md" onDark />
+          <div className="relative z-10">
+            <ApotekLogo variant="signboard" />
           </div>
 
-          <div className="relative z-10 max-w-xl space-y-6 py-10 animate-slide-left">
+          <div className="relative z-10 max-w-xl space-y-6 py-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-100 backdrop-blur-sm">
               <Sparkles className="h-3.5 w-3.5" /> Masuk ke akun Anda
             </div>
