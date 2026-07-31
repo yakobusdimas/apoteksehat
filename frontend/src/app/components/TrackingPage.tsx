@@ -323,7 +323,23 @@ export default function TrackingPage() {
                 <div className="space-y-3 max-h-56 overflow-y-auto pr-1">
                   {order.items.map(item => (
                     <div key={item.id} className="flex items-center gap-3 pb-3 border-b border-[color:var(--border)] last:border-0 last:pb-0">
-                      <div className="text-2xl h-10 w-10 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">{item.image || '💊'}</div>
+                      <div className="h-10 w-10 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0 overflow-hidden">
+                        {item.photo ? (
+                          <img
+                            src={item.photo}
+                            alt={item.name}
+                            className="h-10 w-10 object-cover rounded-xl"
+                            onError={e => {
+                              const img = e.currentTarget;
+                              img.style.display = 'none';
+                              const parent = img.parentElement!;
+                              parent.innerHTML = `<span class="text-2xl">${item.image || '💊'}</span>`;
+                            }}
+                          />
+                        ) : (
+                          <span className="text-2xl">{item.image || '💊'}</span>
+                        )}
+                      </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-sm text-[color:var(--foreground)] truncate">{item.name}</p>
                         <p className="text-xs text-[color:var(--muted-foreground)]">{item.quantity} × Rp {item.price.toLocaleString('id-ID')}</p>
