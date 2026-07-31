@@ -147,6 +147,14 @@ export function MedicinesProvider({ children }: { children: ReactNode }) {
         setCategories(cached.categories);
         setIsLoading(false);
         setError(null);
+
+        // Jika ada obat yang fotonya kosong (di-strip saat cache),
+        // langsung trigger background refresh untuk ambil foto terbaru
+        const missingPhotos = cached.medicines.some(m => !m.photo);
+        if (missingPhotos) {
+          // Background fetch — tidak block UI
+          setTimeout(() => fetchMedicines(true), 100);
+        }
         return;
       }
     }
