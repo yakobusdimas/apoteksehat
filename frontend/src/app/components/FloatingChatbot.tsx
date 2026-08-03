@@ -56,7 +56,7 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
     {
       id: 1,
       sender: 'bot',
-      message: 'Halo! Selamat datang di Apotek Sehat Delanggu 👋\n\nSaya siap membantu Anda menemukan obat yang sesuai secara aman. Ceritakan keluhan Anda, dan saya akan memberikan rekomendasi terbaik.\n\n⚠️ Catatan: Rekomendasi ini bukan pengganti konsultasi dokter atau apoteker.',
+      message: 'Halo! Selamat datang di Apotek Sehat 👋\n\nSaya siap membantu Anda menemukan obat yang sesuai secara aman. Ceritakan keluhan Anda, dan saya akan memberikan rekomendasi terbaik.\n\n⚠️ Catatan: Rekomendasi ini bukan pengganti konsultasi dokter atau apoteker.',
       timestamp: new Date()
     }
   ]);
@@ -242,9 +242,12 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
           }
         }
 
-        // Trigger allergy prompt on first consultation query
-        const isGreetingOnly = ['halo', 'hai', 'pagi', 'siang', 'sore', 'malam', 'tes', 'test', 'permisi'].includes(userMsg.toLowerCase());
-        if (!allergiesConfirmed && !isGreetingOnly && userAllergies.length === 0) {
+        // Trigger allergy prompt on first consultation query (except for dosage/side-effect info queries)
+        const lowerUserMsg = userMsg.toLowerCase();
+        const isGreetingOnly = ['halo', 'hai', 'pagi', 'siang', 'sore', 'malam', 'tes', 'test', 'permisi'].includes(lowerUserMsg);
+        const isInfoQuery = ['dosis', 'efek', 'samping', 'aturan', 'komposisi', 'kandungan', 'bahan'].some(w => lowerUserMsg.includes(w));
+
+        if (!allergiesConfirmed && !isGreetingOnly && !isInfoQuery && userAllergies.length === 0) {
           setPendingQuery(userMsg);
           setShowAllergyPrompt(true);
           const allergyPromptMsg: ChatMessage = {

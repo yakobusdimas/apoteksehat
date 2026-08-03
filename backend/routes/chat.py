@@ -391,6 +391,65 @@ def chat():
             if user_history:
                 context_text = " ".join(user_history) + " " + user_message
 
+        # ── Direct Override: Dosis & Efek Samping ──────────────────
+        lower_msg = user_message.lower()
+        
+        # 1. Dosis / Aturan Pakai
+        if any(w in lower_msg for w in ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum']):
+            matched_med = None
+            for m in medicines:
+                name_low = m.get('name', '').lower()
+                if len(name_low) > 3 and name_low in lower_msg:
+                    matched_med = m
+                    break
+            if not matched_med:
+                words = [w for w in lower_msg.split() if len(w) > 3 and w not in ['dosis', 'penggunaan', 'obat', 'aturan', 'pakai', 'cara', 'minum', 'berapa', 'kali']]
+                for w in words:
+                    for m in medicines:
+                        if w in m.get('name', '').lower():
+                            matched_med = m
+                            break
+                    if matched_med: break
+
+            if matched_med:
+                dosage_info = matched_med.get('dosage') or matched_med.get('note') or 'Sesuai aturan pakai pada kemasan.'
+                res_text = f"💡 **Informasi Dosis & Aturan Pakai {matched_med['name']}:**\n{dosage_info}\n\n⚠️ *Selalu baca petunjuk pada kemasan atau konsultasikan dengan apoteker/dokter jika sakit berlanjut.*"
+                return jsonify({
+                    'status': 'success',
+                    'response': res_text,
+                    'intent': 'dosis',
+                    'confidence': 0.99,
+                    'data': [_build_medicine_response(matched_med)]
+                })
+
+        # 2. Efek Samping
+        if any(w in lower_msg for w in ['efek samping', 'efek', 'bahaya', 'efeknya']):
+            matched_med = None
+            for m in medicines:
+                name_low = m.get('name', '').lower()
+                if len(name_low) > 3 and name_low in lower_msg:
+                    matched_med = m
+                    break
+            if not matched_med:
+                words = [w for w in lower_msg.split() if len(w) > 3 and w not in ['efek', 'samping', 'bahaya', 'efeknya', 'obat', 'dari', 'apakah']]
+                for w in words:
+                    for m in medicines:
+                        if w in m.get('name', '').lower():
+                            matched_med = m
+                            break
+                    if matched_med: break
+
+            if matched_med:
+                side_fx = matched_med.get('side_effects') or matched_med.get('sideEffects') or 'Efek samping jarang terjadi jika dikonsumsi sesuai dosis.'
+                res_text = f"ℹ️ **Informasi Efek Samping {matched_med['name']}:**\n{side_fx}\n\n⚠️ *Hentikan penggunaan dan hubungi medis jika mengalami reaksi alergi berat.*"
+                return jsonify({
+                    'status': 'success',
+                    'response': res_text,
+                    'intent': 'efek_samping',
+                    'confidence': 0.99,
+                    'data': [_build_medicine_response(matched_med)]
+                })
+
         # Preprocess & predict using the new Hybrid NLP Models
         from utils.nlp import get_vectorizer, get_label_encoder
         vectorizer = get_vectorizer()
