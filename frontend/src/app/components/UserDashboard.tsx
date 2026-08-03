@@ -322,7 +322,6 @@ export default function UserDashboard() {
           </Button>
         </div>
 
-        <DashboardStats {...dashboardStats} />
 
         {/* ── TABS ─────────────────────────────────────────────────── */}
         <div className="flex items-center gap-1.5 bg-white rounded-2xl p-1.5 shadow-sm border border-[color:var(--border)]">
