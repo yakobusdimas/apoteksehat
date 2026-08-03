@@ -15,11 +15,11 @@ from utils.ml_fraud import check_order_fraud
 SHIPPING_ALLOWLIST = {
     'GoSend': {
         'Instant': 15000,
-        'Same Day': 10000,
+        'Same Day': 15000,
     },
     'GrabExpress': {
         'Instant': 17000,
-        'Same Day': 12000,
+        'Same Day': 17000,
     }
 }
 
