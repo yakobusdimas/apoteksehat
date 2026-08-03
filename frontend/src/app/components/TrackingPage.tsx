@@ -43,8 +43,10 @@ export default function TrackingPage() {
   useEffect(() => {
     const buildHistory = (parsedOrder: Order): TrackingStatus[] => {
       const t = new Date(parsedOrder.createdAt || new Date().toISOString()).getTime();
-      const courierName = parsedOrder.courier?.name || 'kurir';
+      const courierName = parsedOrder.courier?.name || 'GoSend';
       const destination = parsedOrder.address?.city || parsedOrder.address?.detail || 'Alamat tujuan';
+      const isCompleted = parsedOrder.status === 'completed' || parsedOrder.status === 'selesai' || parsedOrder.status === 'delivered';
+      const isShipped = isCompleted || parsedOrder.status === 'shipped';
 
       return [
         {
@@ -59,21 +61,21 @@ export default function TrackingPage() {
           description: 'Pesanan sedang disiapkan & dikemas oleh apoteker.',
           timestamp: new Date(t + 30 * 60000).toISOString(),
           location: 'Apotek Sehat, Pusat',
-          completed: parsedOrder.status !== 'cancelled', current: parsedOrder.status === 'processing'
+          completed: true, current: parsedOrder.status === 'processing' && !isCompleted
         },
         {
-          status: parsedOrder.status === 'delivered' ? 'Terkirim' : 'Dikirim',
+          status: 'Terkirim',
           description: `Paket diserahkan ke ${courierName}.`,
-          timestamp: parsedOrder.status === 'delivered' ? new Date(t + 120 * 60000).toISOString() : '',
+          timestamp: isShipped ? new Date(t + 120 * 60000).toISOString() : '',
           location: `${courierName} Hub`,
-          completed: parsedOrder.status === 'delivered', current: parsedOrder.status === 'shipped'
+          completed: isShipped, current: parsedOrder.status === 'shipped' && !isCompleted
         },
         {
           status: 'Sampai Tujuan',
-          description: 'Paket akan segera tiba di alamat Anda.',
-          timestamp: '',
+          description: isCompleted ? 'Paket telah berhasil diterima oleh pemesan.' : 'Paket dalam perjalanan ke alamat Anda.',
+          timestamp: isCompleted ? new Date(t + 180 * 60000).toISOString() : '',
           location: destination,
-          completed: parsedOrder.status === 'delivered', current: false
+          completed: isCompleted, current: isCompleted
         }
       ];
     };
@@ -215,8 +217,18 @@ export default function TrackingPage() {
                     <p className="text-xs text-[color:var(--muted-foreground)]">Estimasi: <span className="font-bold text-primary">{order.courier?.estimatedTime || 'Diproses'}</span></p>
                   </div>
                 </div>
-                <Badge className="bg-emerald-100 text-emerald-700 hover:bg-emerald-100 border-0 shadow-none font-bold px-3 py-1">
-                  Dalam Proses
+                <Badge className={`border-0 font-bold px-3 py-1 ${
+                  order.status === 'completed' || order.status === 'selesai' || order.status === 'delivered'
+                    ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-100'
+                    : order.status === 'cancelled' || order.status === 'dibatalkan'
+                    ? 'bg-red-100 text-red-700 hover:bg-red-100'
+                    : 'bg-blue-100 text-blue-700 hover:bg-blue-100'
+                }`}>
+                  {order.status === 'completed' || order.status === 'selesai' || order.status === 'delivered'
+                    ? 'Selesai'
+                    : order.status === 'cancelled' || order.status === 'dibatalkan'
+                    ? 'Dibatalkan'
+                    : 'Dalam Proses'}
                 </Badge>
               </div>
               <div className="p-6 md:p-8">
