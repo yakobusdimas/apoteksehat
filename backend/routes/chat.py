@@ -395,8 +395,10 @@ def chat():
         lower_msg = user_message.lower()
         from utils.rag_engine import generate_llm_response
 
-        # 1. Dosis / Aturan Pakai
-        if any(w in lower_msg for w in ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum']):
+        is_dosage_query = any(w in lower_msg for w in ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum'])
+        is_side_effects_query = any(w in lower_msg for w in ['efek samping', 'efek', 'bahaya', 'efeknya'])
+
+        if is_dosage_query or is_side_effects_query:
             matched_med = None
             for m in medicines:
                 name_low = m.get('name', '').lower()
@@ -404,7 +406,7 @@ def chat():
                     matched_med = m
                     break
             if not matched_med:
-                words = [w for w in lower_msg.split() if len(w) > 3 and w not in ['dosis', 'penggunaan', 'obat', 'aturan', 'pakai', 'cara', 'minum', 'berapa', 'kali']]
+                words = [w for w in lower_msg.split() if len(w) > 3 and w not in ['dosis', 'penggunaan', 'obat', 'aturan', 'pakai', 'cara', 'minum', 'berapa', 'kali', 'efek', 'samping', 'bahaya', 'gimana', 'dan']]
                 for w in words:
                     for m in medicines:
                         if w in m.get('name', '').lower():
@@ -412,43 +414,19 @@ def chat():
                             break
                     if matched_med: break
 
-            # Gunakan Gemini LLM untuk menyusun penjelasan dosis yang ramah dan alami
-            llm_text = generate_llm_response(f"Berapa dosis dan aturan pakai untuk {matched_med['name'] if matched_med else user_message}?")
+            # Gunakan Gemini LLM untuk menyusun penjelasan Dosis & Efek Samping secara alami
+            med_name_str = matched_med['name'] if matched_med else user_message
+            prompt_q = f"Berapa dosis, aturan pakai, dan efek samping dari obat {med_name_str}?" if (is_dosage_query and is_side_effects_query) else \
+                       f"Berapa dosis dan aturan pakai untuk obat {med_name_str}?" if is_dosage_query else \
+                       f"Apa saja efek samping dan bahaya dari obat {med_name_str}?"
+            
+            llm_text = generate_llm_response(prompt_q)
             clean_text = llm_text.replace('**', '').replace('*', '')
 
             return jsonify({
                 'status': 'success',
                 'response': clean_text,
-                'intent': 'dosis',
-                'confidence': 0.99,
-                'data': [_build_medicine_response(matched_med)] if matched_med else None
-            })
-
-        # 2. Efek Samping
-        if any(w in lower_msg for w in ['efek samping', 'efek', 'bahaya', 'efeknya']):
-            matched_med = None
-            for m in medicines:
-                name_low = m.get('name', '').lower()
-                if len(name_low) > 3 and name_low in lower_msg:
-                    matched_med = m
-                    break
-            if not matched_med:
-                words = [w for w in lower_msg.split() if len(w) > 3 and w not in ['efek', 'samping', 'bahaya', 'efeknya', 'obat', 'dari', 'apakah']]
-                for w in words:
-                    for m in medicines:
-                        if w in m.get('name', '').lower():
-                            matched_med = m
-                            break
-                    if matched_med: break
-
-            # Gunakan Gemini LLM untuk menyusun penjelasan efek samping yang ramah dan alami
-            llm_text = generate_llm_response(f"Apa efek samping dari {matched_med['name'] if matched_med else user_message}?")
-            clean_text = llm_text.replace('**', '').replace('*', '')
-
-            return jsonify({
-                'status': 'success',
-                'response': clean_text,
-                'intent': 'efek_samping',
+                'intent': 'dosis' if is_dosage_query else 'efek_samping',
                 'confidence': 0.99,
                 'data': [_build_medicine_response(matched_med)] if matched_med else None
             })

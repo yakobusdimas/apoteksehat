@@ -419,7 +419,7 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
                 <div key={msg.id} className="space-y-2">
                   <div className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div className={`max-w-[85%] rounded-xl p-3 ${msg.sender === 'user' ? (chatMode === 'admin' ? 'bg-blue-500 text-white' : 'bg-emerald-500 text-white') : 'bg-white border border-gray-200 shadow-sm'}`}>
-                      <p className="text-sm whitespace-pre-line">{msg.message}</p>
+                      <p className="text-sm whitespace-pre-line">{msg.message.replace(/\*\*/g, '').replace(/\*/g, '')}</p>
                       <p className={`text-xs mt-1 ${msg.sender === 'user' ? 'text-emerald-100' : 'text-gray-400'}`}>
                         {msg.timestamp.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}
                       </p>
