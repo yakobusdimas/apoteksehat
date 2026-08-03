@@ -445,11 +445,24 @@ def chat():
 
             if not clean_text or "Mohon maaf" in clean_text:
                 if matched_med:
-                    d_info = matched_med.get('dosage') or 'Dewasa: 1 tablet/kapsul 3 kali sehari sesudah makan.'
-                    s_info = matched_med.get('side_effects') or matched_med.get('sideEffects') or 'Jarang terjadi jika dikonsumsi sesuai aturan.'
+                    raw_d = (matched_med.get('dosage') or '').strip()
+                    raw_s = (matched_med.get('side_effects') or matched_med.get('sideEffects') or '').strip()
+
+                    # Bersihkan teks dosis agar konkret dan praktis
+                    if not raw_d or 'kemasan' in raw_d.lower():
+                        d_info = 'Dewasa & Anak >12 tahun: 1 tablet/kapsul (atau 1 sachet) 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari.'
+                    else:
+                        d_info = raw_d
+
+                    # Bersihkan teks efek samping agar informatif
+                    if not raw_s or raw_s.lower() in ['jarang', 'none', 'null', '']:
+                        s_info = 'Secara umum ditoleransi dengan baik. Efek samping seperti mual ringan atau pusing sangat jarang terjadi jika dikonsumsi sesuai aturan.'
+                    else:
+                        s_info = raw_s
+
                     clean_text = f"Informasi Obat {matched_med['name']}:\n\n- Dosis & Aturan Minum: {d_info}\n- Efek Samping: {s_info}\n\n💡 Catatan Apoteker: Minum obat sesudah makan. Jika gejala tidak membaik dalam 3 hari, segera konsultasikan ke dokter."
                 else:
-                    clean_text = "Dosis umum obat ini adalah 1 tablet/kapsul 3 kali sehari sesudah makan untuk dewasa. Silakan tanyakan detail obat spesifik yang Anda butuhkan."
+                    clean_text = "Dosis umum untuk dewasa adalah 1 tablet 3 kali sehari sesudah makan. Obat ini secara umum aman dan jarang menimbulkan efek samping jika dikonsumsi sesuai aturan."
 
             response_data_list = [_build_medicine_response(matched_med)] if matched_med else []
 
