@@ -17,10 +17,8 @@ interface Courier {
   price: number; estimatedTime: string; logo: string;
 }
 const couriers: Courier[] = [
-  { id: 'gojek-instant', name: 'GoSend', service: 'Instant', price: 15000, estimatedTime: '15-30 Menit', logo: '🛵' },
-  { id: 'gojek-sameday', name: 'GoSend', service: 'Same Day', price: 10000, estimatedTime: '3-6 Jam', logo: '🛵' },
-  { id: 'grab-instant',  name: 'GrabExpress', service: 'Instant', price: 17000, estimatedTime: '15-30 Menit', logo: '🏍️' },
-  { id: 'grab-sameday',  name: 'GrabExpress', service: 'Same Day', price: 12000, estimatedTime: '3-6 Jam', logo: '🏍️' },
+  { id: 'gosend',      name: 'GoSend',      service: 'Same Day', price: 15000, estimatedTime: '3-6 Jam', logo: '🟢 🛵' },
+  { id: 'grabexpress', name: 'GrabExpress', service: 'Same Day', price: 17000, estimatedTime: '3-6 Jam', logo: '🟢 🏍️' },
 ];
 const paymentMethods = [
   { id: 'qris-shopee', name: 'QRIS API (ShopeePay)', icon: '📱', description: 'Scan QR Code ini dengan e-Wallet atau M-Banking Anda.' },
