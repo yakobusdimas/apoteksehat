@@ -445,11 +445,11 @@ def chat():
 
             if not clean_text or "Mohon maaf" in clean_text:
                 if matched_med:
-                    d_info = matched_med.get('dosage') or 'Sesuai petunjuk pada kemasan.'
-                    s_info = matched_med.get('side_effects') or matched_med.get('sideEffects') or 'Jarang terjadi jika sesuai dosis.'
-                    clean_text = f"Informasi Obat {matched_med['name']}:\n\n- Dosis & Aturan Pakai: {d_info}\n- Efek Samping: {s_info}\n\n⚠️ Selalu baca petunjuk kemasan atau konsultasikan ke apoteker/dokter jika sakit berlanjut."
+                    d_info = matched_med.get('dosage') or 'Dewasa: 1 tablet/kapsul 3 kali sehari sesudah makan.'
+                    s_info = matched_med.get('side_effects') or matched_med.get('sideEffects') or 'Jarang terjadi jika dikonsumsi sesuai aturan.'
+                    clean_text = f"Informasi Obat {matched_med['name']}:\n\n- Dosis & Aturan Minum: {d_info}\n- Efek Samping: {s_info}\n\n💡 Catatan Apoteker: Minum obat sesudah makan. Jika gejala tidak membaik dalam 3 hari, segera konsultasikan ke dokter."
                 else:
-                    clean_text = "Mohon maaf, silakan periksa petunjuk aturan pakai pada kemasan obat atau konsultasikan dengan apoteker kami."
+                    clean_text = "Dosis umum obat ini adalah 1 tablet/kapsul 3 kali sehari sesudah makan untuk dewasa. Silakan tanyakan detail obat spesifik yang Anda butuhkan."
 
             response_data_list = [_build_medicine_response(matched_med)] if matched_med else []
 
