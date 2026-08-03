@@ -306,6 +306,7 @@ export default function CheckoutPage() {
                           : 'border-[color:var(--border)] hover:border-emerald-200'
                       }`}
                     >
+                      <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">
                           <img 
                             src={courier.logo} 
