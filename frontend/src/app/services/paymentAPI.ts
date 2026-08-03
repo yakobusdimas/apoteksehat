@@ -40,7 +40,8 @@ export interface CreatePaymentResponse {
  */
 export async function createPayment(payload: CreatePaymentPayload): Promise<CreatePaymentResponse> {
   try {
-    const response = await fetch('/api/payment/create', {
+    const baseUrl = window.location.origin;
+    const response = await fetch(`${baseUrl}/api/payment/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
