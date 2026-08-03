@@ -191,7 +191,7 @@ app.get('/api/config', (req, res) => {
  * POST /api/payment/create
  * Buat transaksi Midtrans, kembalikan snap_token
  */
-app.post('/api/payment/create', async (req, res) => {
+app.post(['/api/payment/create', '/payment/create', '/create'], async (req, res) => {
   try {
     const { orderId, items, customer, courier } = req.body;
 

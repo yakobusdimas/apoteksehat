@@ -41,7 +41,7 @@ export interface CreatePaymentResponse {
 export async function createPayment(payload: CreatePaymentPayload): Promise<CreatePaymentResponse> {
   try {
     const baseUrl = window.location.origin;
-    const response = await fetch(`${baseUrl}/api/payment/create`, {
+    const response = await fetch(`${baseUrl}/payment/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
