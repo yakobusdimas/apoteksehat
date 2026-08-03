@@ -120,81 +120,6 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
     };
   }, [chatMode, isAuthenticated, user]);
 
-  const handleAllergyChoice = async (choice: 'no' | 'yes', customAllergen?: string) => {
-    if (isLoading) return;
-    setIsLoading(true);
-    setShowAllergyPrompt(false);
-    setAllergiesConfirmed(true);
-
-    let activeAllergies = userAllergies;
-
-    if (choice === 'no') {
-      const confirmMsg: ChatMessage = {
-        id: Date.now(),
-        sender: 'user',
-        message: '❌ Tidak ada riwayat alergi obat',
-        timestamp: new Date()
-      };
-      const botAck: ChatMessage = {
-        id: Date.now() + 1,
-        sender: 'bot',
-        message: 'Baik Kak, terima kasih konfirmasinya. Memproses rekomendasi obat yang aman untuk Anda...',
-        timestamp: new Date()
-      };
-      setChatMessages(prev => [...prev, confirmMsg, botAck]);
-    } else {
-      const allergenText = customAllergen || 'Alergi Obat';
-      activeAllergies = Array.from(new Set([...userAllergies, allergenText.toLowerCase().replace(/^(saya|ada|alergi)\s+/, '').trim()]));
-      setUserAllergies(activeAllergies);
-
-      const confirmMsg: ChatMessage = {
-        id: Date.now(),
-        sender: 'user',
-        message: `⚠️ Ada alergi: ${allergenText}`,
-        timestamp: new Date()
-      };
-      const botAck: ChatMessage = {
-        id: Date.now() + 1,
-        sender: 'bot',
-        message: `Baik Kak, catatan alergi **"${allergenText}"** telah disimpan. Saya akan memilihkan rekomendasi obat yang aman dan bebas dari bahan tersebut.`,
-        timestamp: new Date()
-      };
-      setChatMessages(prev => [...prev, confirmMsg, botAck]);
-    }
-
-    // Now execute the pending query if exists
-    const queryToExecute = pendingQuery || 'Rekomendasi obat yang aman';
-    try {
-      // Build history (last 4 messages)
-      const recentHistory = chatMessages.slice(-4).map(m => ({
-        role: m.sender === 'bot' ? 'assistant' : 'user',
-        content: m.message
-      }));
-      
-      const result = await sendChatMessage(queryToExecute, contextMedicines, activeAllergies, recentHistory);
-      const botMessage: ChatMessage = {
-        id: Date.now() + 2,
-        sender: 'bot',
-        message: result.response,
-        timestamp: new Date(),
-        recommendations: result.medicines || [],
-        allergyWarnings: result.allergyWarnings,
-      };
-      setChatMessages(prev => [...prev, botMessage]);
-    } catch (err) {
-      const errorMessage: ChatMessage = {
-        id: Date.now() + 2,
-        sender: 'bot',
-        message: '⚠️ Maaf, terjadi kesalahan saat memproses rekomendasi. Silakan coba lagi.',
-        timestamp: new Date()
-      };
-      setChatMessages(prev => [...prev, errorMessage]);
-    } finally {
-      setPendingQuery(null);
-      setTimeout(() => setIsLoading(false), 500);
-    }
-  };
-
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
@@ -231,53 +156,19 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
           setChatMessages(prev => [...prev, botReply]);
         }
       } else {
-        // Check if currently waiting for allergy response
-        if (showAllergyPrompt) {
-          const lower = userMsg.toLowerCase();
-          if (lower.includes('tidak') || lower.includes('nggak') || lower.includes('gak') || lower.includes('bebas')) {
-            await handleAllergyChoice('no');
-            return;
-          } else {
-            await handleAllergyChoice('yes', userMsg);
-            return;
-          }
-        }
-
-        // Trigger allergy prompt on first consultation query (except for dosage/side-effect info queries)
-        const lowerUserMsg = userMsg.toLowerCase();
-        const isGreetingOnly = ['halo', 'hai', 'pagi', 'siang', 'sore', 'malam', 'tes', 'test', 'permisi'].includes(lowerUserMsg);
-        const isInfoQuery = ['dosis', 'efek', 'samping', 'aturan', 'komposisi', 'kandungan', 'bahan'].some(w => lowerUserMsg.includes(w));
-
-        if (!allergiesConfirmed && !isGreetingOnly && !isInfoQuery && userAllergies.length === 0) {
-          setPendingQuery(userMsg);
-          setShowAllergyPrompt(true);
-          const allergyPromptMsg: ChatMessage = {
-            id: Date.now() + 1,
-            sender: 'bot',
-            message: 'Sebelum saya memberikan rekomendasi obat yang aman dan tepat, **apakah Kakak/Bapak/Ibu memiliki riwayat alergi obat tertentu?**',
-            timestamp: new Date()
-          };
-          setChatMessages(prev => [...prev, allergyPromptMsg]);
-          setIsLoading(false);
-          return;
-        }
-
-        // Build history (last 4 messages)
+        // Direct consultation query to backend API
         const recentHistory = chatMessages.slice(-4).map(m => ({
           role: m.sender === 'bot' ? 'assistant' : 'user',
           content: m.message
         }));
 
-        // Direct AI Chat Call
-        const result = await sendChatMessage(userMsg, contextMedicines, userAllergies, recentHistory);
-
+        const result = await sendChatMessage(userMsg, contextMedicines, [], recentHistory);
         const botMessage: ChatMessage = {
           id: Date.now() + 1,
           sender: 'bot',
           message: result.response,
           timestamp: new Date(),
           recommendations: result.medicines || [],
-          allergyWarnings: result.allergyWarnings,
         };
         setChatMessages(prev => [...prev, botMessage]);
 
@@ -286,10 +177,11 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
         }
       }
     } catch (error) {
+      console.error('Failed to send message:', error);
       const errorMessage: ChatMessage = {
         id: Date.now() + 1,
         sender: 'bot',
-        message: '⚠️ Maaf, terjadi masalah. Silakan coba lagi nanti atau hubungi apoteker kami.',
+        message: '⚠️ Maaf, terjadi kesalahan saat menghubungi layanan. Silakan coba lagi nanti.',
         timestamp: new Date()
       };
       setChatMessages(prev => [...prev, errorMessage]);
