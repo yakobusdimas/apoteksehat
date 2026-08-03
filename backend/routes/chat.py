@@ -250,9 +250,9 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
 
                     response_text = (
                         f"Halo Kak! 😊 Terima kasih sudah berkonsultasi di Apotek Sehat.\n\n"
-                        f"Untuk membantu meredakan keluhan **{symptom_phrase}**, berikut adalah pilihan obat yang aman dan direkomendasikan:\n"
+                        f"Untuk membantu meredakan keluhan {symptom_phrase}, berikut adalah pilihan obat yang aman dan direkomendasikan:\n"
                         f"• {med_names}\n\n"
-                        f"💡 **Petunjuk & Saran Apoteker:**\n"
+                        f"💡 Petunjuk & Saran Apoteker:\n"
                         f"1. Pastikan minum obat sesuai dosis yang tertera pada kemasan.\n"
                         f"2. Perbanyak istirahat dan minum air putih hangat.\n"
                         f"3. Jika gejala tidak membaik dalam 3 hari, sangat disarankan untuk berkonsultasi ke dokter."
@@ -261,7 +261,7 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
                     # Check allergy warnings
                     allergy_warnings = _check_allergies(relevant, user_allergies)
                     if allergy_warnings:
-                        response_text += "\n\n⚠️ **Catatan Alergi:** Beberapa rekomendasi obat disesuaikan untuk menghindari bahan alergi yang Anda sebutkan."
+                        response_text += "\n\n⚠️ Catatan Alergi: Beberapa rekomendasi obat disesuaikan untuk menghindari bahan alergi yang Anda sebutkan."
 
                     return {
                         'response': response_text,
@@ -391,9 +391,10 @@ def chat():
             if user_history:
                 context_text = " ".join(user_history) + " " + user_message
 
-        # ── Direct Override: Dosis & Efek Samping ──────────────────
+        # ── Direct Override: Dosis & Efek Samping (Powered by Gemini LLM + DB) ──
         lower_msg = user_message.lower()
-        
+        from utils.rag_engine import generate_llm_response
+
         # 1. Dosis / Aturan Pakai
         if any(w in lower_msg for w in ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum']):
             matched_med = None
@@ -411,16 +412,17 @@ def chat():
                             break
                     if matched_med: break
 
-            if matched_med:
-                dosage_info = matched_med.get('dosage') or matched_med.get('note') or 'Sesuai aturan pakai pada kemasan.'
-                res_text = f"💡 **Informasi Dosis & Aturan Pakai {matched_med['name']}:**\n{dosage_info}\n\n⚠️ *Selalu baca petunjuk pada kemasan atau konsultasikan dengan apoteker/dokter jika sakit berlanjut.*"
-                return jsonify({
-                    'status': 'success',
-                    'response': res_text,
-                    'intent': 'dosis',
-                    'confidence': 0.99,
-                    'data': [_build_medicine_response(matched_med)]
-                })
+            # Gunakan Gemini LLM untuk menyusun penjelasan dosis yang ramah dan alami
+            llm_text = generate_llm_response(f"Berapa dosis dan aturan pakai untuk {matched_med['name'] if matched_med else user_message}?")
+            clean_text = llm_text.replace('**', '').replace('*', '')
+
+            return jsonify({
+                'status': 'success',
+                'response': clean_text,
+                'intent': 'dosis',
+                'confidence': 0.99,
+                'data': [_build_medicine_response(matched_med)] if matched_med else None
+            })
 
         # 2. Efek Samping
         if any(w in lower_msg for w in ['efek samping', 'efek', 'bahaya', 'efeknya']):
@@ -439,16 +441,17 @@ def chat():
                             break
                     if matched_med: break
 
-            if matched_med:
-                side_fx = matched_med.get('side_effects') or matched_med.get('sideEffects') or 'Efek samping jarang terjadi jika dikonsumsi sesuai dosis.'
-                res_text = f"ℹ️ **Informasi Efek Samping {matched_med['name']}:**\n{side_fx}\n\n⚠️ *Hentikan penggunaan dan hubungi medis jika mengalami reaksi alergi berat.*"
-                return jsonify({
-                    'status': 'success',
-                    'response': res_text,
-                    'intent': 'efek_samping',
-                    'confidence': 0.99,
-                    'data': [_build_medicine_response(matched_med)]
-                })
+            # Gunakan Gemini LLM untuk menyusun penjelasan efek samping yang ramah dan alami
+            llm_text = generate_llm_response(f"Apa efek samping dari {matched_med['name'] if matched_med else user_message}?")
+            clean_text = llm_text.replace('**', '').replace('*', '')
+
+            return jsonify({
+                'status': 'success',
+                'response': clean_text,
+                'intent': 'efek_samping',
+                'confidence': 0.99,
+                'data': [_build_medicine_response(matched_med)] if matched_med else None
+            })
 
         # Preprocess & predict using the new Hybrid NLP Models
         from utils.nlp import get_vectorizer, get_label_encoder

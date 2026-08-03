@@ -108,7 +108,6 @@ def generate_llm_response(query: str) -> str:
     Generate response using Gemini LLM if available, 
     otherwise fall back to smart keyword-based responses.
     """
-    # Check if Gemini API key is configured
     config = get_config()
     api_key = config.GEMINI_API_KEY if hasattr(config, 'GEMINI_API_KEY') else os.getenv('GEMINI_API_KEY')
 
@@ -118,26 +117,31 @@ def generate_llm_response(query: str) -> str:
             client = google_genai.Client(api_key=api_key)
 
             context = search_medicines_context(query)
-            prompt = f"""Kamu adalah asisten apoteker virtual dari 'Apotek Sehat'.
-Tugasmu adalah menjawab pertanyaan pelanggan dengan ramah, profesional, dan empatik.
-JANGAN MENGARANG NAMA OBAT. Jika pengguna bertanya tentang obat atau gejala, rujuk HANYA pada data obat yang tersedia di bawah ini.
-Jika data obat kosong, sarankan mereka untuk berkonsultasi dengan dokter dan katakan obat yang relevan mungkin sedang kosong.
+            prompt = f"""Kamu adalah asisten apoteker ramah dari 'Apotek Sehat'.
+Jawablah pertanyaan pelanggan berikut dengan bahasa Indonesia yang alami, sopan, dan mudah dipahami.
 
-Data Konteks Obat:
-{context if context else 'TIDAK ADA OBAT YANG COCOK DITEMUKAN UNTUK KELUHAN INI.'}
+PERATURAN PENTING:
+1. JANGAN MENGGUNAKAN SIMBOL MARKDOWN SEPERTI BOLD (**) ATAU ITALIC (*). Gunakan teks biasa yang rapi.
+2. Gunakan baris baru dan poin strip (-) jika membuat daftar agar mudah dibaca.
+3. Rujuk informasi dari Data Obat di bawah ini jika relevan.
+
+Data Obat Terkait:
+{context if context else 'Tidak ada obat spesifik yang cocok.'}
 
 Pertanyaan Pelanggan:
 "{query}"
 
-Berikan jawaban yang singkat, padat, dan langsung ke intinya. (Maksimal 3-4 paragraf)."""
+Berikan jawaban yang jelas, hangat, dan bermanfaat (maksimal 3 paragraf)."""
 
             response = client.models.generate_content(
                 model='gemini-2.5-flash',
                 contents=prompt,
             )
-            return response.text
+            # Cleanup any leftover asterisks
+            text = response.text.replace('**', '').replace('*', '')
+            return text
         except Exception as e:
             print(f"[RAG] Gemini fallback error: {e}")
     
     # Smart fallback without Gemini
-    return _get_fallback_response(query)
+    return _get_fallback_response(query).replace('**', '').replace('*', '')
