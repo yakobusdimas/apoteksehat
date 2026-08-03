@@ -244,7 +244,7 @@ export default function UserDashboard() {
             {/* Actions */}
             <div className="flex items-center gap-2">
               <button
-                onClick={() => setActiveTab('cart')}
+                onClick={() => navigate('/cart')}
                 className="relative flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold px-3 py-2 rounded-xl text-sm transition-all border border-emerald-200/60"
               >
                 <ShoppingCart className="h-4 w-4" />
@@ -327,13 +327,18 @@ export default function UserDashboard() {
         {/* ── TABS ─────────────────────────────────────────────────── */}
         <div className="flex items-center gap-1.5 bg-white rounded-2xl p-1.5 shadow-sm border border-[color:var(--border)]">
           {[
-            { id: 'catalog', label: 'Katalog Obat',      icon: <Home className="h-4 w-4" /> },
-            { id: 'cart',    label: `Keranjang (${totalItems})`, icon: <ShoppingCart className="h-4 w-4" /> },
-            { id: 'orders',  label: 'Pesanan',            icon: <Package className="h-4 w-4" /> },
+            { id: 'catalog', label: 'Katalog Obat',     icon: <Home className="h-4 w-4" /> },
+            { id: 'orders',  label: 'Riwayat Pesanan',  icon: <Package className="h-4 w-4" /> },
           ].map(tab => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                if (tab.id === 'orders') {
+                  navigate('/orders');
+                } else {
+                  setActiveTab(tab.id);
+                }
+              }}
               className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === tab.id
                   ? 'bg-primary text-white shadow-md shadow-emerald-200/50'

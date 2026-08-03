@@ -22,7 +22,8 @@ const categoryColors: Record<string, { bg: string; text: string; border: string 
 export default function MedicineDetailPage() {
   const { id }       = useParams<{ id: string }>();
   const navigate     = useNavigate();
-  const { addToCart } = useCart();
+  const { addToCart, getTotalItems } = useCart();
+  const cartCount = getTotalItems();
   const { isAuthenticated } = useAuth();
   const { getMedicineById } = useMedicines();
   const [isFav, setIsFav] = useState(false);
@@ -99,10 +100,24 @@ export default function MedicineDetailPage() {
             <Heart className={`h-5 w-5 ${isFav ? 'fill-red-400' : ''}`} />
           </button>
 
-          {/* Cart quick-add */}
-          <button onClick={handleAddToCart}
-            className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-all shrink-0 shadow-md shadow-emerald-200">
-            <ShoppingCart className="h-4 w-4" />Tambah ke Keranjang
+          {/* Cart view button */}
+          <button
+            onClick={() => {
+              if (!isAuthenticated) {
+                toast.info('Silakan login untuk melihat keranjang', { action: { label: 'Login', onClick: () => navigate('/login') } });
+                return;
+              }
+              navigate('/cart');
+            }}
+            className="relative flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold text-xs px-3.5 py-2 rounded-xl border border-emerald-200 transition-all shrink-0 shadow-sm"
+          >
+            <ShoppingCart className="h-4 w-4 text-emerald-600" />
+            <span>Keranjang</span>
+            {cartCount > 0 && (
+              <span className="bg-emerald-600 text-white text-[10px] font-bold rounded-full h-5 min-w-[20px] px-1 flex items-center justify-center shadow-sm">
+                {cartCount}
+              </span>
+            )}
           </button>
         </div>
       </header>

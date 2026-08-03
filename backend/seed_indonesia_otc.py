@@ -134,6 +134,13 @@ def seed_otc_catalog():
                 med.stock    = stock
                 med.category = category
                 med.expiry   = expiry
+                med.description  = row.get("composition", "").strip()
+                med.indication   = f"{uses}; Gejala terkait: {keywords}" if keywords else uses
+                med.dosage       = f"Sesuai aturan pakai pada kemasan. {note}".strip() if note else "Sesuai aturan pakai pada kemasan."
+                med.ingredients  = row.get("composition", "").strip()
+                med.benefits     = f"{uses}; {keywords}; {note}".strip("; ")
+                med.side_effects = row.get("side_effects", "").strip()
+                med.type         = infer_type(name)
                 # Update foto hanya jika belum ada foto asli
                 if not med.photo or med.photo.startswith('https://placehold'):
                     med.photo = image_url

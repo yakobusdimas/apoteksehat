@@ -15,9 +15,8 @@ interface WelcomeBannerProps {
 export default function WelcomeBanner({ userName, onNavigateTab }: WelcomeBannerProps) {
   const navigate = useNavigate();
   const quickActions = [
-    { icon: Bot,      label: 'Tanya AI',     color: 'emerald', onClick: () => document.querySelector<HTMLButtonElement>('[aria-label="Buka Asisten Apotek"]')?.click() },
-    { icon: ShoppingCart, label: 'Keranjang', color: 'emerald', onClick: () => onNavigateTab ? onNavigateTab('cart') : null },
-    { icon: Package,  label: 'Pesanan',      color: 'blue',    onClick: () => onNavigateTab ? onNavigateTab('orders') : navigate('/user/orders') },
+    { icon: ShoppingCart, label: 'Keranjang', onClick: () => navigate('/cart') },
+    { icon: Package,      label: 'Pesanan',   onClick: () => navigate('/orders') },
   ];
 
   return (

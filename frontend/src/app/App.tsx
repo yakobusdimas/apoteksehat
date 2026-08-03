@@ -20,6 +20,8 @@ const TrackingPage     = lazy(() => import('./components/TrackingPage'));
 const SettingsPage     = lazy(() => import('./components/SettingsPage'));
 const MedicineDetailPage = lazy(() => import('./components/MedicineDetailPage'));
 const ProfilePage      = lazy(() => import('./components/ProfilePage'));
+const CartPage         = lazy(() => import('./components/CartPage'));
+const OrdersPage       = lazy(() => import('./components/OrdersPage'));
 const PaymentConfirmationPage = lazy(() => import('./components/PaymentConfirmationPage'));
 
 import ProfileCompletionModal from './components/ProfileCompletionModal';
@@ -98,6 +100,12 @@ function AppRoutes() {
 
           <Route path="/user/dashboard" element={
             <ProtectedRoute><ErrorBoundary name="UserDashboard"><UserDashboard /></ErrorBoundary></ProtectedRoute>
+          } />
+          <Route path="/cart" element={
+            <ProtectedRoute><ErrorBoundary name="CartPage"><CartPage /></ErrorBoundary></ProtectedRoute>
+          } />
+          <Route path="/orders" element={
+            <ProtectedRoute><ErrorBoundary name="OrdersPage"><OrdersPage /></ErrorBoundary></ProtectedRoute>
           } />
           <Route path="/medicine/:id" element={
             <ErrorBoundary name="MedicineDetail"><MedicineDetailPage /></ErrorBoundary>
