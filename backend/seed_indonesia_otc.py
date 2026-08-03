@@ -127,6 +127,8 @@ def seed_otc_catalog():
             stock     = int(row.get('stock', rng.randint(40, 250)))
             expiry    = expiries[name_hash % len(expiries)]
 
+            dosage_val = row.get("dosage", "").strip() or f"Sesuai aturan pakai pada kemasan. {note}".strip()
+
             if name in existing:
                 # UPDATE — jaga FK order_items
                 med          = existing[name]
@@ -136,7 +138,7 @@ def seed_otc_catalog():
                 med.expiry   = expiry
                 med.description  = row.get("composition", "").strip()
                 med.indication   = f"{uses}; Gejala terkait: {keywords}" if keywords else uses
-                med.dosage       = f"Sesuai aturan pakai pada kemasan. {note}".strip() if note else "Sesuai aturan pakai pada kemasan."
+                med.dosage       = dosage_val
                 med.ingredients  = row.get("composition", "").strip()
                 med.benefits     = f"{uses}; {keywords}; {note}".strip("; ")
                 med.side_effects = row.get("side_effects", "").strip()
@@ -155,7 +157,7 @@ def seed_otc_catalog():
                 med.stock        = stock
                 med.description  = row.get("composition", "").strip()
                 med.indication   = f"{uses}; Gejala terkait: {keywords}" if keywords else uses
-                med.dosage       = f"Sesuai aturan pakai pada kemasan. {note}".strip()
+                med.dosage       = dosage_val
                 med.ingredients  = row.get("composition", "").strip()
                 med.benefits     = f"{uses}; {keywords}; {note}".strip("; ")
                 med.side_effects = row.get("side_effects", "").strip()
