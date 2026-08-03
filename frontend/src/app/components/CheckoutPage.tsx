@@ -225,28 +225,7 @@ export default function CheckoutPage() {
           {/* Left column */}
           <div className="space-y-5">
 
-            {/* Titik Jemput Otomatis (Apotek) */}
-            <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-2xl border border-emerald-100 dark:border-emerald-900 shadow-sm overflow-hidden">
-              <div className="flex items-center gap-3 border-b border-emerald-100/50 px-5 py-3">
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500 text-white">
-                  <MapPin className="h-4 w-4" />
-                </div>
-                <div>
-                  <h2 className="font-bold text-emerald-900 dark:text-emerald-100 text-sm">Titik Jemput (Otomatis)</h2>
-                </div>
-              </div>
-              <div className="px-5 py-4 flex gap-4">
-                <div className="flex-1">
-                  <p className="font-bold text-emerald-900 dark:text-emerald-100">Apotek Sehat Delanggu (Pusat)</p>
-                  <p className="text-sm text-emerald-700/80 dark:text-emerald-300/80 mt-1">
-                    Jl. Raya Delanggu Utara No. 182, Gatak, Kec. Delanggu, Kab. Klaten, Jawa Tengah 57471
-                  </p>
-                  <a href="https://maps.app.goo.gl/3Xz8mB4F8z" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 mt-2 hover:underline">
-                    Lihat di Google Maps
-                  </a>
-                </div>
-              </div>
-            </div>
+
 
             {/* Shipping address */}
             <div className="bg-[color:var(--card)] rounded-2xl border border-[color:var(--border)] shadow-sm overflow-hidden">
