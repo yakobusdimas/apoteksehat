@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -6,7 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/
 import { Badge } from './ui/badge';
 import {
   Search, ShoppingCart, Heart, Eye, User,
-  Sparkles, ShieldCheck, Truck, Clock3, ArrowRight, MapPin, Pill
+  Sparkles, ShieldCheck, Truck, Clock3, ArrowRight, MapPin,
+  ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { useMedicines, Medicine } from '../context/MedicinesContext';
 import { toast } from 'sonner';
@@ -18,6 +19,8 @@ import HowItWorksSection from './sections/HowItWorksSection';
 import ThemeToggle from './ThemeToggle';
 import { ApotekLogo } from './ApotekLogo';
 import { Disclaimer } from './Disclaimer';
+
+const ITEMS_PER_PAGE = 12;
 
 const CATEGORY_META: Record<string, { emoji: string; color: string; bg: string }> = {
   'Pereda Nyeri': { emoji: '💊', color: 'text-blue-700', bg: 'bg-blue-50' },
@@ -32,18 +35,28 @@ const CATEGORY_META: Record<string, { emoji: string; color: string; bg: string }
 export default function LandingPage() {
   const navigate = useNavigate();
   const { medicines, isLoading } = useMedicines();
-  const [searchQuery, setSearchQuery]       = useState('');
+  const [searchQuery, setSearchQuery]           = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Semua');
   const [selectedMedicine, setSelectedMedicine] = useState<Medicine | null>(null);
+  const [currentPage, setCurrentPage]           = useState(1);
 
   const categories = ['Semua', 'Pereda Nyeri', 'Antibiotik', 'Obat Batuk', 'Flu & Pilek', 'Lambung', 'Vitamin', 'Pencernaan'];
 
-  const filteredMedicines = medicines.filter(m => {
+  const filteredMedicines = useMemo(() => medicines.filter(m => {
     const q = searchQuery.toLowerCase();
     const matchesSearch = m.name.toLowerCase().includes(q) || m.category.toLowerCase().includes(q);
     const matchesCat    = selectedCategory === 'Semua' || m.category === selectedCategory;
     return matchesSearch && matchesCat;
-  });
+  }), [medicines, searchQuery, selectedCategory]);
+
+  const totalPages = Math.ceil(filteredMedicines.length / ITEMS_PER_PAGE);
+  const paginatedMedicines = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredMedicines.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredMedicines, currentPage]);
+
+  // Reset ke halaman 1 saat filter/search berubah
+  useEffect(() => { setCurrentPage(1); }, [searchQuery, selectedCategory]);
 
   const handleAddToCart = () => {
     toast.info('Silakan login untuk menambahkan ke keranjang', {
@@ -254,6 +267,11 @@ export default function LandingPage() {
                 <h2 className="mt-2 text-2xl font-semibold">Temukan produk dalam beberapa detik</h2>
                 <p className="mt-1 text-sm text-[color:var(--muted-foreground)]">
                   {filteredMedicines.length} produk ditemukan
+                  {totalPages > 1 && (
+                    <span className="ml-2 text-primary font-semibold">
+                      — Halaman {currentPage} dari {totalPages}
+                    </span>
+                  )}
                 </p>
               </div>
 
@@ -287,10 +305,10 @@ export default function LandingPage() {
 
             {/* Medicine cards grid */}
             {isLoading ? (
-              <GridSkeleton count={8} />
+              <GridSkeleton count={12} />
             ) : (
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {filteredMedicines.map((medicine, i) => {
+              {paginatedMedicines.map((medicine, i) => {
                 const catMeta = CATEGORY_META[medicine.category] || { emoji: '💊', color: 'text-primary', bg: 'bg-emerald-50' };
                 return (
                   <Card
@@ -304,6 +322,8 @@ export default function LandingPage() {
                       <img
                         src={medicine.photo}
                         alt={medicine.name}
+                        loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                         onError={e => {
                           (e.target as HTMLImageElement).style.display = 'none';
@@ -366,6 +386,54 @@ export default function LandingPage() {
               })}
             </div>
             )}
+
+            {/* ── Pagination controls ── */}
+            {!isLoading && totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 pt-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={currentPage <= 1}
+                  onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 600, behavior: 'smooth' }); }}
+                  className="flex items-center gap-1.5 h-9 px-4 rounded-xl"
+                >
+                  <ChevronLeft className="h-4 w-4" /> Sebelumnya
+                </Button>
+
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                    let page: number;
+                    if (totalPages <= 5)           page = i + 1;
+                    else if (currentPage <= 3)     page = i + 1;
+                    else if (currentPage >= totalPages - 2) page = totalPages - 4 + i;
+                    else                           page = currentPage - 2 + i;
+                    return (
+                      <button
+                        key={page}
+                        onClick={() => { setCurrentPage(page); window.scrollTo({ top: 600, behavior: 'smooth' }); }}
+                        className={`h-9 w-9 rounded-xl text-sm font-semibold transition-all ${
+                          page === currentPage
+                            ? 'bg-primary text-white shadow-md shadow-emerald-200/50'
+                            : 'border border-[color:var(--border)] bg-card text-[color:var(--foreground)] hover:bg-[color:var(--secondary)]'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={currentPage >= totalPages}
+                  onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 600, behavior: 'smooth' }); }}
+                  className="flex items-center gap-1.5 h-9 px-4 rounded-xl"
+                >
+                  Berikutnya <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
           </div>
         </section>
       </main>
@@ -387,20 +455,6 @@ export default function LandingPage() {
               <p className="text-sm leading-7 text-white/65">
                 Platform apotek digital dengan pengalaman yang bersih, rapi, dan mudah dipakai untuk belanja obat maupun konsultasi.
               </p>
-
-              {/* Stats row */}
-              <div className="grid grid-cols-3 gap-3 pt-2">
-                {[
-                  { value: '50K+', label: 'Pengguna' },
-                  { value: '100+', label: 'Produk' },
-                  { value: '4.9★', label: 'Rating' },
-                ].map(s => (
-                  <div key={s.label} className="rounded-xl border border-white/10 bg-white/8 p-3 text-center dark:bg-white/5">
-                    <p className="text-base font-bold text-white">{s.value}</p>
-                    <p className="text-[10px] text-white/55">{s.label}</p>
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className="grid gap-8 sm:grid-cols-3">

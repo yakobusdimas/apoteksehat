@@ -53,7 +53,7 @@ const sortOptions: { value: SortOption; label: string }[] = [
   { value: 'name-za',    label: 'Nama Z–A'         },
 ];
 
-const PER_PAGE = 40;
+const PER_PAGE = 12;
 
 export default function UserDashboard() {
   const navigate = useNavigate();
@@ -391,7 +391,7 @@ export default function UserDashboard() {
 
             {/* Medicine grid */}
             {catalogLoading ? (
-              <GridSkeleton count={8} />
+              <GridSkeleton count={12} />
             ) : catalogMedicines.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-20 gap-4 bg-white rounded-2xl border border-[color:var(--border)]">
                 <span className="text-6xl">🔍</span>
