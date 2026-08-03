@@ -481,6 +481,15 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
                                     className="h-6 px-2 text-[10px] bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
                                     onClick={(e) => {
                                       e.stopPropagation();
+                                      if (!isAuthenticated) {
+                                        toast.info('Silakan login terlebih dahulu untuk menambahkan ke keranjang', {
+                                          action: {
+                                            label: 'Login',
+                                            onClick: () => navigate('/login')
+                                          }
+                                        });
+                                        return;
+                                      }
                                       addToCart(medicine);
                                       toast.success(`${medicine.name} ditambahkan ke keranjang`);
                                     }}
