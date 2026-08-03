@@ -33,6 +33,9 @@ export default defineConfig({
 
   // Proxy API requests to Flask backend during development
   server: {
+    host: '0.0.0.0',
+    port: 5173,
+    allowedHosts: true,
     watch: {
       usePolling: true,
       interval: 500,
