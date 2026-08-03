@@ -17,8 +17,22 @@ interface Courier {
   price: number; estimatedTime: string; logo: string;
 }
 const couriers: Courier[] = [
-  { id: 'gosend',      name: 'GoSend',      service: 'Same Day', price: 15000, estimatedTime: '3-6 Jam', logo: '🟢 🛵' },
-  { id: 'grabexpress', name: 'GrabExpress', service: 'Same Day', price: 17000, estimatedTime: '3-6 Jam', logo: '🟢 🏍️' },
+  { 
+    id: 'gosend',      
+    name: 'GoSend',      
+    service: 'Same Day', 
+    price: 15000, 
+    estimatedTime: '3-6 Jam', 
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/GoSend_logo.svg' 
+  },
+  { 
+    id: 'grabexpress', 
+    name: 'GrabExpress', 
+    service: 'Same Day', 
+    price: 17000, 
+    estimatedTime: '3-6 Jam', 
+    logo: 'https://assets.grab.com/wp-content/uploads/sites/9/2021/04/15153246/GrabExpress_Logo.png' 
+  },
 ];
 const paymentMethods = [
   { id: 'qris-shopee', name: 'QRIS API (ShopeePay)', icon: '📱', description: 'Scan QR Code ini dengan e-Wallet atau M-Banking Anda.' },
@@ -292,9 +306,15 @@ export default function CheckoutPage() {
                           : 'border-[color:var(--border)] hover:border-emerald-200'
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2.5">
-                          <span className="text-2xl">{courier.logo}</span>
+                        <div className="flex items-center gap-3">
+                          <img 
+                            src={courier.logo} 
+                            alt={courier.name} 
+                            className="h-7 max-w-[90px] object-contain shrink-0" 
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = 'none';
+                            }}
+                          />
                           <div>
                             <p className="text-sm font-bold text-[color:var(--foreground)]">{courier.name}</p>
                             <Badge variant="secondary" className="text-[10px] font-bold border-0">{courier.service}</Badge>
