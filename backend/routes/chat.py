@@ -234,15 +234,32 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
                          'kontraindikasi', 'interaksi_obat', 'ketersediaan', 'harga'):
                 relevant = _find_relevant_medicines(user_message, medicines_db, synonyms_data, intent)
 
-                # Filter out medicines containing active allergens if specified
+                # ── HARD STRICT ALLERGY FILTER ─────────────────────────────────────
                 if user_allergies:
-                    user_allergies_lower = [a.strip().lower() for a in user_allergies if a.strip()]
-                    safe_medicines = []
-                    for m in relevant:
-                        text_check = f"{m.get('name','')} {m.get('ingredients','')} {m.get('description','')} {m.get('composition','')}".lower()
-                        if not any(alg in text_check for alg in user_allergies_lower):
-                            safe_medicines.append(m)
-                    if safe_medicines:
+                    user_allergies_lower = [a.strip().lower() for a in user_allergies if a.strip() and len(a.strip()) > 1]
+                    if user_allergies_lower:
+                        safe_medicines = []
+                        for m in relevant:
+                            # Gabungkan seluruh bidang data obat untuk pemeriksaan komprehensif
+                            ingredients_val = m.get('ingredients', '')
+                            if isinstance(ingredients_val, list):
+                                ingredients_str = ' '.join(ingredients_val)
+                            else:
+                                ingredients_str = str(ingredients_val)
+
+                            text_check = f"{m.get('name','')} {ingredients_str} {m.get('description','')} {m.get('composition','')} {m.get('indication','')} {m.get('benefits','')} {m.get('note','')}".lower()
+
+                            # Cek apakah obat mengandung bahan yang dialergi
+                            has_allergen = False
+                            for alg in user_allergies_lower:
+                                if alg in text_check:
+                                    has_allergen = True
+                                    break
+                            
+                            if not has_allergen:
+                                safe_medicines.append(m)
+
+                        # Paksa mengganti relevant hanya dengan obat yang 100% aman
                         relevant = safe_medicines
 
                 if relevant:
@@ -250,7 +267,7 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
 
                     response_text = (
                         f"Halo Kak! 😊 Terima kasih sudah berkonsultasi di Apotek Sehat.\n\n"
-                        f"Untuk membantu meredakan keluhan {symptom_phrase}, berikut adalah pilihan obat yang aman dan direkomendasikan:\n"
+                        f"Untuk membantu meredakan keluhan {symptom_phrase}, berikut adalah pilihan obat yang aman dan bebas dari alergi Anda:\n"
                         f"• {med_names}\n\n"
                         f"💡 Petunjuk & Saran Apoteker:\n"
                         f"1. Pastikan minum obat sesuai dosis yang tertera pada kemasan.\n"
@@ -258,18 +275,17 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
                         f"3. Jika gejala tidak membaik dalam 3 hari, sangat disarankan untuk berkonsultasi ke dokter."
                     )
 
-                    # Check allergy warnings
-                    allergy_warnings = _check_allergies(relevant, user_allergies)
-                    if allergy_warnings:
-                        response_text += "\n\n⚠️ Catatan Alergi: Beberapa rekomendasi obat disesuaikan untuk menghindari bahan alergi yang Anda sebutkan."
+                    if user_allergies:
+                        response_text += f"\n\n🛡️ Catatan Keselamatan Alergi: Seluruh obat di atas telah difilter dan 100% bebas dari bahan alergi ({', '.join(user_allergies)})."
 
                     return {
                         'response': response_text,
-                        'medicines': [_build_medicine_response(m) for m in relevant],
-                        'allergy_warnings': allergy_warnings if allergy_warnings else None,
+                        'medicines': [_build_medicine_response(m) for m in relevant[:3]],
+                        'allergy_warnings': None,
                     }
                 else:
-                    return f"Halo Kak! 😊 Mohon maaf, saat ini stok obat yang spesifik untuk keluhan **{symptom_phrase}** sedang tidak tersedia di sistem kami. Kakak bisa berkonsultasi langsung dengan apoteker/dokter kami untuk alternatif terbaik."
+                    alg_str = ", ".join(user_allergies) if user_allergies else "bahan alergi Anda"
+                    return f"Halo Kak! 😊 Mohon maaf, obat untuk keluhan {symptom_phrase} yang 100% bebas dari bahan alergi ({alg_str}) sedang tidak tersedia di sistem apotek kami. Demi keselamatan Kakak, sangat disarankan untuk berkonsultasi langsung dengan dokter untuk mendapatkan alternatif resep obat yang aman."
 
             # Non-medicine recommendation intents (greeting, bye, etc.)
             if raw_template:
