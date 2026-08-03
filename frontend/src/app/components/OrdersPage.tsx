@@ -103,7 +103,7 @@ export default function OrdersPage() {
           ) : (
             <div className="space-y-4">
               {apiOrders.map(order => {
-                const isCompleted = order.status === 'completed' || order.status === 'selesai';
+                const isCompleted = order.status === 'completed' || order.status === 'selesai' || order.status === 'delivered';
                 const isCancelled = order.status === 'cancelled' || order.status === 'dibatalkan';
 
                 return (

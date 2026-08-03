@@ -214,7 +214,13 @@ export default function TrackingPage() {
                   </div>
                   <div>
                     <h2 className="font-bold text-[color:var(--foreground)]">Status Pengiriman</h2>
-                    <p className="text-xs text-[color:var(--muted-foreground)]">Estimasi: <span className="font-bold text-primary">{order.courier?.estimatedTime || 'Diproses'}</span></p>
+                    <p className="text-xs text-[color:var(--muted-foreground)]">
+                      Estimasi: <span className="font-bold text-primary">
+                        {order.status === 'completed' || order.status === 'selesai' || order.status === 'delivered'
+                          ? 'Pesanan Selesai'
+                          : (order.courier?.estimatedTime || '3-6 Jam')}
+                      </span>
+                    </p>
                   </div>
                 </div>
                 <Badge className={`border-0 font-bold px-3 py-1 ${
