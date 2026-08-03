@@ -19,11 +19,12 @@ interface FloatingChatbotProps {
 }
 
 const QUICK_REPLIES = [
-  'Apa obat untuk demam?',
-  'Bagaimana dosis anak pilek?',
-  'Ada suplemen terbaik?',
-  'Efek samping paracetamol?',
-  'Obat mag yang aman?',
+  'Obat batuk & flu',
+  'Obat demam & nyeri',
+  'Obat maag & lambung',
+  'Obat pencernaan & diare',
+  'Obat kulit & gatal',
+  'Vitamin & suplemen',
 ];
 
 export default function FloatingChatbot({ isAuthenticated = false }: FloatingChatbotProps) {
