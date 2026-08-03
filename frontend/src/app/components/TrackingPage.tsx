@@ -372,12 +372,7 @@ export default function TrackingPage() {
                   </div>
                 </div>
 
-                {order.paymentStatus === 'pending' && (
-                  <Button className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white" onClick={handlePayNow}>
-                    Lakukan Pembayaran
-                  </Button>
-                )}
-                <Button variant="outline" className={`w-full ${order.paymentStatus === 'pending' ? 'mt-2' : 'mt-4'}`} onClick={() => navigate('/user/dashboard')}>
+                <Button className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => navigate('/user/dashboard')}>
                   Kembali ke Dashboard
                 </Button>
               </div>

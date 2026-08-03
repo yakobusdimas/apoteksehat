@@ -73,6 +73,14 @@ function ProtectedRoute({ children, adminOnly = false }: { children: React.React
   return <ProfileCompletionWrapper>{children}</ProfileCompletionWrapper>;
 }
 
+function PublicOnlyRoute({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated, isAdmin } = useAuth();
+  if (isAuthenticated) {
+    return <Navigate to={isAdmin ? '/admin/dashboard' : '/user/dashboard'} replace />;
+  }
+  return <>{children}</>;
+}
+
 function AppRoutes() {
   const { isAuthenticated, isAdmin, isLoading } = useAuth();
 
@@ -84,9 +92,9 @@ function AppRoutes() {
     <ErrorBoundary name="App">
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/" element={<PublicOnlyRoute><LandingPage /></PublicOnlyRoute>} />
+          <Route path="/login" element={<PublicOnlyRoute><LoginPage /></PublicOnlyRoute>} />
+          <Route path="/register" element={<PublicOnlyRoute><RegisterPage /></PublicOnlyRoute>} />
 
           <Route path="/user/dashboard" element={
             <ProtectedRoute><ErrorBoundary name="UserDashboard"><UserDashboard /></ErrorBoundary></ProtectedRoute>

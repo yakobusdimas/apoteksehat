@@ -40,6 +40,7 @@ export const authAPI = {
     const { data, error } = await api.post<AuthResponse>('/api/auth/register', payload);
     if (error) return { success: false, message: error };
     if (data?.token) setToken(data.token);
+    if (data?.user) localStorage.setItem('apotek_user', JSON.stringify(data.user));
     return { success: true, token: data?.token, user: data?.user };
   },
 
@@ -52,6 +53,7 @@ export const authAPI = {
     const { data, error } = await api.post<AuthResponse>('/api/auth/login', { email, password });
     if (error) return { success: false, message: error };
     if (data?.token) setToken(data.token);
+    if (data?.user) localStorage.setItem('apotek_user', JSON.stringify(data.user));
     return { success: true, token: data?.token, user: data?.user };
   },
 
@@ -64,6 +66,7 @@ export const authAPI = {
     const { data, error } = await api.post<AuthResponse>('/api/auth/google', { token });
     if (error) return { success: false, message: error };
     if (data?.token) setToken(data.token);
+    if (data?.user) localStorage.setItem('apotek_user', JSON.stringify(data.user));
     return { success: true, token: data?.token, user: data?.user };
   },
 
@@ -73,6 +76,7 @@ export const authAPI = {
   async getProfile(): Promise<{ success: boolean; user?: UserProfile; message?: string }> {
     const { data, error } = await api.get<{ status: string; user: UserProfile }>('/api/auth/me');
     if (error) return { success: false, message: error };
+    if (data?.user) localStorage.setItem('apotek_user', JSON.stringify(data.user));
     return { success: true, user: data!.user };
   },
 
@@ -86,14 +90,28 @@ export const authAPI = {
       '/api/auth/profile', profileData
     );
     if (error) return { success: false, message: error };
+    if (data?.user) localStorage.setItem('apotek_user', JSON.stringify(data.user));
     return { success: true, user: data!.user };
   },
 
   /**
-   * Logout — remove token (client-side only)
+   * Logout — remove token and cached user (client-side only)
    */
   logout() {
     removeToken();
+    localStorage.removeItem('apotek_user');
+  },
+
+  /**
+   * Get cached user profile from localStorage
+   */
+  getCachedUser(): UserProfile | null {
+    try {
+      const stored = localStorage.getItem('apotek_user');
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
   },
 
   /**

@@ -56,20 +56,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true); // Start true to prevent flash
 
-  // Restore session on mount — validate token with backend
+  // Restore session on mount — use cached user first, then validate token in background
   useEffect(() => {
     async function restoreSession() {
       if (authAPI.hasToken()) {
+        const cached = authAPI.getCachedUser();
+        if (cached) {
+          setUser(cached);
+        }
         try {
           const result = await authAPI.getProfile();
           if (result.success && result.user) {
             setUser(result.user);
-          } else {
-            // Token invalid/expired, clean up
+          } else if (result.message?.includes('Token expired') || result.message?.includes('Invalid token')) {
+            // Only logout if explicitly unauthenticated (401)
             authAPI.logout();
+            setUser(null);
           }
         } catch {
-          // API not reachable — still allow browsing
+          // Network fail — keep cached user so session is not lost!
         }
       }
       setIsLoading(false);

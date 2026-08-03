@@ -176,12 +176,16 @@ export default function MedicineDetailPage() {
               </div>
             </div>
             <div className="space-y-2.5">
-              {medicine.benefits.map((benefit, i) => (
-                <div key={i} className="flex items-start gap-2.5 bg-emerald-50 rounded-xl px-4 py-3">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-0.5 shrink-0" />
-                  <span className="text-sm text-emerald-800 font-medium">{benefit}</span>
-                </div>
-              ))}
+              {medicine.benefits.map((benefit, i) => {
+                const cleaned = benefit.replace(/\s*\(Perlu resep\)/gi, '').replace(/\s*perlu resep/gi, '').trim();
+                if (!cleaned) return null;
+                return (
+                  <div key={i} className="flex items-start gap-2.5 bg-emerald-50 rounded-xl px-4 py-3">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 mt-0.5 shrink-0" />
+                    <span className="text-sm text-emerald-800 font-medium">{cleaned}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -220,7 +224,7 @@ export default function MedicineDetailPage() {
               </div>
             </div>
             <p className="text-sm text-gray-600 leading-relaxed bg-orange-50 rounded-2xl px-4 py-4 border border-orange-100">
-              {medicine.indication}
+              {medicine.indication.replace(/\s*\(Perlu resep\)/gi, '').replace(/\s*perlu resep/gi, '').trim()}
             </p>
           </div>
 
@@ -236,7 +240,9 @@ export default function MedicineDetailPage() {
               </div>
             </div>
             <div className="bg-purple-50 rounded-2xl px-4 py-4 border border-purple-100 mb-3">
-              <p className="text-sm text-purple-800 font-medium leading-relaxed">{medicine.dosage}</p>
+              <p className="text-sm text-purple-800 font-medium leading-relaxed">
+                {medicine.dosage.replace(/\s*\(Perlu resep\)/gi, '').replace(/\s*perlu resep/gi, '').trim()}
+              </p>
             </div>
             <div className="bg-amber-50 rounded-xl px-3 py-2.5 border border-amber-100 flex items-start gap-2">
               <Info className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
