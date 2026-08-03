@@ -166,11 +166,6 @@ function TransaksiPage() {
           <h2 className="text-xl font-bold text-gray-800">Manajemen Transaksi</h2>
           <p className="text-sm text-gray-500 mt-0.5">Total {orders.length} transaksi dari pelanggan</p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm" className="gap-1.5 text-xs" onClick={loadOrders}><RefreshCw className="h-3.5 w-3.5" />Refresh</Button>
-          <Button variant="outline" size="sm" className="gap-1.5 text-xs"><Printer className="h-3.5 w-3.5" />Cetak</Button>
-          <Button variant="outline" size="sm" className="gap-1.5 text-xs"><Download className="h-3.5 w-3.5" />Export</Button>
-        </div>
       </div>
       <div className="grid grid-cols-3 gap-4">
         {[

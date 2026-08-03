@@ -4,6 +4,7 @@ import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { Pill, ArrowLeft, Package, Truck, CheckCircle2, Clock, MapPin, Receipt, ShieldCheck, Loader2 } from 'lucide-react';
+import { ApotekLogo } from './ApotekLogo';
 import ordersAPI from '../services/ordersAPI';
 import paymentAPI from '../services/paymentAPI';
 import { toast } from 'sonner';
@@ -66,13 +67,6 @@ export default function TrackingPage() {
           timestamp: parsedOrder.status === 'delivered' ? new Date(t + 120 * 60000).toISOString() : '',
           location: `${courierName} Hub`,
           completed: parsedOrder.status === 'delivered', current: parsedOrder.status === 'shipped'
-        },
-        {
-          status: 'Dalam Perjalanan',
-          description: parsedOrder.status === 'cancelled' ? 'Pesanan dibatalkan.' : 'Paket dalam perjalanan menuju alamat tujuan.',
-          timestamp: '',
-          location: 'Dalam perjalanan',
-          completed: false, current: parsedOrder.status === 'cancelled'
         },
         {
           status: 'Sampai Tujuan',
@@ -195,9 +189,7 @@ export default function TrackingPage() {
           <Button variant="outline" size="icon" onClick={() => navigate('/user/dashboard')} className="rounded-xl h-9 w-9" aria-label="Kembali ke dashboard">
             <ArrowLeft className="h-4 w-4" />
           </Button>
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 shadow-md shadow-emerald-200/50">
-            <Pill className="h-5 w-5 text-white" />
-          </div>
+          <ApotekLogo size="sm" variant="icon" />
           <div>
             <h1 className="text-sm font-bold text-[color:var(--foreground)]">Pelacakan Pesanan</h1>
             <p className="text-[10px] text-emerald-600 font-medium font-mono uppercase tracking-widest">{orderId}</p>
@@ -239,7 +231,6 @@ export default function TrackingPage() {
                     else if (index === 1) Icon = Package;
                     else if (index === 2) Icon = Truck;
                     else if (index === 3) Icon = MapPin;
-                    else if (index === 4) Icon = CheckCircle2;
 
                     return (
                       <div key={index} className={`relative flex items-start gap-5 ${isWait ? 'opacity-50' : ''}`}>
