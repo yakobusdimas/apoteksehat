@@ -420,15 +420,29 @@ def chat():
                        f"Berapa dosis dan aturan pakai untuk obat {med_name_str}?" if is_dosage_query else \
                        f"Apa saja efek samping dan bahaya dari obat {med_name_str}?"
             
-            llm_text = generate_llm_response(prompt_q)
-            clean_text = llm_text.replace('**', '').replace('*', '')
+            try:
+                llm_text = generate_llm_response(prompt_q)
+                clean_text = llm_text.replace('**', '').replace('*', '')
+            except Exception as err:
+                print(f"[CHAT_ERROR] LLM generation error: {err}")
+                clean_text = ""
+
+            if not clean_text or "Mohon maaf" in clean_text:
+                if matched_med:
+                    d_info = matched_med.get('dosage') or 'Sesuai petunjuk pada kemasan.'
+                    s_info = matched_med.get('side_effects') or matched_med.get('sideEffects') or 'Jarang terjadi jika sesuai dosis.'
+                    clean_text = f"Informasi Obat {matched_med['name']}:\n\n- Dosis & Aturan Pakai: {d_info}\n- Efek Samping: {s_info}\n\n⚠️ Selalu baca petunjuk kemasan atau konsultasikan ke apoteker/dokter jika sakit berlanjut."
+                else:
+                    clean_text = "Mohon maaf, silakan periksa petunjuk aturan pakai pada kemasan obat atau konsultasikan dengan apoteker kami."
+
+            response_data_list = [_build_medicine_response(matched_med)] if matched_med else []
 
             return jsonify({
                 'status': 'success',
                 'response': clean_text,
                 'intent': 'dosis' if is_dosage_query else 'efek_samping',
                 'confidence': 0.99,
-                'data': [_build_medicine_response(matched_med)] if matched_med else None
+                'data': response_data_list
             })
 
         # Preprocess & predict using the new Hybrid NLP Models
