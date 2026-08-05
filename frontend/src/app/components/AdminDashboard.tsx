@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useSearchParams, useLocation } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import { useMedicines, Medicine } from '../context/MedicinesContext';
 import adminAPI, { AdminStats } from '../services/adminAPI';
@@ -1228,6 +1228,8 @@ function LiveChatPage() {
 // ═══════════════════════════════════════════════════════════════════════════════
 export default function AdminDashboard() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
   const { user, logout } = useAuth();
   const { medicines, refetch: refetchMedicines } = useMedicines();
   const [stats, setStats] = useState<AdminStats | null>(null);
@@ -1235,11 +1237,32 @@ export default function AdminDashboard() {
   const [searchQuery, setSearchQuery] = useState('');
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editStock, setEditStock] = useState<number>(0);
-  const [activeMenu, setActiveMenu] = useState('dashboard');
   const [selectedMedicine, setSelectedMedicine] = useState<Medicine | null>(null);
   const [profileOpen, setProfileOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileSidebar, setMobileSidebar] = useState(false);
+
+  // Tab mapping from URL search param or route path
+  const activeMenu = (() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam) return tabParam;
+    
+    if (location.pathname.includes('/admin/transaksi') || location.pathname.includes('/admin/orders')) return 'transaksi';
+    if (location.pathname.includes('/admin/obat') || location.pathname.includes('/admin/medicines')) return 'obat';
+    if (location.pathname.includes('/admin/customer') || location.pathname.includes('/admin/customers')) return 'customer';
+    if (location.pathname.includes('/admin/kelola-admin') || location.pathname.includes('/admin/admins')) return 'admin';
+    if (location.pathname.includes('/admin/profil')) return 'profil';
+    return 'dashboard';
+  })();
+
+  const handleMenuChange = (tabId: string) => {
+    if (tabId === 'dashboard') {
+      navigate('/admin/dashboard');
+    } else {
+      navigate(`/admin/dashboard?tab=${tabId}`);
+    }
+    setMobileSidebar(false);
+  };
 
   const loadAdminSummary = async () => {
     const [statsResult, ordersResult] = await Promise.all([
@@ -1317,7 +1340,7 @@ export default function AdminDashboard() {
             const Icon = item.icon;
             const isActive = activeMenu === item.id;
             return (
-              <button key={item.id} onClick={() => { setActiveMenu(item.id); setMobileSidebar(false); }}
+              <button key={item.id} onClick={() => handleMenuChange(item.id)}
                 className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all text-left
                   ${isActive ? 'bg-white text-emerald-700 shadow-md' : 'text-emerald-100 hover:bg-emerald-600/50 hover:text-white'}`}
                 title={!sidebarOpen ? item.label : undefined}>
@@ -1346,7 +1369,7 @@ export default function AdminDashboard() {
                 const Icon = item.icon;
                 const isActive = activeMenu === item.id;
                 return (
-                  <button key={item.id} onClick={() => { setActiveMenu(item.id); setMobileSidebar(false); }}
+                  <button key={item.id} onClick={() => handleMenuChange(item.id)}
                     className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all text-left
                       ${isActive ? 'bg-white text-emerald-700 shadow-md' : 'text-emerald-100 hover:bg-emerald-600/50 hover:text-white'}`}>
                     <Icon className={`h-4 w-4 shrink-0 ${isActive ? 'text-emerald-600' : ''}`} />
@@ -1411,7 +1434,7 @@ export default function AdminDashboard() {
                   {/* Menu items */}
                   <div className="py-1">
                     <button
-                      onClick={() => { setActiveMenu('profil'); setProfileOpen(false); }}
+                      onClick={() => { handleMenuChange('profil'); setProfileOpen(false); }}
                       className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors font-medium"
                     >
                       <Settings className="h-4 w-4" />Setting Profil
@@ -1455,7 +1478,7 @@ export default function AdminDashboard() {
                       <p className="text-sm text-red-600 mt-0.5">Terdapat <span className="font-bold">{lowStockItems} produk</span> dengan stok kurang dari batas aman (50).</p>
                     </div>
                   </div>
-                  <Button onClick={() => setActiveMenu('obat')} className="bg-red-600 hover:bg-red-700 text-white shadow-sm">
+                  <Button onClick={() => handleMenuChange('obat')} className="bg-red-600 hover:bg-red-700 text-white shadow-sm">
                     Cek Stok Obat
                   </Button>
                 </div>
@@ -1464,10 +1487,10 @@ export default function AdminDashboard() {
               {/* Stat Cards – data nyata */}
               <div className="grid grid-cols-4 gap-4">
                 {[
-                  { label:'Total Customer', value: String(stats?.totalUsers ?? 0), icon:<Users className="h-6 w-6"/>, bg:'from-teal-500 to-teal-600', onClick:()=>setActiveMenu('customer') },
-                  { label:'Total Penjualan', value: String(stats?.totalOrders ?? 0), icon:<ShoppingBag className="h-6 w-6"/>, bg:'from-emerald-500 to-emerald-600', onClick:()=>setActiveMenu('transaksi') },
+                  { label:'Total Customer', value: String(stats?.totalUsers ?? 0), icon:<Users className="h-6 w-6"/>, bg:'from-teal-500 to-teal-600', onClick:()=>handleMenuChange('customer') },
+                  { label:'Total Penjualan', value: String(stats?.totalOrders ?? 0), icon:<ShoppingBag className="h-6 w-6"/>, bg:'from-emerald-500 to-emerald-600', onClick:()=>handleMenuChange('transaksi') },
                   { label:'Total Pendapatan', value:`Rp ${(totalRevenue/1000).toFixed(0)}K`, icon:<TrendingUp className="h-6 w-6"/>, bg:'from-amber-500 to-orange-500', onClick:()=>{} },
-                  { label:'Total Obat', value: String(totalProducts), icon:<Package className="h-6 w-6"/>, bg:'from-red-500 to-rose-600', onClick:()=>setActiveMenu('obat') },
+                  { label:'Total Obat', value: String(totalProducts), icon:<Package className="h-6 w-6"/>, bg:'from-red-500 to-rose-600', onClick:()=>handleMenuChange('obat') },
                 ].map(card => (
                   <div key={card.label} onClick={card.onClick}
                     className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-all cursor-pointer group">
@@ -1488,7 +1511,7 @@ export default function AdminDashboard() {
                 <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                   <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
                     <h3 className="font-semibold text-gray-800">Transaksi Terbaru</h3>
-                    <button onClick={() => setActiveMenu('transaksi')} className="flex items-center gap-1 text-emerald-600 text-xs hover:underline font-medium">
+                    <button onClick={() => handleMenuChange('transaksi')} className="flex items-center gap-1 text-emerald-600 text-xs hover:underline font-medium">
                       See All <ArrowRight className="h-3 w-3" />
                     </button>
                   </div>
@@ -1538,7 +1561,7 @@ export default function AdminDashboard() {
                         <Input placeholder="Cari..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="pl-7 h-7 text-xs w-28 border-gray-200" />
                       </div>
                     </div>
-                    <button onClick={() => setActiveMenu('obat')} className="flex items-center gap-1 text-emerald-600 text-xs hover:underline font-medium">
+                    <button onClick={() => handleMenuChange('obat')} className="flex items-center gap-1 text-emerald-600 text-xs hover:underline font-medium">
                       See All <ArrowRight className="h-3 w-3" />
                     </button>
                   </div>
@@ -1605,7 +1628,7 @@ export default function AdminDashboard() {
                     <p className="text-sm font-semibold text-orange-800">Peringatan Stok Rendah</p>
                     <p className="text-xs text-orange-600">{lowStockItems} obat memiliki stok di bawah 50 unit.</p>
                   </div>
-                  <button onClick={() => setActiveMenu('obat')} className="flex items-center gap-1 text-orange-700 text-xs font-semibold hover:underline">
+                  <button onClick={() => handleMenuChange('obat')} className="flex items-center gap-1 text-orange-700 text-xs font-semibold hover:underline">
                     Lihat Detail <ChevronRight className="h-3.5 w-3.5"/>
                   </button>
                 </div>

@@ -65,6 +65,7 @@ export default function CheckoutPage() {
   // Custom QRIS Modal State
   const [qrisData, setQrisData] = useState<{
     orderId: string;
+    numericId?: number;
     total: number;
     qrUrl: string;
     rawString: string;
@@ -167,12 +168,13 @@ export default function CheckoutPage() {
       localStorage.setItem(`order_${orderId}`, JSON.stringify(localOrder));
       toast.dismiss('payment-loading');
 
-      // Generate dynamic QRIS string / clean QR Code URL (Zero watermark)
-      const rawQrisPayload = `00020101021226680016ID.CO.QRIS.WWW0118936000000000000000203000510445005204599953033605802ID5912APOTEK+SEHAT6007JAKARTA61051234562070703A016304${orderId.substring(0, 4)}`;
+      // Generate dynamic QRIS string / clean QR Code URL using User's Real QRIS (NMID ID1025406017760)
+      const rawQrisPayload = `00020101021126610016ID.CO.SHOPEE.WWW01189360091800221524560208221524560303UMI51440014ID.CO.QRIS.WWW0215ID10254060177600303UMI5204581253033605802ID5908Snackora6006KLATEN61055747162070703A0163049A50`;
       const cleanQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(rawQrisPayload)}&color=059669`;
 
       setQrisData({
         orderId,
+        numericId: created.order.id,
         total,
         qrUrl: cleanQrUrl,
         rawString: rawQrisPayload,
@@ -201,8 +203,34 @@ export default function CheckoutPage() {
 
     if (!buyNowItem) clearCart();
     setShowQRISModal(false);
-    toast.success('Pembayaran QRIS Berhasil dikonfirmasi!');
+    toast.success('Pembayaran QRIS Berhasil dikonfirmasi (Mode Sandbox)!');
     navigate(`/tracking/${orderId}`);
+  };
+
+  const handleCancelOrder = async () => {
+    if (!qrisData) {
+      setShowQRISModal(false);
+      return;
+    }
+    const { orderId, numericId } = qrisData;
+
+    // Call API to cancel order on backend if numericId exists
+    if (numericId) {
+      try {
+        await ordersAPI.cancel(numericId);
+      } catch (err) {
+        console.error('Failed to cancel order on backend:', err);
+      }
+    }
+
+    // Update localStorage so user & admin dashboard reflect cancelled state
+    const order = JSON.parse(localStorage.getItem(`order_${orderId}`) || '{}');
+    order.status = 'cancelled';
+    order.paymentStatus = 'cancelled';
+    localStorage.setItem(`order_${orderId}`, JSON.stringify(order));
+
+    setShowQRISModal(false);
+    toast.info('Pesanan telah dibatalkan.');
   };
 
   const inputBase = "h-11 rounded-xl border-[color:var(--border)] bg-input text-sm focus:ring-2 focus:ring-primary/20";
@@ -478,7 +506,7 @@ export default function CheckoutPage() {
             <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600" />
             
             <button
-              onClick={() => setShowQRISModal(false)}
+              onClick={handleCancelOrder}
               className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition-colors"
             >
               <X className="h-5 w-5" />
@@ -509,7 +537,7 @@ export default function CheckoutPage() {
                 className="w-56 h-56 object-contain rounded-lg"
               />
               <div className="mt-2 text-[10px] text-gray-400 font-mono tracking-wider">
-                NMID: ID102026080500
+                NMID: ID1025406017760 (Apotek Sehat)
               </div>
             </div>
 
@@ -541,7 +569,7 @@ export default function CheckoutPage() {
               </Button>
               <Button
                 variant="outline"
-                onClick={() => setShowQRISModal(false)}
+                onClick={handleCancelOrder}
                 className="w-full h-10 border-gray-200 text-gray-600 rounded-xl text-xs"
               >
                 Bayar Nanti / Batalkan

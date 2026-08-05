@@ -125,6 +125,21 @@ function AppRoutes() {
           <Route path="/admin/dashboard" element={
             <ProtectedRoute adminOnly><ErrorBoundary name="AdminDashboard"><AdminDashboard /></ErrorBoundary></ProtectedRoute>
           } />
+          <Route path="/admin/transaksi" element={
+            <ProtectedRoute adminOnly><ErrorBoundary name="AdminDashboard"><AdminDashboard /></ErrorBoundary></ProtectedRoute>
+          } />
+          <Route path="/admin/obat" element={
+            <ProtectedRoute adminOnly><ErrorBoundary name="AdminDashboard"><AdminDashboard /></ErrorBoundary></ProtectedRoute>
+          } />
+          <Route path="/admin/customer" element={
+            <ProtectedRoute adminOnly><ErrorBoundary name="AdminDashboard"><AdminDashboard /></ErrorBoundary></ProtectedRoute>
+          } />
+          <Route path="/admin/kelola-admin" element={
+            <ProtectedRoute adminOnly><ErrorBoundary name="AdminDashboard"><AdminDashboard /></ErrorBoundary></ProtectedRoute>
+          } />
+          <Route path="/admin/profil" element={
+            <ProtectedRoute adminOnly><ErrorBoundary name="AdminDashboard"><AdminDashboard /></ErrorBoundary></ProtectedRoute>
+          } />
           <Route path="/payment/success" element={
             <ProtectedRoute><ErrorBoundary name="PaymentConfirmation"><PaymentConfirmationPage /></ErrorBoundary></ProtectedRoute>
           } />
