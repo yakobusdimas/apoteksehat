@@ -265,9 +265,10 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
                 if relevant:
                     med_names = ", ".join([m.get("name", "") for m in relevant[:3]])
 
+                    phrase_display = symptom_phrase if symptom_phrase and symptom_phrase != "keluhan Anda" else "gejala yang Anda alami"
                     response_text = (
                         f"Halo Kak! 😊 Terima kasih sudah berkonsultasi di Apotek Sehat.\n\n"
-                        f"Untuk membantu meredakan keluhan {symptom_phrase}, berikut adalah pilihan obat yang aman dan bebas dari alergi Anda:\n"
+                        f"Untuk membantu meredakan {phrase_display}, berikut adalah pilihan obat yang aman dan direkomendasikan:\n"
                         f"• {med_names}\n\n"
                         f"💡 Petunjuk & Saran Apoteker:\n"
                         f"1. Pastikan minum obat sesuai dosis yang tertera pada kemasan.\n"
@@ -407,22 +408,45 @@ def chat():
             if user_history:
                 context_text = " ".join(user_history) + " " + user_message
 
-        # ── Direct Override: Dosis & Efek Samping (Powered by Gemini LLM + DB) ──
+        # ── Direct Override: Dosis, Cara Pakai & Efek Samping (Powered by Gemini LLM + History Context) ──
         lower_msg = user_message.lower()
         from utils.rag_engine import generate_llm_response
 
-        is_dosage_query = any(w in lower_msg for w in ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum'])
-        is_side_effects_query = any(w in lower_msg for w in ['efek samping', 'efek', 'bahaya', 'efeknya'])
+        dosage_keywords = ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum', 'cara pakai', 'pakainya', 'diminum']
+        side_keywords = ['efek samping', 'efek', 'bahaya', 'efeknya', 'aman']
+        followup_keywords = ['yang atas', 'yang pertama', 'paling atas', 'yang nomor 1', 'obat tadi', 'obat tersebut', 'yang ini']
 
-        if is_dosage_query or is_side_effects_query:
+        is_dosage_query = any(w in lower_msg for w in dosage_keywords)
+        is_side_effects_query = any(w in lower_msg for w in side_keywords)
+        is_followup = any(w in lower_msg for w in followup_keywords)
+
+        if is_dosage_query or is_side_effects_query or is_followup:
             matched_med = None
+            
+            # 1. Cari obat yang disebutkan langsung dalam pesan
             for m in medicines:
                 name_low = m.get('name', '').lower()
                 if len(name_low) > 3 and name_low in lower_msg:
                     matched_med = m
                     break
+
+            # 2. Jika tidak ada nama spesifik tetapi merujuk ke obat sebelumnya di history / context
+            if not matched_med and history:
+                # Cari rekomendasi obat terakhir dari bot di history
+                for h in reversed(history):
+                    if h.get('role') == 'assistant' or h.get('sender') == 'bot':
+                        # Cari nama obat dari pesan bot sebelumnya
+                        bot_text = h.get('content') or h.get('message') or ''
+                        for m in medicines:
+                            if m.get('name', '').lower() in bot_text.lower():
+                                matched_med = m
+                                break
+                    if matched_med:
+                        break
+
+            # 3. Fallback pencarian kata parsial nama obat
             if not matched_med:
-                words = [w for w in lower_msg.split() if len(w) > 3 and w not in ['dosis', 'penggunaan', 'obat', 'aturan', 'pakai', 'cara', 'minum', 'berapa', 'kali', 'efek', 'samping', 'bahaya', 'gimana', 'dan']]
+                words = [w for w in lower_msg.split() if len(w) > 3 and w not in dosage_keywords + side_keywords + followup_keywords + ['obat', 'gimana', 'dan', 'bagaimana', 'apa', 'ini']]
                 for w in words:
                     for m in medicines:
                         if w in m.get('name', '').lower():
@@ -430,11 +454,9 @@ def chat():
                             break
                     if matched_med: break
 
-            # Gunakan Gemini LLM untuk menyusun penjelasan Dosis & Efek Samping secara alami
+            # Susun prompt ramah & humanis untuk Gemini LLM
             med_name_str = matched_med['name'] if matched_med else user_message
-            prompt_q = f"Berapa dosis, aturan pakai, dan efek samping dari obat {med_name_str}?" if (is_dosage_query and is_side_effects_query) else \
-                       f"Berapa dosis dan aturan pakai untuk obat {med_name_str}?" if is_dosage_query else \
-                       f"Apa saja efek samping dan bahaya dari obat {med_name_str}?"
+            prompt_q = f"Berapa dosis, aturan pakai, dan efek samping dari obat {med_name_str}?"
             
             try:
                 llm_text = generate_llm_response(prompt_q)
@@ -448,21 +470,19 @@ def chat():
                     raw_d = (matched_med.get('dosage') or '').strip()
                     raw_s = (matched_med.get('side_effects') or matched_med.get('sideEffects') or '').strip()
 
-                    # Bersihkan teks dosis agar konkret dan praktis
                     if not raw_d or 'kemasan' in raw_d.lower():
-                        d_info = 'Dewasa & Anak >12 tahun: 1 tablet/kapsul (atau 1 sachet) 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari.'
+                        d_info = 'Dewasa & Anak >12 tahun: 1 tablet 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari.'
                     else:
                         d_info = raw_d
 
-                    # Bersihkan teks efek samping agar informatif
                     if not raw_s or raw_s.lower() in ['jarang', 'none', 'null', '']:
                         s_info = 'Secara umum ditoleransi dengan baik. Efek samping seperti mual ringan atau pusing sangat jarang terjadi jika dikonsumsi sesuai aturan.'
                     else:
                         s_info = raw_s
 
-                    clean_text = f"Informasi Obat {matched_med['name']}:\n\n- Dosis & Aturan Minum: {d_info}\n- Efek Samping: {s_info}\n\n💡 Catatan Apoteker: Minum obat sesudah makan. Jika gejala tidak membaik dalam 3 hari, segera konsultasikan ke dokter."
+                    clean_text = f"Halo Kak! 😊 Untuk informasi obat {matched_med['name']}:\n\n- Dosis & Cara Pakai: {d_info}\n- Efek Samping: {s_info}\n\n💡 Catatan Apoteker: Sebaiknya dimakan sesudah makan. Jika gejala tidak membaik dalam 3 hari, segera konsultasikan ke dokter ya!"
                 else:
-                    clean_text = "Dosis umum untuk dewasa adalah 1 tablet 3 kali sehari sesudah makan. Obat ini secara umum aman dan jarang menimbulkan efek samping jika dikonsumsi sesuai aturan."
+                    clean_text = "Halo Kak! 😊 Dosis umum obat tersebut adalah 1 tablet 3 kali sehari sesudah makan. Obat ini secara umum aman dan jarang menimbulkan efek samping jika dikonsumsi sesuai aturan dosis."
 
             response_data_list = [_build_medicine_response(matched_med)] if matched_med else []
 
