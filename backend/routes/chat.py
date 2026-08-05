@@ -412,7 +412,14 @@ def chat():
         lower_msg = user_message.lower()
         from utils.rag_engine import generate_llm_response
 
-        dosage_keywords = ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum', 'cara pakai', 'pakainya', 'diminum']
+        # Pastikan mengambil seluruh daftar obat dari Database PostgreSQL
+        try:
+            from models import Medicine
+            all_meds = [m.to_dict() for m in Medicine.query.filter_by(is_active=True).all()]
+        except Exception:
+            all_meds = medicines
+
+        dosage_keywords = ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum', 'cara pakai', 'pakainya', 'diminum', 'pakenya', 'penggunaan', 'pakai']
         side_keywords = ['efek samping', 'efek', 'bahaya', 'efeknya', 'aman']
         followup_keywords = ['yang atas', 'yang pertama', 'paling atas', 'yang nomor 1', 'obat tadi', 'obat tersebut', 'yang ini']
 
@@ -423,10 +430,16 @@ def chat():
         if is_dosage_query or is_side_effects_query or is_followup:
             matched_med = None
             
-            # 1. Cari obat yang disebutkan langsung dalam pesan
-            for m in medicines:
+            # 1. Cari nama obat paling cocok dari database yang ada di pesan user
+            # Diurutkan berdasarkan panjang nama obat terkecil ke terbesar untuk keakuratan
+            sorted_meds = sorted(all_meds, key=lambda x: len(x.get('name', '')), reverse=True)
+            for m in sorted_meds:
                 name_low = m.get('name', '').lower()
-                if len(name_low) > 3 and name_low in lower_msg:
+                # Cek jika nama obat (seperti 'oskadon' atau 'oskadon tablet') ada dalam pesan user
+                clean_name = re.sub(r'\(.*?\)', '', name_low).strip()
+                first_word = clean_name.split()[0] if clean_name.split() else clean_name
+                
+                if (len(clean_name) > 3 and clean_name in lower_msg) or (len(first_word) >= 4 and first_word in lower_msg):
                     matched_med = m
                     break
 
