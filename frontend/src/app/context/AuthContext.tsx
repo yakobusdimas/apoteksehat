@@ -68,8 +68,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           const result = await authAPI.getProfile();
           if (result.success && result.user) {
             setUser(result.user);
-          } else if (result.message?.includes('Token expired') || result.message?.includes('Invalid token')) {
-            // Only logout if explicitly unauthenticated (401)
+          } else if (
+            result.message?.includes('Token expired') ||
+            result.message?.includes('Invalid token') ||
+            result.message?.includes('User tidak ditemukan')
+          ) {
+            // Only logout if explicitly unauthenticated (401/404 stale token)
             authAPI.logout();
             setUser(null);
           }
