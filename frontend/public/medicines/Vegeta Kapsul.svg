@@ -1,0 +1,17 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)" rx="16"/>
+  <g transform="translate(200, 140)">
+    <rect x="-18" y="-18" width="36" height="36" rx="18" fill="#16a34a"/>
+    <text x="0" y="4" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">V</text>
+  </g>
+  <text x="200" y="225" text-anchor="middle" fill="#15803d" font-family="Arial" font-size="18" font-weight="bold">Vegeta Kapsul</text>
+  <text x="200" y="247" text-anchor="middle" fill="#6b7280" font-family="Arial" font-size="12">Suplemen Serat Herbal</text>
+  <circle cx="340" cy="60" r="18" fill="#facc15"/>
+  <text x="340" y="66" text-anchor="middle" fill="#166534" font-family="Arial" font-size="14" font-weight="bold">+</text>
+</svg>

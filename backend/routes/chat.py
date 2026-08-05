@@ -140,8 +140,12 @@ def _extract_symptom_phrase(user_message: str) -> str:
         if cleaned.startswith(p):
             cleaned = cleaned[len(p):].strip()
 
+    # Jika pesan mengandung kata kunci dosis/efek samping, jangan ambil sebagai frasa gejala
+    if any(w in msg_lower for w in ['dosis', 'efek', 'pakai', 'minum', 'gimana', 'pakenya', 'aturan']):
+        return "gejala yang Anda alami"
+
     cleaned = re.sub(r'^[,\.\s]+', '', cleaned)
-    return cleaned if len(cleaned) > 2 else "keluhan Anda"
+    return cleaned if len(cleaned) > 2 and cleaned not in ['dosis', 'efek', 'pakai'] else "gejala yang Anda alami"
 
 
 def _check_allergies(medicines_list: list, user_allergies: list) -> list:
@@ -230,8 +234,7 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
             raw_template = random.choice(responses) if responses else ""
 
             # Check if intent needs medicine recommendation
-            if intent in ('tanya_obat', 'efek_samping', 'dosis', 'kegunaan',
-                         'kontraindikasi', 'interaksi_obat', 'ketersediaan', 'harga'):
+            if intent in ('tanya_obat', 'ketersediaan', 'harga'):
                 relevant = _find_relevant_medicines(user_message, medicines_db, synonyms_data, intent)
 
                 # ── HARD STRICT ALLERGY FILTER ─────────────────────────────────────
@@ -240,7 +243,6 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
                     if user_allergies_lower:
                         safe_medicines = []
                         for m in relevant:
-                            # Gabungkan seluruh bidang data obat untuk pemeriksaan komprehensif
                             ingredients_val = m.get('ingredients', '')
                             if isinstance(ingredients_val, list):
                                 ingredients_str = ' '.join(ingredients_val)
@@ -249,23 +251,20 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
 
                             text_check = f"{m.get('name','')} {ingredients_str} {m.get('description','')} {m.get('composition','')} {m.get('indication','')} {m.get('benefits','')} {m.get('note','')}".lower()
 
-                            # Cek apakah obat mengandung bahan yang dialergi
-                            has_allergen = False
+                            has_allergy = False
                             for alg in user_allergies_lower:
                                 if alg in text_check:
-                                    has_allergen = True
+                                    has_allergy = True
                                     break
-                            
-                            if not has_allergen:
+                            if not has_allergy:
                                 safe_medicines.append(m)
 
-                        # Paksa mengganti relevant hanya dengan obat yang 100% aman
                         relevant = safe_medicines
 
                 if relevant:
                     med_names = ", ".join([m.get("name", "") for m in relevant[:3]])
+                    phrase_display = symptom_phrase if symptom_phrase and symptom_phrase != "keluhan Anda" and not any(w in symptom_phrase for w in ['dosis', 'efek', 'pakai', 'minum', 'gimana']) else "gejala yang Anda alami"
 
-                    phrase_display = symptom_phrase if symptom_phrase and symptom_phrase != "keluhan Anda" else "gejala yang Anda alami"
                     response_text = (
                         f"Halo Kak! 😊 Terima kasih sudah berkonsultasi di Apotek Sehat.\n\n"
                         f"Untuk membantu meredakan {phrase_display}, berikut adalah pilihan obat yang aman dan direkomendasikan:\n"
@@ -284,9 +283,25 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
                         'medicines': [_build_medicine_response(m) for m in relevant[:3]],
                         'allergy_warnings': None,
                     }
-                else:
-                    alg_str = ", ".join(user_allergies) if user_allergies else "bahan alergi Anda"
-                    return f"Halo Kak! 😊 Mohon maaf, obat untuk keluhan {symptom_phrase} yang 100% bebas dari bahan alergi ({alg_str}) sedang tidak tersedia di sistem apotek kami. Demi keselamatan Kakak, sangat disarankan untuk berkonsultasi langsung dengan dokter untuk mendapatkan alternatif resep obat yang aman."
+
+            # Khusus intent dosis, efek_samping, atau informasi obat tertentu
+            if intent in ('dosis', 'efek_samping', 'kegunaan', 'komposisi'):
+                relevant = _find_relevant_medicines(user_message, medicines_db, synonyms_data, intent)
+                matched = relevant[0] if relevant else None
+                med_name = matched['name'] if matched else 'obat tersebut'
+                d_info = (matched.get('dosage') if matched else '') or 'Dewasa: 1 tablet 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari.'
+                s_info = (matched.get('side_effects') if matched else '') or 'Secara umum ditoleransi dengan baik. Efek samping seperti mual atau pusing sangat jarang terjadi jika dikonsumsi sesuai dosis.'
+                
+                resp = f"Halo Kak! 😊 Untuk informasi {med_name}:\n\n- Dosis & Cara Pakai: {d_info}\n- Efek Samping: {s_info}\n\n💡 Catatan Apoteker: Minum sesudah makan dan istirahat yang cukup ya!"
+                return {
+                    'response': resp,
+                    'medicines': [_build_medicine_response(matched)] if matched else [],
+                    'allergy_warnings': None,
+                }
+
+            # Fallback if no medicine found for relevant intents
+            if intent in ('tanya_obat', 'dosis', 'efek_samping', 'kegunaan', 'komposisi'):
+                return "Halo Kak! 😊 Mohon maaf, informasi terkait obat tersebut sedang tidak tersedia di sistem apotek kami. Demi keselamatan Kakak, sangat disarankan untuk berkonsultasi langsung dengan dokter untuk mendapatkan alternatif resep obat yang aman."
 
             # Non-medicine recommendation intents (greeting, bye, etc.)
             if raw_template:
@@ -399,81 +414,76 @@ def chat():
             except (ImportError, Exception):
                 pass
 
-        # Combine history context for NLP intent extraction
+        # History context
         history = data.get('history', [])
-        context_text = user_message
-        if isinstance(history, list) and history:
-            # Only consider the last few user messages for symptom context
-            user_history = [str(h.get('content', '')) for h in history if isinstance(h, dict) and h.get('role') == 'user']
-            if user_history:
-                context_text = " ".join(user_history) + " " + user_message
 
-        # ── Direct Override: Dosis, Cara Pakai & Efek Samping (Powered by Gemini LLM + History Context) ──
-        lower_msg = user_message.lower()
+        # ── OVERRIDE PALING ATAS: Dosis, Cara Pakai, Efek Samping & History Context ──
+        lower_msg = user_message.lower().strip()
         from utils.rag_engine import generate_llm_response
 
-        # Pastikan mengambil seluruh daftar obat dari Database PostgreSQL
+        # Kumpulan keyword dosis & cara pakai (termasuk toleransi typo)
+        dosage_keywords = [
+            'dosis', 'dosisnya', 'aturan pakai', 'cara minum', 'berapa kali', 
+            'aturan minum', 'cara pakai', 'pakainya', 'diminum', 'pakenya', 
+            'penggunaan', 'pakai', 'minumnya'
+        ]
+        # Kumpulan keyword efek samping (termasuk typo 'efel')
+        side_keywords = [
+            'efek samping', 'efek sampingnya', 'efek', 'efel', 'efeknya', 'efelnya', 
+            'sampingnya', 'samping', 'bahaya', 'aman'
+        ]
+        # Kumpulan keyword rujukan obat sebelumnya
+        followup_keywords = [
+            'yang atas', 'yang pertama', 'paling atas', 'yang nomor 1', 
+            'obat tadi', 'obat tersebut', 'yang ini', 'gimana dosisnya', 'gimana cara'
+        ]
+
+        is_dosage_query = any(w in lower_msg for w in dosage_keywords)
+        is_side_effects_query = any(w in lower_msg for w in side_keywords)
+        is_followup = any(w in lower_msg for w in followup_keywords)
+
+        # Ambil seluruh obat dari DB PostgreSQL / Memory
         try:
             from models import Medicine
             all_meds = [m.to_dict() for m in Medicine.query.filter_by(is_active=True).all()]
         except Exception:
             all_meds = medicines
 
-        dosage_keywords = ['dosis', 'aturan pakai', 'cara minum', 'berapa kali', 'aturan minum', 'cara pakai', 'pakainya', 'diminum', 'pakenya', 'penggunaan', 'pakai']
-        side_keywords = ['efek samping', 'efek', 'bahaya', 'efeknya', 'aman']
-        followup_keywords = ['yang atas', 'yang pertama', 'paling atas', 'yang nomor 1', 'obat tadi', 'obat tersebut', 'yang ini']
-
-        is_dosage_query = any(w in lower_msg for w in dosage_keywords)
-        is_side_effects_query = any(w in lower_msg for w in side_keywords)
-        is_followup = any(w in lower_msg for w in followup_keywords)
-
         if is_dosage_query or is_side_effects_query or is_followup:
             matched_med = None
             
-            # 1. Cari nama obat paling cocok dari database yang ada di pesan user
-            # Diurutkan berdasarkan panjang nama obat terkecil ke terbesar untuk keakuratan
+            # 1. Cari obat yang disebutkan dalam pesan (diurutkan berdasarkan nama terpanjang)
             sorted_meds = sorted(all_meds, key=lambda x: len(x.get('name', '')), reverse=True)
             for m in sorted_meds:
                 name_low = m.get('name', '').lower()
-                # Cek jika nama obat (seperti 'oskadon' atau 'oskadon tablet') ada dalam pesan user
                 clean_name = re.sub(r'\(.*?\)', '', name_low).strip()
                 first_word = clean_name.split()[0] if clean_name.split() else clean_name
                 
-                if (len(clean_name) > 3 and clean_name in lower_msg) or (len(first_word) >= 4 and first_word in lower_msg):
+                # Cek exact atau partial match pada nama obat (misal 'bodrex', 'oskadon', 'panadol')
+                if (len(clean_name) >= 3 and clean_name in lower_msg) or (len(first_word) >= 3 and first_word in lower_msg):
                     matched_med = m
                     break
 
-            # 2. Jika tidak ada nama spesifik tetapi merujuk ke obat sebelumnya di history / context
+            # 2. Jika nama obat tidak ada dalam pesan, ambil dari rekomendasi terakhir bot di history!
             if not matched_med and history:
-                # Cari rekomendasi obat terakhir dari bot di history
                 for h in reversed(history):
                     if h.get('role') == 'assistant' or h.get('sender') == 'bot':
-                        # Cari nama obat dari pesan bot sebelumnya
-                        bot_text = h.get('content') or h.get('message') or ''
-                        for m in medicines:
-                            if m.get('name', '').lower() in bot_text.lower():
+                        bot_text = (h.get('content') or h.get('message') or '').lower()
+                        for m in sorted_meds:
+                            med_n = m.get('name', '').lower()
+                            if med_n and med_n in bot_text:
                                 matched_med = m
                                 break
                     if matched_med:
                         break
 
-            # 3. Fallback pencarian kata parsial nama obat
-            if not matched_med:
-                words = [w for w in lower_msg.split() if len(w) > 3 and w not in dosage_keywords + side_keywords + followup_keywords + ['obat', 'gimana', 'dan', 'bagaimana', 'apa', 'ini']]
-                for w in words:
-                    for m in medicines:
-                        if w in m.get('name', '').lower():
-                            matched_med = m
-                            break
-                    if matched_med: break
-
-            # Susun prompt ramah & humanis untuk Gemini LLM
+            # 3. Panggil Groq LLM untuk menyusun penjelasan medis yang alami & tepat
             med_name_str = matched_med['name'] if matched_med else user_message
-            prompt_q = f"Berapa dosis, aturan pakai, dan efek samping dari obat {med_name_str}?"
+            prompt_q = f"Sebagai Apoteker AI, jelaskan dosis konkret (berapa kali sehari dan sesudah/sebelum makan) serta efek samping dari obat {med_name_str}. Jawablah dengan ramah dan langsung."
             
             try:
                 llm_text = generate_llm_response(prompt_q)
-                clean_text = llm_text.replace('**', '').replace('*', '')
+                clean_text = llm_text.replace('**', '').replace('*', '').strip()
             except Exception as err:
                 print(f"[CHAT_ERROR] LLM generation error: {err}")
                 clean_text = ""
@@ -484,18 +494,18 @@ def chat():
                     raw_s = (matched_med.get('side_effects') or matched_med.get('sideEffects') or '').strip()
 
                     if not raw_d or 'kemasan' in raw_d.lower():
-                        d_info = 'Dewasa & Anak >12 tahun: 1 tablet 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari.'
+                        d_info = 'Dewasa: 1 tablet 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari.'
                     else:
                         d_info = raw_d
 
                     if not raw_s or raw_s.lower() in ['jarang', 'none', 'null', '']:
-                        s_info = 'Secara umum ditoleransi dengan baik. Efek samping seperti mual ringan atau pusing sangat jarang terjadi jika dikonsumsi sesuai aturan.'
+                        s_info = 'Secara umum ditoleransi dengan baik jika dikonsumsi sesuai dosis.'
                     else:
                         s_info = raw_s
 
-                    clean_text = f"Halo Kak! 😊 Untuk informasi obat {matched_med['name']}:\n\n- Dosis & Cara Pakai: {d_info}\n- Efek Samping: {s_info}\n\n💡 Catatan Apoteker: Sebaiknya dimakan sesudah makan. Jika gejala tidak membaik dalam 3 hari, segera konsultasikan ke dokter ya!"
+                    clean_text = f"Halo Kak! 😊 Untuk informasi {matched_med['name']}:\n\n- Dosis & Cara Pakai: {d_info}\n- Efek Samping: {s_info}\n\n💡 Catatan Apoteker: Sebaiknya diminum sesudah makan ya!"
                 else:
-                    clean_text = "Halo Kak! 😊 Dosis umum obat tersebut adalah 1 tablet 3 kali sehari sesudah makan. Obat ini secara umum aman dan jarang menimbulkan efek samping jika dikonsumsi sesuai aturan dosis."
+                    clean_text = "Halo Kak! 😊 Dosis umum obat tersebut adalah 1 tablet 3 kali sehari sesudah makan. Obat ini secara umum aman jika dikonsumsi sesuai petunjuk dosis."
 
             response_data_list = [_build_medicine_response(matched_med)] if matched_med else []
 
@@ -512,7 +522,7 @@ def chat():
         vectorizer = get_vectorizer()
         le = get_label_encoder()
         
-        processed = preprocess_text(context_text)
+        processed = preprocess_text(user_message)
         
         if vectorizer and le:
             # Enhanced Logistic Regression pipeline

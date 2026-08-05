@@ -16,8 +16,28 @@ function figmaAssetResolver() {
   }
 }
 
+function safeUriMiddleware() {
+  return {
+    name: 'safe-uri-middleware',
+    configureServer(server: any) {
+      server.middlewares.use((req: any, _res: any, next: any) => {
+        if (req.url) {
+          try {
+            decodeURI(req.url);
+          } catch {
+            // Fix unescaped % signs to prevent URI malformed error in Vite static middleware
+            req.url = req.url.replace(/%(?![0-9A-Fa-f]{2})/g, '%25');
+          }
+        }
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig({
   plugins: [
+    safeUriMiddleware(),
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
@@ -36,6 +56,9 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5173,
     allowedHosts: true,
+    hmr: {
+      overlay: false,
+    },
     watch: {
       usePolling: true,
       interval: 500,
@@ -43,22 +66,22 @@ export default defineConfig({
     },
     proxy: {
       '/api/payment': {
-        target: 'http://payment-server:3001',
+        target: process.env.PAYMENT_URL || 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
       },
       '/api': {
-        target: 'http://backend:5000',
+        target: process.env.BACKEND_URL || 'http://localhost:5000',
         changeOrigin: true,
         secure: false,
       },
       '/static': {
-        target: 'http://backend:5000',
+        target: process.env.BACKEND_URL || 'http://localhost:5000',
         changeOrigin: true,
         secure: false,
       },
       '/payment': {
-        target: 'http://payment-server:3001',
+        target: process.env.PAYMENT_URL || 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
       },

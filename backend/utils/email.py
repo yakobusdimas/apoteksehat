@@ -15,8 +15,12 @@ Usage:
 
 import os
 from flask import current_app
-from flask_mail import Message
-from app import mail
+from flask_mail import Message, Mail
+
+
+def _get_mail():
+    """Lazy-load the Mail instance from current app to avoid circular imports."""
+    return current_app.extensions.get('mail') or current_app.extensions.get('flask-mail')
 
 
 def _get_mail_config():
@@ -60,7 +64,7 @@ def send_email(subject: str, recipients: list[str], html_body: str):
             sender=config["MAIL_DEFAULT_SENDER"],
         )
         
-        mail.send(msg)
+        _get_mail().send(msg)
         return True
         
     except Exception as e:

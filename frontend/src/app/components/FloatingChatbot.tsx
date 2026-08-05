@@ -393,7 +393,7 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
                             <div className="flex items-start gap-3">
                               {medicine.photo ? (
                                 <img
-                                  src={medicine.photo}
+                                  src={encodeURI(medicine.photo)}
                                   alt={medicine.name}
                                   className="w-10 h-10 rounded-lg object-cover border border-gray-100 shrink-0"
                                   onError={(e) => {

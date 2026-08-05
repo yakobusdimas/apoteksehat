@@ -41,10 +41,14 @@ class Config:
 
     # Database — Docker/local uses PostgreSQL via DATABASE_URL; SQLite is only a fallback.
     # Docker format: postgresql://apotek_user:apotek_password_local@postgres:5432/apotek_db
-    SQLALCHEMY_DATABASE_URI = os.getenv(
-        'DATABASE_URL',
-        'sqlite:///apotek.db'
-    )
+    _db_url = os.getenv('DATABASE_URL', '')
+    if not _db_url or _db_url.startswith('sqlite:///') and ('\\' in _db_url or not _db_url.startswith('sqlite:////')):
+        # Build absolute SQLite path berdasarkan lokasi backend/
+        _backend_dir = os.path.dirname(os.path.abspath(__file__))
+        _db_file = os.path.join(_backend_dir, 'instance', 'apotek.db')
+        SQLALCHEMY_DATABASE_URI = f'sqlite:///{_db_file}'
+    else:
+        SQLALCHEMY_DATABASE_URI = _db_url
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Flask

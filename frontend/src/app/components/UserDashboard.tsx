@@ -416,7 +416,7 @@ export default function UserDashboard() {
                       <div className={`relative h-44 overflow-hidden ${meta.bg}`}>
                         {medicine.photo ? (
                           <img
-                            src={medicine.photo}
+                            src={encodeURI(medicine.photo)}
                             alt={medicine.name}
                             loading="lazy"
                             decoding="async"

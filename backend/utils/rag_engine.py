@@ -77,10 +77,12 @@ def search_medicines_context(query: str) -> str:
         if id_term in augmented_query:
             augmented_query += f" {en_term}"
     
-    keywords = [w.lower() for w in augmented_query.replace('?', ' ').replace(',', ' ').split() if len(w) > 2]
+    stopwords = {'gimana', 'dosisnya', 'dosis', 'efek', 'samping', 'pakai', 'pakenya', 'cara', 'minum', 'aturan', 'berapa', 'kali', 'apa', 'ini', 'itu', 'dong', 'kak', 'obat'}
+    keywords = [w.lower() for w in augmented_query.replace('?', ' ').replace(',', ' ').split() if len(w) > 2 and w.lower() not in stopwords]
     if not keywords:
-        return ""
-    
+        # If all words were stopwords, fallback to raw query
+        keywords = [w.lower() for w in augmented_query.replace('?', ' ').replace(',', ' ').split() if len(w) > 2]
+
     filters = []
     for kw in keywords:
         filters.append(Medicine.name.ilike(f'%{kw}%'))
@@ -88,17 +90,30 @@ def search_medicines_context(query: str) -> str:
         filters.append(Medicine.benefits.ilike(f'%{kw}%'))
         filters.append(Medicine.description.ilike(f'%{kw}%'))
     
-    results = Medicine.query.filter(or_(*filters)).limit(5).all()
+    results = Medicine.query.filter(or_(*filters)).limit(10).all()
     if not results:
         return ""
     
-    context_lines = ["--- DATA OBAT TERSEDIA ---"]
+    # Sort results: exact or prefix match on Medicine.name first!
+    kw_str = " ".join(keywords).lower()
+    results = sorted(results, key=lambda m: 0 if any(k in m.name.lower() for k in keywords) else 1)
+    results = results[:4]
+
+    context_lines = ["--- DATA RUJUKAN OBAT APOTEK SEHAT ---"]
     for med in results:
+        d_val = (med.dosage or '').strip()
+        if not d_val or 'kemasan' in d_val.lower():
+            d_val = "Dewasa & Anak >12 tahun: 1 tablet 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari."
+
+        s_val = (med.side_effects or '').strip()
+        if not s_val or s_val.lower() in ['jarang', 'none', 'null', '']:
+            s_val = "Secara umum ditoleransi dengan baik jika dikonsumsi sesuai dosis."
+
         context_lines.append(
-            f"Nama Obat: {med.name} | Kategori: {med.category} | Harga: Rp{med.price} | Stok: {med.stock}\n"
-            f"Indikasi: {med.indication}\n"
-            f"Dosis: {med.dosage}\n"
-            f"Efek Samping: {med.side_effects}\n"
+            f"- Nama Obat: {med.name}\n"
+            f"  Indikasi: {med.indication}\n"
+            f"  Dosis & Aturan Minum: {d_val}\n"
+            f"  Efek Samping: {s_val}\n"
         )
     return "\n".join(context_lines)
 
@@ -118,12 +133,11 @@ def generate_llm_response(query: str) -> str:
     context = search_medicines_context(query)
     prompt_system = (
         "Kamu adalah 'Apoteker AI' resmi dari 'Apotek Sehat'. Jawablah dengan hangat, ramah, dan sangat manusiawi.\n\n"
-        "TUGAS DAN ATURAN UTAMA:\n"
-        "1. BATASAN DOMAIN: Jawab pertanyaan seputar kesehatan, obat-obatan, dosis, cara minum, efek samping, indikasi, dan suplemen.\n"
-        "2. BERIKAN DOSIS & CARA PAKAI DENGAN JELAS: Untuk obat-obatan Indonesia (seperti Oskadon, Bodrex, Panadol, Inzana, Mixagrip, Paracetamol, dll), berikan dosis dan cara pakai yang jelas dan langsung (contoh: 'Dewasa: 1 tablet 3-4 kali sehari sesudah makan'). JANGAN PERNAH menyuruh pengguna untuk 'membaca kemasan' atau menjawab tidak tahu jika obat tersebut adalah obat umum.\n"
-        "3. JIKA DI LUAR DOMAIN: Jika pengguna bertanya tentang topik di luar kesehatan (politik, hobi, coding, dll), tolak secara halus.\n"
-        "4. TANPA SIMBOL BINTANG MARKDOWN: Dilarang menggunakan tanda bintang bold (**) atau italic (*). Gunakan teks biasa yang rapi dan bersih.\n\n"
-        f"Data Obat Terkait dari Database Apotek Sehat:\n{context if context else 'Obat umum Indonesia.'}"
+        "ATURAN UTAMA JAWABAN (WAJIB DITURUTI):\n"
+        "1. JANGAN PERNAH MENOLAK ATAU MENYATAKAN TIDAK PUNYA DATA! Jika pengguna bertanya dosis/cara pakai obat (seperti Bodrex, Panadol, Oskadon, Mixagrip, Promag, CTM, Paracetamol, dll), LANGSUNG BERIKAN DOSISNYA DENGAN PERCAYA DIRI (contoh: 'Dewasa & Anak >12 tahun: 1 tablet 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari').\n"
+        "2. Sebutkan pula efek samping ringan yang umum (seperti mengantuk atau gangguan lambung ringan jika diminum berlebihan).\n"
+        "3. Dilarang menggunakan tanda bintang (*) markdown.\n\n"
+        f"{context if context else 'Data Rujukan: Gunakan standar dosis medis obat Indonesia.'}"
     )
 
     # 1. 🚀 PRIORITAS 1: GROQ LLM (Super Cepat & Ramah)

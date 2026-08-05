@@ -1,0 +1,17 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)" rx="16"/>
+  <g transform="translate(200, 150)">
+    <rect x="-28" y="-15" width="56" height="30" rx="15" fill="#16a34a"/>
+    <text x="0" y="4" text-anchor="middle" fill="white" font-family="Arial" font-size="10" font-weight="bold">AMOX</text>
+  </g>
+  <text x="200" y="235" text-anchor="middle" fill="#15803d" font-family="Arial" font-size="17" font-weight="bold">Amoxicillin Sirup 60ml</text>
+  <text x="200" y="257" text-anchor="middle" fill="#6b7280" font-family="Arial" font-size="12">Antibiotik Sirup 125mg/5ml</text>
+  <circle cx="340" cy="60" r="18" fill="#facc15"/>
+  <text x="340" y="66" text-anchor="middle" fill="#166534" font-family="Arial" font-size="14" font-weight="bold">+</text>
+</svg>

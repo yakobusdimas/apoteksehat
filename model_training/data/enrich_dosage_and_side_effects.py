@@ -79,4 +79,4 @@ with open(csv_path, mode='w', encoding='utf-8', newline='') as f:
     writer.writeheader()
     writer.writerows(rows)
 
-print(f'✅ BERHASIL memperkaya data DOSIS dan EFEK SAMPING untuk {len(rows)} produk obat!')
+    print(f'[OK] BERHASIL memperkaya data DOSIS dan EFEK SAMPING untuk {len(rows)} produk obat!')
