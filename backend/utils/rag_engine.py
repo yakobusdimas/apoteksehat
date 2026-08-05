@@ -105,44 +105,72 @@ def search_medicines_context(query: str) -> str:
 
 def generate_llm_response(query: str) -> str:
     """
-    Generate response using Gemini LLM if available, 
+    Generate response using Groq LLM (Llama-3.3 70B) or Gemini LLM if available, 
     otherwise fall back to smart keyword-based responses.
     """
-    config = get_config()
-    api_key = config.GEMINI_API_KEY if hasattr(config, 'GEMINI_API_KEY') else os.getenv('GEMINI_API_KEY')
+    import urllib.request
+    import json
 
-    if api_key:
+    config = get_config()
+    groq_key = os.getenv('GROQ_API_KEY') or (getattr(config, 'GROQ_API_KEY', None))
+    gemini_key = config.GEMINI_API_KEY if hasattr(config, 'GEMINI_API_KEY') else os.getenv('GEMINI_API_KEY')
+
+    context = search_medicines_context(query)
+    prompt_system = (
+        "Kamu adalah 'Apoteker AI' resmi dari 'Apotek Sehat'. Jawablah dengan ramah, hangat, dan sangat manusiawi.\n\n"
+        "TUGAS DAN ATURAN UTAMA:\n"
+        "1. BATASAN DOMAIN: Kamu HANYA boleh menjawab pertanyaan seputar kesehatan, obat-obatan, dosis, cara minum, efek samping, indikasi, dan suplemen.\n"
+        "2. BERIKAN ATURAN MINUM & DOSIS LANGSUNG: Berikan dosis dan cara pakai dengan jelas dan langsung (misal: 'Dewasa: 1 tablet 3 kali sehari sesudah makan'). JANGAN pernah menyuruh pengguna untuk 'membaca kemasan'.\n"
+        "3. JIKA DI LUAR DOMAIN: Jika pengguna bertanya tentang topik di luar kesehatan (politik, hobi, coding, dll), tolak secara halus.\n"
+        "4. TANPA SIMBOL BINTANG MARKDOWN: Dilarang menggunakan tanda bintang bold (**) atau italic (*). Gunakan teks biasa yang rapi dan bersih.\n"
+        f"Data Obat Terkait dari Database Apotek Sehat:\n{context if context else 'Tidak ada obat spesifik dari database.'}"
+    )
+
+    # 1. 🚀 PRIORITAS 1: GROQ LLM (Super Cepat & Ramah)
+    if groq_key and groq_key.startswith('gsk_'):
+        try:
+            url = "https://api.groq.com/openai/v1/chat/completions"
+            payload = {
+                "model": "llama-3.3-70b-versatile",
+                "messages": [
+                    {"role": "system", "content": prompt_system},
+                    {"role": "user", "content": query}
+                ],
+                "temperature": 0.5,
+                "max_tokens": 500
+            }
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(payload).encode('utf-8'),
+                headers={
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {groq_key}"
+                }
+            )
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                res_data = json.loads(resp.read().decode('utf-8'))
+                text = res_data['choices'][0]['message']['content']
+                clean_text = text.replace('**', '').replace('*', '').strip()
+                if clean_text:
+                    return clean_text
+        except Exception as e:
+            print(f"[RAG] Groq API error: {e}")
+
+    # 2. 🌟 PRIORITAS 2: GEMINI LLM
+    if gemini_key and gemini_key.startswith('AIzaSy'):
         try:
             from google import genai as google_genai
-            client = google_genai.Client(api_key=api_key)
-
-            context = search_medicines_context(query)
-            prompt = f"""Kamu adalah 'Apoteker AI' resmi dari 'Apotek Sehat'.
-
-TUGAS DAN ATURAN UTAMA (WAJIB DITURUTI):
-1. BATASAN DOMAIN: Kamu HANYA boleh menjawab pertanyaan seputar kesehatan, obat-obatan, dosis, cara minum, efek samping, indikasi, dan suplemen.
-2. BERIKAN ATURAN MINUM LANGSUNG: Karena pengguna berkonsultasi secara online, BERIKAN DOSIS DAN CARA MINUM DENGAN JELAS DAN LANGSUNG (misal: "Dewasa: 1 tablet 3 kali sehari sesudah makan"). JANGAN menyuruh pengguna untuk "membaca kemasan".
-3. JIKA DI LUAR DOMAIN: Jika pengguna bertanya tentang topik di luar kesehatan (misal: politik, teknologi, hobi, matematika, coding, hiburan, dll), TOLAK DENGAN RAMAH.
-4. DILARANG MENGGUNAKAN SIMBOL MARKDOWN: Jangan gunakan tanda bintang bold (**) atau italic (*). Gunakan teks biasa yang rapi dan bersih.
-4. JANGAN MEMBUAT NAMA OBAT PALSU: Rujuk pada Data Obat Terkait di bawah ini untuk akurasi.
-
-Data Obat Terkait dari Database Apotek Sehat:
-{context if context else 'Tidak ada obat spesifik dari database.'}
-
-Pertanyaan Pelanggan:
-"{query}"
-
-Berikan jawaban yang ramah, jelas, ilmiah, dan mudah dipahami (maksimal 3 paragraf)."""
-
+            client = google_genai.Client(api_key=gemini_key)
+            prompt_full = f"{prompt_system}\n\nPertanyaan Pelanggan: \"{query}\"\n\nBerikan jawaban ramah dan ilmiah:"
             response = client.models.generate_content(
                 model='gemini-2.5-flash',
-                contents=prompt,
+                contents=prompt_full,
             )
-            # Cleanup any leftover asterisks
-            text = response.text.replace('**', '').replace('*', '')
-            return text
+            text = response.text.replace('**', '').replace('*', '').strip()
+            if text:
+                return text
         except Exception as e:
             print(f"[RAG] Gemini fallback error: {e}")
     
-    # Smart fallback without Gemini
+    # 3. 💡 Smart fallback jika tanpa API key
     return _get_fallback_response(query).replace('**', '').replace('*', '')
