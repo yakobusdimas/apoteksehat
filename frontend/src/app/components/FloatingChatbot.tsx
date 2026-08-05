@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Stethoscope, Send, X, Lock, AlertCircle, HeadphonesIcon, Minus, Maximize2, Minimize2, AlertTriangle, ShoppingCart } from 'lucide-react';
+import { Stethoscope, Send, X, Lock, AlertCircle, HeadphonesIcon, Minus, Maximize2, Minimize2, AlertTriangle, ShoppingCart, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { sendChatMessage, checkAPIHealth, getAllMedicinesFromAPI } from '../services/chatbotAPI';
 import type { ChatMessage, AllergyWarning } from '../types/chatbot';
@@ -53,14 +53,49 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
   const [showAllergyPrompt, setShowAllergyPrompt] = useState(false);
   const [pendingQuery, setPendingQuery] = useState<string | null>(null);
 
-  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
-    {
-      id: 1,
-      sender: 'bot',
-      message: 'Halo! Selamat datang di Apotek Sehat 👋\n\nSaya siap membantu Anda menemukan obat yang sesuai secara aman. Ceritakan keluhan Anda, dan saya akan memberikan rekomendasi terbaik.\n\n⚠️ Catatan: Rekomendasi ini bukan pengganti konsultasi dokter atau apoteker.',
-      timestamp: new Date()
+  const INITIAL_MESSAGE: ChatMessage = {
+    id: 1,
+    sender: 'bot',
+    message: 'Halo! Selamat datang di Apotek Sehat 👋\n\nSaya siap membantu Anda menemukan obat yang sesuai secara aman. Ceritakan keluhan Anda, dan saya akan memberikan rekomendasi terbaik.\n\n⚠️ Catatan: Rekomendasi ini bukan pengganti konsultasi dokter atau apoteker.',
+    timestamp: new Date()
+  };
+
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>(() => {
+    try {
+      const saved = localStorage.getItem('apotek_chat_history');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.map((m: any) => ({
+            ...m,
+            timestamp: new Date(m.timestamp)
+          }));
+        }
+      }
+    } catch (e) {
+      console.error('Failed to restore chat history', e);
     }
-  ]);
+    return [INITIAL_MESSAGE];
+  });
+
+  // Save chat history to localStorage on change
+  useEffect(() => {
+    try {
+      localStorage.setItem('apotek_chat_history', JSON.stringify(chatMessages));
+    } catch (e) {
+      console.error('Failed to save chat history', e);
+    }
+  }, [chatMessages]);
+
+  const handleResetChat = () => {
+    setChatMessages([{
+      ...INITIAL_MESSAGE,
+      id: Date.now(),
+      timestamp: new Date()
+    }]);
+    localStorage.removeItem('apotek_chat_history');
+    toast.success('Riwayat percakapan telah dibersihkan.');
+  };
 
   // Check API health on mount and when chat is opened
   useEffect(() => {
@@ -246,6 +281,15 @@ export default function FloatingChatbot({ isAuthenticated = false }: FloatingCha
               </div>
             </div>
             <div className="flex items-center gap-0.5">
+              {/* 🗑 Reset Chat */}
+              <button
+                onClick={handleResetChat}
+                title="Bersihkan Riwayat Chat"
+                aria-label="Bersihkan Riwayat Chat"
+                className="h-8 w-8 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/20 rounded transition-colors"
+              >
+                <Trash2 className="h-4 w-4" />
+              </button>
               {/* — Minimize */}
               <button
                 onClick={() => { setIsMinimized(true); setIsFullScreen(false); }}
