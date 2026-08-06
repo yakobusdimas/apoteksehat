@@ -87,23 +87,23 @@ def main():
     # ── Setup Flask app context ──────────────────────────────────────────────
     app = create_app()
 
-    # ── Baca daftar file webp dari folder public/medicines ──────────────────
-    # Cari folder public relatif dari script ini
+    # ── Baca daftar file webp dari folder public/medicines atau static/medicines ──────
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    public_dir = os.path.join(script_dir, '..', 'frontend', 'public', 'medicines')
-    public_dir = os.path.normpath(public_dir)
+    public_dir = os.path.normpath(os.path.join(script_dir, '..', 'frontend', 'public', 'medicines'))
+    static_dir = os.path.normpath(os.path.join(script_dir, 'static', 'medicines'))
 
-    if not os.path.isdir(public_dir):
-        print(f"Error: Folder tidak ditemukan: {public_dir}")
-        print("    Pastikan foto sudah dicopy ke frontend/public/medicines/")
+    target_dir = None
+    if os.path.isdir(public_dir) and any(f.lower().endswith('.webp') for f in os.listdir(public_dir)):
+        target_dir = public_dir
+    elif os.path.isdir(static_dir) and any(f.lower().endswith('.webp') for f in os.listdir(static_dir)):
+        target_dir = static_dir
+
+    if not target_dir:
+        print(f"Error: Folder foto tidak ditemukan di {public_dir} maupun {static_dir}")
         sys.exit(1)
 
-    webp_files = [f for f in os.listdir(public_dir) if f.lower().endswith('.webp')]
-    if not webp_files:
-        print(f"Error: Tidak ada file .webp di {public_dir}")
-        sys.exit(1)
-
-    print(f"OK: Ditemukan {len(webp_files)} file webp di folder public/medicines/\n")
+    webp_files = [f for f in os.listdir(target_dir) if f.lower().endswith('.webp')]
+    print(f"OK: Ditemukan {len(webp_files)} file webp di folder {target_dir}\n")
 
     # Buat list (stem, filename) — stem = nama tanpa ekstensi
     file_stems = [(os.path.splitext(f)[0], f) for f in webp_files]
