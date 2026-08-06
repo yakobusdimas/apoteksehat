@@ -306,11 +306,49 @@ function DaftarObatPage() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
     const reader = new FileReader();
     reader.onload = (event) => {
-      const base64Url = event.target?.result as string;
-      setPreviewUrl(base64Url);
-      setForm(f => ({ ...f, customPhoto: base64Url }));
+      const rawBase64 = event.target?.result as string;
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 800;
+        const MAX_HEIGHT = 800;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height = Math.round(height * (MAX_WIDTH / width));
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width = Math.round(width * (MAX_HEIGHT / height));
+            height = MAX_HEIGHT;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, width, height);
+          // Compress image to JPEG 82% quality (~50KB-90KB string)
+          const compressedBase64 = canvas.toDataURL('image/jpeg', 0.82);
+          setPreviewUrl(compressedBase64);
+          setForm(f => ({ ...f, customPhoto: compressedBase64 }));
+        } else {
+          setPreviewUrl(rawBase64);
+          setForm(f => ({ ...f, customPhoto: rawBase64 }));
+        }
+      };
+      img.onerror = () => {
+        setPreviewUrl(rawBase64);
+        setForm(f => ({ ...f, customPhoto: rawBase64 }));
+      };
+      img.src = rawBase64;
     };
     reader.readAsDataURL(file);
   };
