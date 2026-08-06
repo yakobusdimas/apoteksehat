@@ -275,6 +275,19 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
                         f"3. Jika gejala tidak membaik dalam 3 hari, sangat disarankan untuk berkonsultasi ke dokter."
                     )
 
+                    # Dynamic Groq LLM Response Enhancement
+                    try:
+                        from utils.rag_engine import generate_llm_response
+                        prompt_llm = (
+                            f"Kamu adalah Apoteker AI resmi 'Apotek Sehat'. Sapa pengguna secara hangat dan berikan saran rekomendasi obat untuk keluhan '{phrase_display}' "
+                            f"dengan menyebutkan obat: {med_names}. Berikan 2-3 petunjuk perawatan mandiri yang ramah. JANGAN gunakan tanda bintang markdown (*)."
+                        )
+                        llm_out = generate_llm_response(prompt_llm)
+                        if llm_out and len(llm_out) > 30 and "Mohon maaf" not in llm_out:
+                            response_text = llm_out
+                    except Exception as _e:
+                        pass
+
                     if user_allergies:
                         response_text += f"\n\n🛡️ Catatan Keselamatan Alergi: Seluruh obat di atas telah difilter dan 100% bebas dari bahan alergi ({', '.join(user_allergies)})."
 
@@ -291,8 +304,22 @@ def _get_intent_response(intent: str, user_message: str, user_allergies: list = 
                 med_name = matched['name'] if matched else 'obat tersebut'
                 d_info = (matched.get('dosage') if matched else '') or 'Dewasa: 1 tablet 3-4 kali sehari sesudah makan. Anak 6-12 tahun: 1/2 tablet 3 kali sehari.'
                 s_info = (matched.get('side_effects') if matched else '') or 'Secara umum ditoleransi dengan baik. Efek samping seperti mual atau pusing sangat jarang terjadi jika dikonsumsi sesuai dosis.'
-                
+
                 resp = f"Halo Kak! 😊 Untuk informasi {med_name}:\n\n- Dosis & Cara Pakai: {d_info}\n- Efek Samping: {s_info}\n\n💡 Catatan Apoteker: Minum sesudah makan dan istirahat yang cukup ya!"
+
+                # Dynamic Groq LLM Response Enhancement for Dosage
+                try:
+                    from utils.rag_engine import generate_llm_response
+                    prompt_dosis = (
+                        f"Kamu adalah Apoteker AI resmi 'Apotek Sehat'. Jelaskan dosis dan aturan pakai ({d_info}) serta efek samping ({s_info}) dari obat {med_name} "
+                        f"dengan bahasa Indonesia yang sangat ramah, hangat, dan alami. JANGAN gunakan tanda bintang markdown (*)."
+                    )
+                    llm_dosis = generate_llm_response(prompt_dosis)
+                    if llm_dosis and len(llm_dosis) > 30 and "Mohon maaf" not in llm_dosis:
+                        resp = llm_dosis
+                except Exception as _e:
+                    pass
+
                 return {
                     'response': resp,
                     'medicines': [_build_medicine_response(matched)] if matched else [],
