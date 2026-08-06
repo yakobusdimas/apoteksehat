@@ -105,10 +105,16 @@ def create_app(config=None):
 
     # ── Static Medicine Images ─────────────────────────────────────────────
     MEDICINES_STATIC = os.path.join(os.path.dirname(__file__), 'static', 'medicines')
+    PUBLIC_MEDICINES_STATIC = os.path.join(os.path.dirname(__file__), '..', 'frontend', 'public', 'medicines')
 
+    @app.route('/medicines/<path:filename>', methods=['GET'])
     @app.route('/static/medicines/<path:filename>', methods=['GET'])
     def medicine_image(filename):
-        """Serve medicine images from static/medicines/ directory."""
+        """Serve medicine images from static/medicines/ or frontend/public/medicines/ directory."""
+        if os.path.exists(os.path.join(MEDICINES_STATIC, filename)):
+            return send_from_directory(MEDICINES_STATIC, filename)
+        if os.path.exists(os.path.join(PUBLIC_MEDICINES_STATIC, filename)):
+            return send_from_directory(PUBLIC_MEDICINES_STATIC, filename)
         return send_from_directory(MEDICINES_STATIC, filename)
 
     # ── Error Handlers ─────────────────────────────────────────────
