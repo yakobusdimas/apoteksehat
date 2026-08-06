@@ -110,14 +110,10 @@ def main():
 
     # ── Update database ──────────────────────────────────────────────────────
     with app.app_context():
-        # Ambil semua obat yang belum punya foto
-        medicines = Medicine.query.filter(
-            (Medicine.photo == None) |
-            (Medicine.photo == '') |
-            (Medicine.photo == '/medicines/paracetamol.png')
-        ).all()
+        # Ambil semua obat di database untuk disinkronkan fotonya
+        medicines = Medicine.query.all()
 
-        print(f"Info: Ditemukan {len(medicines)} obat yang belum/belum tepat punya foto.\n")
+        print(f"Info: Memproses sinkronisasi foto untuk {len(medicines)} obat di database...\n")
 
         MIN_SCORE = 60   # Skor minimum untuk dianggap cocok
         updated = 0
