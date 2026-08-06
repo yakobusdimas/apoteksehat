@@ -76,15 +76,20 @@ function readCache(): CacheEntry | null {
 
 function writeCache(medicines: Medicine[], categories: string[]) {
   try {
-    // Strip Base64 photos sebelum cache untuk mencegah sessionStorage overflow
-    const stripped = medicines.map(m => ({
-      ...m,
-      photo: m.photo && m.photo.startsWith('data:') ? '' : m.photo,
-    }));
-    const entry: CacheEntry = { medicines: stripped, categories, fetchedAt: Date.now() };
+    const entry: CacheEntry = { medicines, categories, fetchedAt: Date.now() };
     sessionStorage.setItem(CACHE_KEY, JSON.stringify(entry));
   } catch {
-    // sessionStorage penuh atau tidak tersedia — fail silently
+    // Jika sessionStorage kuota penuh, simpan versi dengan foto sangat besar yang di-strip sebagai fallback
+    try {
+      const stripped = medicines.map(m => ({
+        ...m,
+        photo: m.photo && m.photo.length > 500000 ? '' : m.photo,
+      }));
+      const entry: CacheEntry = { medicines: stripped, categories, fetchedAt: Date.now() };
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(entry));
+    } catch {
+      // ignore
+    }
   }
 }
 
