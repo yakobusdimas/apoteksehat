@@ -419,7 +419,7 @@ export default function LandingPage() {
                   variant="outline"
                   size="sm"
                   disabled={currentPage <= 1}
-                  onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); window.scrollTo({ top: 600, behavior: 'smooth' }); }}
+                  onClick={() => { setCurrentPage(Math.max(1, currentPage - 1)); window.scrollTo({ top: 600, behavior: 'smooth' }); }}
                   className="flex items-center gap-1.5 h-9 px-4 rounded-xl"
                 >
                   <ChevronLeft className="h-4 w-4" /> Sebelumnya
@@ -452,7 +452,7 @@ export default function LandingPage() {
                   variant="outline"
                   size="sm"
                   disabled={currentPage >= totalPages}
-                  onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); window.scrollTo({ top: 600, behavior: 'smooth' }); }}
+                  onClick={() => { setCurrentPage(Math.min(totalPages, currentPage + 1)); window.scrollTo({ top: 600, behavior: 'smooth' }); }}
                   className="flex items-center gap-1.5 h-9 px-4 rounded-xl"
                 >
                   Berikutnya <ChevronRight className="h-4 w-4" />
