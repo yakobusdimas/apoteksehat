@@ -71,6 +71,7 @@ class Config:
     INTENTS_PATH = os.getenv('INTENTS_PATH', '../model_training/data/intents.json')
     SYNONYMS_PATH = os.getenv('SYNONYMS_PATH', '../model_training/data/synonyms_id.json')
     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
+    GROQ_API_KEY = os.getenv('GROQ_API_KEY', '')
 
     # Rate Limiting
     RATE_LIMIT_DEFAULT = os.getenv('RATE_LIMIT_DEFAULT', '200 per minute')
