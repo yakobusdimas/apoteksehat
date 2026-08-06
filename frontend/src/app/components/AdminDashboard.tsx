@@ -1279,7 +1279,8 @@ export default function AdminDashboard() {
 
   const totalProducts = stats?.totalMedicines ?? medicines.length;
   const totalStock = medicines.reduce((sum, m) => sum + m.stock, 0);
-  const lowStockItems = stats?.lowStockMedicines ?? medicines.filter(m => m.stock < 50).length;
+  const lowStockMedicinesList = medicines.filter(m => m.stock < 50);
+  const lowStockItems = lowStockMedicinesList.length;
   const totalRevenue = stats?.totalRevenue ?? 0;
 
   const handleLogout = () => { logout(); toast.success('Logout berhasil'); navigate('/'); };
@@ -1468,19 +1469,53 @@ export default function AdminDashboard() {
               </div>
 
               {lowStockItems > 0 && (
-                <div className="bg-red-50 border border-red-200 rounded-2xl px-6 py-4 flex items-center justify-between shadow-sm animate-in fade-in slide-in-from-top-4">
-                  <div className="flex items-center gap-4">
-                    <div className="bg-red-100 p-2 rounded-full">
-                      <AlertTriangle className="h-6 w-6 text-red-600" />
+                <div className="bg-red-50/90 border border-red-200 rounded-2xl p-5 shadow-sm animate-in fade-in slide-in-from-top-4 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-red-200/60 pb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-red-100 p-2.5 rounded-xl text-red-600 shrink-0">
+                        <AlertTriangle className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-red-900 text-base">Perhatian: Stok Menipis!</h3>
+                        <p className="text-xs text-red-700 mt-0.5">
+                          Terdapat <span className="font-bold underline">{lowStockItems} obat</span> dengan sisa stok kurang dari batas aman (&lt; 50 unit).
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-red-800">Perhatian: Stok Menipis!</h3>
-                      <p className="text-sm text-red-600 mt-0.5">Terdapat <span className="font-bold">{lowStockItems} produk</span> dengan stok kurang dari batas aman (50).</p>
-                    </div>
+                    <Button onClick={() => handleMenuChange('obat')} className="bg-red-600 hover:bg-red-700 text-white shadow-sm text-xs font-semibold px-4 py-2 rounded-xl shrink-0">
+                      Kelola Semua Stok Obat
+                    </Button>
                   </div>
-                  <Button onClick={() => handleMenuChange('obat')} className="bg-red-600 hover:bg-red-700 text-white shadow-sm">
-                    Cek Stok Obat
-                  </Button>
+
+                  {/* Specific Low-Stock Medicines Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    {lowStockMedicinesList.slice(0, 6).map(med => (
+                      <div key={med.id} className="bg-white border border-red-200/80 rounded-xl p-3 flex items-center justify-between gap-3 shadow-xs hover:border-red-400 transition-all">
+                        <div className="flex items-center gap-3 min-w-0">
+                          {med.photo ? (
+                            <img src={encodeURI(med.photo)} alt={med.name} className="w-10 h-10 object-cover rounded-lg border border-gray-100 shrink-0" />
+                          ) : (
+                            <div className="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center font-bold text-sm shrink-0">
+                              💊
+                            </div>
+                          )}
+                          <div className="min-w-0">
+                            <p className="text-xs font-bold text-gray-800 truncate" title={med.name}>{med.name}</p>
+                            <p className="text-[11px] text-gray-500 font-medium mt-0.5">
+                              Sisa Stok: <span className="font-extrabold text-red-600 bg-red-50 px-1.5 py-0.5 rounded border border-red-100">{med.stock} unit</span>
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => handleMenuChange('obat')}
+                          className="bg-red-600 hover:bg-red-700 text-white text-[11px] font-bold px-2.5 py-1.5 rounded-lg shadow-xs transition-colors shrink-0"
+                          title="Kelola Stok"
+                        >
+                          + Restok
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
