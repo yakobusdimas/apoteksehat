@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { Button } from './ui/button';
@@ -57,6 +57,7 @@ const PER_PAGE = 12;
 
 export default function UserDashboard() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { user, logout } = useAuth();
   const { cart, addToCart, removeFromCart, updateQuantity, getTotalPrice, getTotalItems, clearCart } = useCart();
   const { categories: apiCategories, listMedicines } = useMedicines();
@@ -64,7 +65,6 @@ export default function UserDashboard() {
   // ── Search & filter state ──────────────────────────────────────────
   const [searchQuery, setSearchQuery]           = useState('');
   const [debouncedQuery, setDebouncedQuery]     = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('Semua');
   const [sortBy, setSortBy]                     = useState<SortOption>('default');
   const [activeTab, setActiveTab]               = useState('catalog');
   const [favorites, setFavorites]               = useState<Set<number>>(new Set());
@@ -75,10 +75,37 @@ export default function UserDashboard() {
   const [ordersLoading, setOrdersLoading] = useState(false);
   const [cancellingId, setCancellingId]   = useState<number | null>(null); // Bug #B
 
-  // ── Catalog pagination state ───────────────────────────────────────
+  // ── Catalog pagination & URL SearchParams sync ──────────────────────
+  const currentPage = parseInt(searchParams.get('page') || '1', 10) || 1;
+  const selectedCategory = searchParams.get('category') || 'Semua';
+
+  const setCurrentPage = (newPage: number) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      if (newPage > 1) {
+        next.set('page', String(newPage));
+      } else {
+        next.delete('page');
+      }
+      return next;
+    });
+  };
+
+  const setSelectedCategory = (category: string) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      next.delete('page'); // Reset to page 1 on category change
+      if (category !== 'Semua') {
+        next.set('category', category);
+      } else {
+        next.delete('category');
+      }
+      return next;
+    });
+  };
+
   const [catalogMedicines, setCatalogMedicines] = useState<Medicine[]>([]);
   const [catalogLoading, setCatalogLoading]     = useState(false);
-  const [currentPage, setCurrentPage]           = useState(1);
   const [totalProducts, setTotalProducts]       = useState(0);
   const [totalPages, setTotalPages]             = useState(0);
 

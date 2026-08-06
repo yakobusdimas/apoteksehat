@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
@@ -34,11 +34,39 @@ const CATEGORY_META: Record<string, { emoji: string; color: string; bg: string }
 
 export default function LandingPage() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { medicines, isLoading } = useMedicines();
   const [searchQuery, setSearchQuery]           = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('Semua');
   const [selectedMedicine, setSelectedMedicine] = useState<Medicine | null>(null);
-  const [currentPage, setCurrentPage]           = useState(1);
+
+  // ── Sync pagination & category with URL params ────────────────────────
+  const currentPage = parseInt(searchParams.get('page') || '1', 10) || 1;
+  const selectedCategory = searchParams.get('category') || 'Semua';
+
+  const setCurrentPage = (newPage: number) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      if (newPage > 1) {
+        next.set('page', String(newPage));
+      } else {
+        next.delete('page');
+      }
+      return next;
+    });
+  };
+
+  const setSelectedCategory = (cat: string) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      next.delete('page'); // Reset to page 1
+      if (cat !== 'Semua') {
+        next.set('category', cat);
+      } else {
+        next.delete('category');
+      }
+      return next;
+    });
+  };
 
   const categories = ['Semua', 'Pereda Nyeri', 'Antibiotik', 'Obat Batuk', 'Flu & Pilek', 'Lambung', 'Vitamin', 'Pencernaan'];
 
@@ -54,9 +82,6 @@ export default function LandingPage() {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredMedicines.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredMedicines, currentPage]);
-
-  // Reset ke halaman 1 saat filter/search berubah
-  useEffect(() => { setCurrentPage(1); }, [searchQuery, selectedCategory]);
 
   const handleAddToCart = () => {
     toast.info('Silakan login untuk menambahkan ke keranjang', {
