@@ -142,34 +142,35 @@ def generate_llm_response(query: str) -> str:
 
     # 1. 🚀 PRIORITAS 1: GROQ LLM (Super Cepat & Ramah)
     if groq_key and groq_key.startswith('gsk_'):
-        try:
-            url = "https://api.groq.com/openai/v1/chat/completions"
-            payload = {
-                "model": "llama-3.3-70b-versatile",
-                "messages": [
-                    {"role": "system", "content": prompt_system},
-                    {"role": "user", "content": query}
-                ],
-                "temperature": 0.5,
-                "max_tokens": 500
-            }
-            req = urllib.request.Request(
-                url,
-                data=json.dumps(payload).encode('utf-8'),
-                headers={
-                    "Content-Type": "application/json",
-                    "Authorization": f"Bearer {groq_key}",
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        for model_name in ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "llama3-70b-8192"]:
+            try:
+                url = "https://api.groq.com/openai/v1/chat/completions"
+                payload = {
+                    "model": model_name,
+                    "messages": [
+                        {"role": "system", "content": prompt_system},
+                        {"role": "user", "content": query}
+                    ],
+                    "temperature": 0.5,
+                    "max_tokens": 500
                 }
-            )
-            with urllib.request.urlopen(req, timeout=8) as resp:
-                res_data = json.loads(resp.read().decode('utf-8'))
-                text = res_data['choices'][0]['message']['content']
-                clean_text = text.replace('**', '').replace('*', '').strip()
-                if clean_text:
-                    return clean_text
-        except Exception as e:
-            print(f"[RAG] Groq API error: {e}")
+                req = urllib.request.Request(
+                    url,
+                    data=json.dumps(payload).encode('utf-8'),
+                    headers={
+                        "Content-Type": "application/json",
+                        "Authorization": f"Bearer {groq_key}",
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                    }
+                )
+                with urllib.request.urlopen(req, timeout=8) as resp:
+                    res_data = json.loads(resp.read().decode('utf-8'))
+                    text = res_data['choices'][0]['message']['content']
+                    clean_text = text.replace('**', '').replace('*', '').strip()
+                    if clean_text:
+                        return clean_text
+            except Exception as e:
+                print(f"[RAG] Groq API error ({model_name}): {e}")
 
     # 2. 🌟 PRIORITAS 2: GEMINI LLM
     if gemini_key and gemini_key.startswith('AIzaSy'):
